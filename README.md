@@ -6,7 +6,7 @@
 <!-- Badges -->
 
 [![Pub Package](https://img.shields.io/pub/v/jack.svg)](https://pub.dartlang.org/packages/jack)
-[![CircleCI](https://circleci.com/gh/Igor1201/jack/tree/master.svg?style=svg)](https://circleci.com/gh/Igor1201/jack/tree/master)
+[![CircleCI](https://circleci.com/gh/Igor1201/jack/tree/master.svg?style=svg&circle-token=9bc247dedeb5eb3569f344ff49669ab014581533)](https://circleci.com/gh/Igor1201/jack/tree/master)
 
 Jack.
 
