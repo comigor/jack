@@ -1,0 +1,15 @@
+name: jack
+version: 0.0.1
+authors:
+- Igor Borges <igor@borges.me>
+description: >
+  Jack.
+homepage: https://github.com/Igor1201/jack
+
+environment:
+  sdk: '>=2.0.0 <3.0.0'
+
+dependencies:
+
+dev_dependencies:
+  test: ^1.0.0
