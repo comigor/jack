@@ -7,14 +7,8 @@ action "Test" {
   uses = "Igor1201/dart-test-action@master"
 }
 
-action "Master" {
-  needs = "Test"
-  uses = "actions/bin/filter@master"
-  args = "branch master"
-}
-
 action "Tag" {
-  needs = "Master"
+  needs = "Test"
   uses = "actions/bin/filter@master"
   args = "tag v*"
 }
