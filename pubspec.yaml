@@ -1,17 +1,16 @@
 name: jack
-version: 0.1.0
-authors:
-- Igor Borges <igor@borges.me>
+version: 0.1.1
+
 description: >
   Jack.
-homepage: https://github.com/Igor1201/jack
+homepage: https://github.com/comigor/jack
 
 environment:
-  sdk: '>=2.0.0 <3.0.0'
+  sdk: ">=2.8.0 <3.0.0"
 
 dependencies:
-  intl: ^0.15.7
-  petitparser: ^2.0.2
+  intl: ^0.16.1
+  petitparser: ^3.1.0
 
 dev_dependencies:
-  test: ^1.0.0
+  test: ^1.15.4
