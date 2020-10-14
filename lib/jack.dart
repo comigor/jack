@@ -1,5 +1,5 @@
 library jack;
 
-export 'package:jack/src/model.dart';
-export 'package:jack/src/grammar.dart';
-export 'package:jack/src/parser.dart';
+export 'src/grammar.dart';
+export 'src/model.dart';
+export 'src/parser.dart';

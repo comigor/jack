@@ -56,7 +56,7 @@ class Posting {
 
   @override
   String toString() {
-    var buffer = new StringBuffer();
+    final buffer = StringBuffer();
 
     if (flag != '*') buffer.write('$flag ');
 
@@ -66,7 +66,7 @@ class Posting {
       buffer.write(' $cost');
     }
 
-    for (MapEntry<String, String> meta in metadata.entries) {
+    for (final meta in metadata.entries) {
       buffer.write('\n  ${meta.key}: "${meta.value}"');
     }
 
@@ -74,7 +74,7 @@ class Posting {
   }
 }
 
-var formatter = new DateFormat('yyyy-MM-dd');
+final DateFormat formatter = DateFormat('yyyy-MM-dd');
 
 class Transaction {
   DateTime date;
@@ -128,7 +128,7 @@ class Transaction {
 
   @override
   String toString() {
-    var buffer = new StringBuffer();
+    final buffer = StringBuffer();
     buffer.write(formatter.format(date));
     buffer.write(' $flag');
 
@@ -140,19 +140,19 @@ class Transaction {
       }
     }
 
-    for (String tag in tags.where((t) => t != null)) {
+    for (final tag in tags.where((t) => t != null)) {
       buffer.write(' #$tag');
     }
-    for (String link in links.where((l) => l != null)) {
+    for (final link in links.where((l) => l != null)) {
       buffer.write(' ^$link');
     }
     buffer.writeln();
 
-    for (MapEntry<String, String> meta in metadata.entries) {
+    for (final meta in metadata.entries) {
       buffer.writeln('  ${meta.key}: "${meta.value}"');
     }
 
-    for (Posting posting in postings) {
+    for (final posting in postings) {
       buffer.writeln('  ${posting.toString().replaceAll('\n', '\n  ')}');
     }
 
@@ -191,10 +191,10 @@ class Balance {
 
   @override
   String toString() {
-    var buffer = new StringBuffer();
+    final buffer = StringBuffer();
     buffer.writeln('${formatter.format(date)} balance $account $cost');
 
-    for (MapEntry<String, String> meta in metadata.entries) {
+    for (final meta in metadata.entries) {
       buffer.writeln('  ${meta.key}: "${meta.value}"');
     }
 
@@ -233,7 +233,7 @@ class AccountAction {
 
   @override
   String toString() {
-    var buffer = new StringBuffer();
+    final buffer = StringBuffer();
     buffer.write(formatter.format(date));
     buffer.write(' $action $account');
 

@@ -7,6 +7,7 @@ class BeancountGrammar extends GrammarParser {
 class BeancountGrammarDefinition extends GrammarDefinition {
   const BeancountGrammarDefinition();
 
+  @override
   Parser start() => ref(value).end();
   Parser token(Parser parser) => parser.flatten().trim(anyOf(' \t\r'));
 
