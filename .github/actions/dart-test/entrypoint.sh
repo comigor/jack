@@ -79,7 +79,7 @@ for ppath in $(find . -name pubspec.yaml | grep -ve "$DTA_EXCLUDE_REGEX"); do
     if [ "$DTA_DISABLE_TESTS" = "false" ]; then
       echo "=== Running tests ==="
       if [ "$DTA_IS_FLUTTER" = "false" ]; then
-        OUTPUT=$(pub run test --no-color -r expanded -- test/query_generator/aliases/alias_on_leaves_test.dart 2>&1) || send_message_and_bail "Tests failed!" "$OUTPUT"
+        OUTPUT=$(pub run test --no-color -r expanded 2>&1) || send_message_and_bail "Tests failed!" "$OUTPUT"
       else
         OUTPUT=$(flutter test 2>&1) || send_message_and_bail "Tests failed!" "$OUTPUT"
       fi

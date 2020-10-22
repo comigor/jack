@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:feijoada/jack/parser.dart';
+import 'package:jack/src/parser.dart';
 
 void main() {
   group('Beancount parser can go back-and-forth on some records', () {
