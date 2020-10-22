@@ -45,9 +45,9 @@ class BeancountParserDefinition extends BeancountGrammarDefinition {
         final cost = e.elementAt(2) as Cost;
         return Posting(
           flag: e.first as String,
-          account: e.elementAt(1) as String,
+          account: e.elementAt(1) as Account,
           cost: cost,
-          metadata: e.last as Map<String, String>,
+          metadata: e.last as Map<String, MetaValue>,
         );
       });
 
@@ -75,7 +75,7 @@ class BeancountParserDefinition extends BeancountGrammarDefinition {
           comment: comment,
           tags: e.elementAt(3) as List<String>,
           links: e.elementAt(4) as List<String>,
-          metadata: e.elementAt(6) as Map<String, String>,
+          metadata: e.elementAt(6) as Map<String, MetaValue>,
           postings: e.last as List<Posting>,
         );
       });
@@ -84,9 +84,9 @@ class BeancountParserDefinition extends BeancountGrammarDefinition {
         final e = each as List;
         return Balance(
           date: e.first as DateTime,
-          account: e.elementAt(2) as String,
+          account: e.elementAt(2) as Account,
           cost: e.elementAt(3) as Cost,
-          metadata: e.elementAt(5) as Map<String, String>,
+          metadata: e.elementAt(5) as Map<String, MetaValue>,
         );
       });
   @override
@@ -95,7 +95,7 @@ class BeancountParserDefinition extends BeancountGrammarDefinition {
         return AccountAction(
           date: e.first as DateTime,
           action: e.elementAt(1) as String,
-          account: e.elementAt(2) as String,
+          account: e.elementAt(2) as Account,
           currencies: ((e.elementAt(3) as List) ?? [])
               .where(
                   (i) => i.toString().trim().isNotEmpty && i.toString() != ',')

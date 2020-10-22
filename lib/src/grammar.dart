@@ -7,15 +7,20 @@ class BeancountGrammar extends GrammarParser {
 class BeancountGrammarDefinition extends GrammarDefinition {
   const BeancountGrammarDefinition();
 
-  @override
   Parser start() => ref(value).end();
   Parser token(Parser parser) => parser.flatten().trim(anyOf(' \t\r'));
 
   Parser value() => ref((transaction() |
           balance() |
           accountAction() |
+          padAction() |
+          noteAction() |
+          customAction() |
           option() |
-          fullLineComment())
+          fullLineComment() |
+          orgModeSection() |
+          blankLine() |
+          ignoredDirective())
       .star);
 
   Parser numberToken() => ref(
@@ -25,7 +30,8 @@ class BeancountGrammarDefinition extends GrammarDefinition {
           char('.').seq(digit().plus()).optional());
   Parser stringToken() =>
       ref(token, char('"') & pattern('^"').star() & char('"'));
-  Parser flagToken() => ref(token, char('*') | char('!') | string('txn'));
+  Parser flagToken() =>
+      ref(token, char('*') | char('!') | string('txn') | string('P'));
   Parser dateToken() => ref(
       token,
       digit().times(4) &
@@ -80,11 +86,31 @@ class BeancountGrammarDefinition extends GrammarDefinition {
       accountToken() &
       currencies() &
       comment();
+  Parser padAction() =>
+      dateToken() & string('pad') & accountToken() & accountToken() & comment();
+  Parser noteAction() =>
+      dateToken() & string('note') & accountToken() & stringToken() & comment();
+  Parser customAction() =>
+      dateToken() &
+      string('custom') &
+      stringToken() &
+      (accountToken() |
+              costToken() |
+              stringToken() |
+              dateToken() |
+              currencyToken())
+          .star() &
+      comment();
   Parser option() =>
       string('option') & stringToken() & stringToken() & comment();
   Parser fullLineComment() =>
-      ref(token, char(';') & noneOf('\n').star() & whitespace().star());
-  Parser comment() => ref(token, fullLineComment() | whitespace().star());
+      ref(token, char(';') & noneOf('\n').star() & char('\n').optional());
+  Parser comment() => ref(token,
+      fullLineComment() | whitespacenlb().star() & char('\n').optional());
+  Parser orgModeSection() => ref(
+      token, char('*').plus() & noneOf('\n').star() & char('\n').optional());
+  Parser blankLine() => char('\n');
+  Parser ignoredDirective() => noneOf('\n').plus().flatten() & comment();
 
   Parser accountActionPrimitive() => string('open') | string('close');
   Parser accountPreffixPrimitive() =>
@@ -96,4 +122,15 @@ class BeancountGrammarDefinition extends GrammarDefinition {
   Parser uppercaseCharacterPrimitive() => pattern('0-9A-Z_');
   Parser lowercaseCharacterPrimitive() => pattern('0-9a-z_-');
   Parser tagsCharacterPrimitive() => pattern('0-9a-zA-Z-_');
+}
+
+Parser<String> whitespacenlb([String message = 'whitespace expected']) {
+  return CharacterParser(const WhitespaceCharPredicateNonLinebreak(), message);
+}
+
+class WhitespaceCharPredicateNonLinebreak extends WhitespaceCharPredicate {
+  const WhitespaceCharPredicateNonLinebreak();
+
+  @override
+  bool test(int value) => value == 10 ? false : super.test(value);
 }

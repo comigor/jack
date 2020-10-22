@@ -4,12 +4,16 @@
 		"dockerfile": "Dockerfile",
 		// Update VARIANT to pick a Dart version
 		"args": {
-			"VARIANT": "2"
-		}
+			"VARIANT": "2",
+		},
 	},
 	// Set *default* container specific settings.json values on container create.
 	"settings": {
-		"terminal.integrated.shell.linux": "/bin/bash"
+		"editor.formatOnSave": true,
+		"terminal.integrated.shell.linux": "/usr/bin/zsh",
+		"editor.fontLigatures": true,
+		"workbench.colorTheme": "Default Dark+",
+		"editor.fontFamily": "'Jetbrains Mono', Menlo, Monaco, 'Courier New', monospace",
 	},
 	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [
@@ -18,8 +22,8 @@
 		"redhat.vscode-yaml",
 		"luanpotter.dart-import",
 		"jeroen-meijer.pubspec-assist",
-		"kumar-harsh.graphql-for-vscode"
-	]
+		"kumar-harsh.graphql-for-vscode",
+	],
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
 	// Use 'postCreateCommand' to run commands after the container is created.
