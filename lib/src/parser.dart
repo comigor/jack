@@ -13,14 +13,17 @@ class BeancountParserDefinition extends BeancountGrammarDefinition {
   const BeancountParserDefinition();
 
   @override
-  Parser numberToken() => super.numberToken().map((each) => double.parse(each.toString()));
+  Parser numberToken() =>
+      super.numberToken().map((each) => double.parse(each.toString()));
   @override
   Parser stringToken() =>
       super.stringToken().map((each) => each.toString().replaceAll('"', ''));
   @override
-  Parser dateToken() => super.dateToken().map((each) => DateTime.parse(each.toString()));
+  Parser dateToken() =>
+      super.dateToken().map((each) => DateTime.parse(each.toString()));
   @override
-  Parser accountToken() => super.accountToken().map((each) => Account(each.toString()));
+  Parser accountToken() =>
+      super.accountToken().map((each) => Account(each.toString()));
   @override
   Parser tagToken() =>
       super.tagToken().map((each) => each.toString().substring(1));
@@ -28,12 +31,13 @@ class BeancountParserDefinition extends BeancountGrammarDefinition {
   Parser linkToken() =>
       super.linkToken().map((each) => each.toString().substring(1));
   @override
-  Parser metadataToken() => super
-      .metadataToken()
-      .map((each) => { for (var e in each as List) e.first.toString() : MetaValue(
-                e.elementAt(2).toString(),
-                comment: e.elementAt(3).toString().trim(),
-              ) });
+  Parser metadataToken() => super.metadataToken().map((each) => {
+        for (var e in each as List)
+          e.first.toString(): MetaValue(
+            e.elementAt(2).toString(),
+            comment: e.elementAt(3).toString().trim(),
+          )
+      });
   @override
   Parser costToken() => super.costToken().map((each) {
         final e = each as List;
@@ -67,10 +71,12 @@ class BeancountParserDefinition extends BeancountGrammarDefinition {
   @override
   Parser transaction() => super.transaction().map((each) {
         final e = each as List;
-        var payee =
-            e.elementAt(2) != null ? (e.elementAt(2) as List).first?.toString() : null;
-        var comment =
-            e.elementAt(2) != null ? (e.elementAt(2) as List).last?.toString() : null;
+        var payee = e.elementAt(2) != null
+            ? (e.elementAt(2) as List).first?.toString()
+            : null;
+        var comment = e.elementAt(2) != null
+            ? (e.elementAt(2) as List).last?.toString()
+            : null;
         if (payee != null && comment == null) {
           comment = payee;
           payee = null;
