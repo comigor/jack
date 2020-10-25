@@ -94,7 +94,7 @@ class Posting {
       buffer.write(' $comment');
     }
 
-    for (MapEntry<String, MetaValue> meta in metadata.entries) {
+    for (final meta in metadata.entries) {
       buffer.write('\n  ${meta.key}: ${meta.value}');
     }
 
@@ -102,7 +102,7 @@ class Posting {
   }
 }
 
-var formatter = DateFormat('yyyy-MM-dd');
+final formatter = DateFormat('yyyy-MM-dd');
 
 class Transaction {
   DateTime date;
@@ -163,10 +163,10 @@ class Transaction {
       }
     }
 
-    for (String tag in tags.where((t) => t != null)) {
+    for (final tag in tags.where((t) => t != null)) {
       buffer.write(' #$tag');
     }
-    for (String link in links.where((l) => l != null)) {
+    for (final link in links.where((l) => l != null)) {
       buffer.write(' ^$link');
     }
 
@@ -181,11 +181,11 @@ class Transaction {
   String toString() {
     var buffer = StringBuffer()..write(headerToString());
 
-    for (MapEntry<String, MetaValue> meta in metadata.entries) {
+    for (final meta in metadata.entries) {
       buffer.write('\n  ${meta.key}: ${meta.value}');
     }
 
-    for (Posting posting in postings) {
+    for (final posting in postings) {
       buffer.write('\n  ${posting.toString().replaceAll('\n', '\n  ')}');
     }
 
@@ -227,7 +227,7 @@ class Balance {
     var buffer = StringBuffer()
       ..write('${formatter.format(date)} balance $account $cost');
 
-    for (MapEntry<String, MetaValue> meta in metadata.entries) {
+    for (final meta in metadata.entries) {
       buffer.write('\n  ${meta.key}: ${meta.value}');
     }
 

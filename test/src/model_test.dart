@@ -1,5 +1,5 @@
-import 'package:feijoada/jack/model.dart';
 import 'package:test/test.dart';
+import 'package:jack/src/model.dart';
 
 void main() {
   group('Posting.toString()', () {
