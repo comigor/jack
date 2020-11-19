@@ -8,6 +8,8 @@ analyzer:
   exclude:
     - example/**/*.dart
     - test/**/*.dart
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
 linter:
   rules:
     - type_annotate_public_apis
