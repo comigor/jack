@@ -220,6 +220,11 @@ class _$_Account implements _Account {
   final String name;
 
   @override
+  String toString() {
+    return 'Account(name: $name)';
+  }
+
+  @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _Account &&
@@ -654,6 +659,11 @@ class _$_Transaction implements _Transaction {
   final String comment;
 
   @override
+  String toString() {
+    return 'Transaction(date: $date, flag: $flag, payee: $payee, narration: $narration, tags: $tags, links: $links, metadata: $metadata, postings: $postings, comment: $comment)';
+  }
+
+  @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _Transaction &&
@@ -902,6 +912,11 @@ class _$_Posting implements _Posting {
   final String comment;
 
   @override
+  String toString() {
+    return 'Posting(flag: $flag, account: $account, position: $position, metadata: $metadata, comment: $comment)';
+  }
+
+  @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _Posting &&
@@ -1082,6 +1097,11 @@ class _$_Position implements _Position {
   final Money perUnitPrice;
 
   @override
+  String toString() {
+    return 'Position(unit: $unit, cost: $cost, price: $price, perUnitPrice: $perUnitPrice)';
+  }
+
+  @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _Position &&
@@ -1150,7 +1170,7 @@ const $Cost = _$CostTearOff();
 /// @nodoc
 mixin _$Cost {
   Money get value; // amount + currency
-  Money get perUnitValue;
+  Money get perUnitValue; // amount + currency
   DateTime get date;
   String get label;
 
@@ -1231,10 +1251,15 @@ class _$_Cost implements _Cost {
   final Money value;
   @override // amount + currency
   final Money perUnitValue;
-  @override
+  @override // amount + currency
   final DateTime date;
   @override
   final String label;
+
+  @override
+  String toString() {
+    return 'Cost(value: $value, perUnitValue: $perUnitValue, date: $date, label: $label)';
+  }
 
   @override
   bool operator ==(dynamic other) {
@@ -1272,7 +1297,7 @@ abstract class _Cost implements Cost {
   Money get value;
   @override // amount + currency
   Money get perUnitValue;
-  @override
+  @override // amount + currency
   DateTime get date;
   @override
   String get label;

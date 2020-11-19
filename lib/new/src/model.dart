@@ -115,7 +115,7 @@ extension PostingPrint on Posting {
   String print() {
     final buffer = StringBuffer();
 
-    if (flag == '!') buffer.write('! ');
+    buffer.write('$flag ');
 
     buffer.write(account.print());
 
@@ -167,9 +167,13 @@ extension PositionPrint on Position {
 
 @freezed
 abstract class Cost with _$Cost {
+  // Absolute cost: {{[amount],  [date],     [label]}}
+  //                {{10.00 BRL, 2020-11-19, "lot-A"}}
+  // Per unit cost: {[amount],  [date],     [label]}
+  //                {10.00 BRL, 2020-11-19, "lot-A"}
   factory Cost({
     Money value, // amount + currency
-    Money perUnitValue,
+    Money perUnitValue, // amount + currency
     DateTime date,
     String label,
   }) = _Cost;

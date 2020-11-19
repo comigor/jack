@@ -11,7 +11,11 @@ environment:
 dependencies:
   intl: ^0.16.1
   petitparser: ^3.1.0
-  money2: ^1.4.3
+  # money2: ^1.4.3
+  money2:
+    git:
+      url: git@github.com:comigor/money.dart.git
+      ref: master
   freezed_annotation:
 
 dev_dependencies:
