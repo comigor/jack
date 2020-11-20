@@ -25,9 +25,10 @@ Map<Currency, Money> _sumsMap(Transaction transaction) {
 }
 
 extension TransactionExtension on Transaction {
+  bool get hasBlankPosting =>
+      postings.where((posting) => posting.position == null).length == 1;
+
   bool get isBalanced {
-    final hasBlankPosting =
-        postings.where((posting) => posting.position?.unit == null).length == 1;
     if (hasBlankPosting) return true;
 
     final sums = _sumsMap(this);
@@ -35,9 +36,7 @@ extension TransactionExtension on Transaction {
   }
 
   Transaction balance() {
-    final blankPosting =
-        postings.where((posting) => posting.position?.unit == null).single;
-    assert(blankPosting != null);
+    assert(!hasBlankPosting);
 
     final calculatedUnit =
         -_sumsMap(this).values.where((money) => !money.isZero).single;
