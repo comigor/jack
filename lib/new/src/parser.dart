@@ -14,6 +14,9 @@ class BeancountParser extends GrammarParser {
 class BeancountParserDefinition extends BeancountGrammarDefinition {
   const BeancountParserDefinition();
 
+  String _sanitizeComment(dynamic comment) =>
+      comment?.toString()?.trim()?.replaceFirst(RegExp(r'^; +'), '');
+
   @override
   Parser numberToken() =>
       super.numberToken().map((each) => double.parse(each.toString()));
@@ -37,7 +40,7 @@ class BeancountParserDefinition extends BeancountGrammarDefinition {
         for (var e in each as List)
           e.first.toString(): MetaValue(
             value: e.elementAt(2).toString(),
-            comment: e.elementAt(3).toString().trim(),
+            comment: e.elementAt(3) as String,
           )
       });
   @override
@@ -53,28 +56,47 @@ class BeancountParserDefinition extends BeancountGrammarDefinition {
   @override
   Parser costToken() => super.costToken().map((each) {
         final e = each as List;
-        print('Cost: $e');
-        return Cost();
+        final type = e.first as String;
+        final items = e.elementAt(1) as List;
+        final value =
+            items.singleWhere((e) => e is Money, orElse: () => null) as Money;
+        final date = items.singleWhere((e) => e is DateTime, orElse: () => null)
+            as DateTime;
+        final label =
+            items.singleWhere((e) => e is String, orElse: () => null) as String;
+
+        return Cost(
+          perUnitValue: type == '{' ? value : null,
+          value: type == '{{' ? value : null,
+          date: date,
+          label: label,
+        );
       });
-  //     @override
-  // Parser priceToken() =>
-  //     super.priceToken().map((each) {
-  //       final e = each as List;
-  //       print(e);
-  //       return Price();
-  //     });
 
   @override
   Parser singlePosting() => super.singlePosting().map((each) {
         final e = each as List;
-        print('Posting: $e');
-        // final cost = e.elementAt(2) as Cost;
         return Posting(
           flag: e.first?.toString(),
           account: e.elementAt(1) as Account,
-          // cost: cost,
-          comment: e.elementAt(3)?.toString(),
+          position: e.elementAt(2) as Position,
+          comment: e.elementAt(3) as String,
           metadata: e.last as Map<String, MetaValue>,
+        );
+      });
+
+  @override
+  Parser singlePosition() => super.singlePosition().map((each) {
+        final e = each as List;
+        final price = e.elementAt(2) as List;
+        final type = price?.first as String;
+        final unit = price?.last as Money;
+
+        return Position(
+          unit: e.first as Money,
+          cost: e.elementAt(1) as Cost,
+          perUnitPrice: type == '@' ? unit : null,
+          price: type == '@@' ? unit : null,
         );
       });
 
@@ -108,7 +130,7 @@ class BeancountParserDefinition extends BeancountGrammarDefinition {
           links: e.elementAt(4) as List<String>,
           metadata: e.elementAt(6) as Map<String, MetaValue>,
           postings: e.last as List<Posting>,
-          comment: e.elementAt(5)?.toString(),
+          comment: e.elementAt(5) as String,
         );
       });
   @override
@@ -132,7 +154,7 @@ class BeancountParserDefinition extends BeancountGrammarDefinition {
                   (i) => i.toString().trim().isNotEmpty && i.toString() != ',')
               .toList()
               .cast<String>(),
-          comment: e.last.toString(),
+          comment: e.elementAt(4) as String,
         );
       });
   @override
@@ -185,7 +207,7 @@ class BeancountParserDefinition extends BeancountGrammarDefinition {
   Parser blankLine() => super.blankLine().map((each) => each.trim());
 
   @override
-  Parser comment() => super.comment().map((each) => each.trim());
+  Parser comment() => super.comment().map(_sanitizeComment);
   @override
   Parser fullLineComment() =>
       super.fullLineComment().map((each) => each.trim());

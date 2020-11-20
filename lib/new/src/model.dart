@@ -13,6 +13,18 @@ abstract class MetaValue with _$MetaValue {
   }) = _MetaValue;
 }
 
+extension MetaValuePrint on MetaValue {
+  String print() {
+    final buffer = StringBuffer()..write('"$value"');
+
+    if (comment != null && comment.isNotEmpty) {
+      buffer.write(' ; $comment');
+    }
+
+    return buffer.toString();
+  }
+}
+
 @freezed
 abstract class Account with _$Account {
   factory Account({@required String name}) = _Account;
@@ -48,23 +60,23 @@ final formatter = DateFormat('yyyy-MM-dd');
 abstract class Transaction with _$Transaction {
   factory Transaction({
     @required DateTime date,
-    @Default('*') String flag,
-    String payee,
-    String narration,
+    @nullable String flag,
+    @nullable String payee,
+    @nullable String narration,
     @Default([]) List<String> tags,
     @Default([]) List<String> links,
     @Default({}) Map<String, MetaValue> metadata,
     @Default([]) List<Posting> postings,
-    String comment,
+    @nullable String comment,
   }) = _Transaction;
 }
 
 extension TransactionPrint on Transaction {
   String print() {
-    var buffer = StringBuffer()..write(headerToString());
+    final buffer = StringBuffer()..write(headerToString());
 
     for (final meta in metadata.entries) {
-      buffer.write('\n  ${meta.key}: ${meta.value}');
+      buffer.write('\n  ${meta.key}: ${meta.value.print()}');
     }
 
     for (final posting in postings) {
@@ -75,7 +87,7 @@ extension TransactionPrint on Transaction {
   }
 
   String headerToString() {
-    var buffer = StringBuffer()..write('${formatter.format(date)} $flag');
+    final buffer = StringBuffer()..write('${formatter.format(date)} $flag');
 
     if (payee != null && payee.isNotEmpty) {
       buffer.write(' "$payee" "${narration ?? ''}"');
@@ -92,8 +104,8 @@ extension TransactionPrint on Transaction {
       buffer.write(' ^$link');
     }
 
-    if (comment.isNotEmpty) {
-      buffer.write(' $comment');
+    if (comment != null && comment.isNotEmpty) {
+      buffer.write(' ; $comment');
     }
 
     return buffer.toString();
@@ -103,11 +115,11 @@ extension TransactionPrint on Transaction {
 @freezed
 abstract class Posting with _$Posting {
   factory Posting({
-    String flag,
+    @nullable String flag,
     @required Account account,
-    Position position,
+    @nullable Position position,
+    @nullable String comment,
     @Default({}) Map<String, MetaValue> metadata,
-    String comment,
   }) = _Posting;
 }
 
@@ -115,7 +127,9 @@ extension PostingPrint on Posting {
   String print() {
     final buffer = StringBuffer();
 
-    buffer.write('$flag ');
+    if (flag != null) {
+      buffer.write('$flag ');
+    }
 
     buffer.write(account.print());
 
@@ -124,14 +138,11 @@ extension PostingPrint on Posting {
     }
 
     if (comment != null && comment.isNotEmpty) {
-      buffer.write(' $comment');
+      buffer.write(' ; $comment');
     }
 
     for (final meta in metadata.entries) {
-      buffer.write('\n  ${meta.key}: "${meta.value.value}"');
-      if (meta.value.comment != null && meta.value.comment.isNotEmpty) {
-        buffer.write(' ${meta.value.comment}');
-      }
+      buffer.write('\n  ${meta.key}: ${meta.value.print()}');
     }
 
     return buffer.toString();
@@ -142,9 +153,9 @@ extension PostingPrint on Posting {
 abstract class Position with _$Position {
   factory Position({
     @required Money unit, // amount + currency
-    Cost cost, // {} or {{}}
-    Money price, // @@ -> used only to balance when no cost is defined
-    Money perUnitPrice, // @
+    @nullable Cost cost, // {} or {{}}
+    @nullable Money price, // @@ -> used only to balance when no cost is defined
+    @nullable Money perUnitPrice, // @
   }) = _Position;
 }
 

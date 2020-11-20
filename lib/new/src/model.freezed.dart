@@ -748,17 +748,17 @@ class _$PostingTearOff {
 
 // ignore: unused_element
   _Posting call(
-      {String flag,
+      {@nullable String flag,
       @required Account account,
-      Position position,
-      Map<String, MetaValue> metadata = const {},
-      String comment}) {
+      @nullable Position position,
+      @nullable String comment,
+      Map<String, MetaValue> metadata = const {}}) {
     return _Posting(
       flag: flag,
       account: account,
       position: position,
-      metadata: metadata,
       comment: comment,
+      metadata: metadata,
     );
   }
 }
@@ -769,11 +769,14 @@ const $Posting = _$PostingTearOff();
 
 /// @nodoc
 mixin _$Posting {
+  @nullable
   String get flag;
   Account get account;
+  @nullable
   Position get position;
-  Map<String, MetaValue> get metadata;
+  @nullable
   String get comment;
+  Map<String, MetaValue> get metadata;
 
   $PostingCopyWith<Posting> get copyWith;
 }
@@ -783,11 +786,11 @@ abstract class $PostingCopyWith<$Res> {
   factory $PostingCopyWith(Posting value, $Res Function(Posting) then) =
       _$PostingCopyWithImpl<$Res>;
   $Res call(
-      {String flag,
+      {@nullable String flag,
       Account account,
-      Position position,
-      Map<String, MetaValue> metadata,
-      String comment});
+      @nullable Position position,
+      @nullable String comment,
+      Map<String, MetaValue> metadata});
 
   $AccountCopyWith<$Res> get account;
   $PositionCopyWith<$Res> get position;
@@ -806,17 +809,17 @@ class _$PostingCopyWithImpl<$Res> implements $PostingCopyWith<$Res> {
     Object flag = freezed,
     Object account = freezed,
     Object position = freezed,
-    Object metadata = freezed,
     Object comment = freezed,
+    Object metadata = freezed,
   }) {
     return _then(_value.copyWith(
       flag: flag == freezed ? _value.flag : flag as String,
       account: account == freezed ? _value.account : account as Account,
       position: position == freezed ? _value.position : position as Position,
+      comment: comment == freezed ? _value.comment : comment as String,
       metadata: metadata == freezed
           ? _value.metadata
           : metadata as Map<String, MetaValue>,
-      comment: comment == freezed ? _value.comment : comment as String,
     ));
   }
 
@@ -847,11 +850,11 @@ abstract class _$PostingCopyWith<$Res> implements $PostingCopyWith<$Res> {
       __$PostingCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String flag,
+      {@nullable String flag,
       Account account,
-      Position position,
-      Map<String, MetaValue> metadata,
-      String comment});
+      @nullable Position position,
+      @nullable String comment,
+      Map<String, MetaValue> metadata});
 
   @override
   $AccountCopyWith<$Res> get account;
@@ -873,17 +876,17 @@ class __$PostingCopyWithImpl<$Res> extends _$PostingCopyWithImpl<$Res>
     Object flag = freezed,
     Object account = freezed,
     Object position = freezed,
-    Object metadata = freezed,
     Object comment = freezed,
+    Object metadata = freezed,
   }) {
     return _then(_Posting(
       flag: flag == freezed ? _value.flag : flag as String,
       account: account == freezed ? _value.account : account as Account,
       position: position == freezed ? _value.position : position as Position,
+      comment: comment == freezed ? _value.comment : comment as String,
       metadata: metadata == freezed
           ? _value.metadata
           : metadata as Map<String, MetaValue>,
-      comment: comment == freezed ? _value.comment : comment as String,
     ));
   }
 }
@@ -891,29 +894,32 @@ class __$PostingCopyWithImpl<$Res> extends _$PostingCopyWithImpl<$Res>
 /// @nodoc
 class _$_Posting implements _Posting {
   _$_Posting(
-      {this.flag,
+      {@nullable this.flag,
       @required this.account,
-      this.position,
-      this.metadata = const {},
-      this.comment})
+      @nullable this.position,
+      @nullable this.comment,
+      this.metadata = const {}})
       : assert(account != null),
         assert(metadata != null);
 
   @override
+  @nullable
   final String flag;
   @override
   final Account account;
   @override
+  @nullable
   final Position position;
+  @override
+  @nullable
+  final String comment;
   @JsonKey(defaultValue: const {})
   @override
   final Map<String, MetaValue> metadata;
-  @override
-  final String comment;
 
   @override
   String toString() {
-    return 'Posting(flag: $flag, account: $account, position: $position, metadata: $metadata, comment: $comment)';
+    return 'Posting(flag: $flag, account: $account, position: $position, comment: $comment, metadata: $metadata)';
   }
 
   @override
@@ -928,11 +934,12 @@ class _$_Posting implements _Posting {
             (identical(other.position, position) ||
                 const DeepCollectionEquality()
                     .equals(other.position, position)) &&
+            (identical(other.comment, comment) ||
+                const DeepCollectionEquality()
+                    .equals(other.comment, comment)) &&
             (identical(other.metadata, metadata) ||
                 const DeepCollectionEquality()
-                    .equals(other.metadata, metadata)) &&
-            (identical(other.comment, comment) ||
-                const DeepCollectionEquality().equals(other.comment, comment)));
+                    .equals(other.metadata, metadata)));
   }
 
   @override
@@ -941,8 +948,8 @@ class _$_Posting implements _Posting {
       const DeepCollectionEquality().hash(flag) ^
       const DeepCollectionEquality().hash(account) ^
       const DeepCollectionEquality().hash(position) ^
-      const DeepCollectionEquality().hash(metadata) ^
-      const DeepCollectionEquality().hash(comment);
+      const DeepCollectionEquality().hash(comment) ^
+      const DeepCollectionEquality().hash(metadata);
 
   @override
   _$PostingCopyWith<_Posting> get copyWith =>
@@ -951,22 +958,25 @@ class _$_Posting implements _Posting {
 
 abstract class _Posting implements Posting {
   factory _Posting(
-      {String flag,
+      {@nullable String flag,
       @required Account account,
-      Position position,
-      Map<String, MetaValue> metadata,
-      String comment}) = _$_Posting;
+      @nullable Position position,
+      @nullable String comment,
+      Map<String, MetaValue> metadata}) = _$_Posting;
 
   @override
+  @nullable
   String get flag;
   @override
   Account get account;
   @override
+  @nullable
   Position get position;
   @override
-  Map<String, MetaValue> get metadata;
-  @override
+  @nullable
   String get comment;
+  @override
+  Map<String, MetaValue> get metadata;
   @override
   _$PostingCopyWith<_Posting> get copyWith;
 }
@@ -977,7 +987,10 @@ class _$PositionTearOff {
 
 // ignore: unused_element
   _Position call(
-      {@required Money unit, Cost cost, Money price, Money perUnitPrice}) {
+      {@required Money unit,
+      @nullable Cost cost,
+      @nullable Money price,
+      @nullable Money perUnitPrice}) {
     return _Position(
       unit: unit,
       cost: cost,
@@ -994,8 +1007,11 @@ const $Position = _$PositionTearOff();
 /// @nodoc
 mixin _$Position {
   Money get unit; // amount + currency
+  @nullable
   Cost get cost; // {} or {{}}
+  @nullable
   Money get price; // @@ -> used only to balance when no cost is defined
+  @nullable
   Money get perUnitPrice;
 
   $PositionCopyWith<Position> get copyWith;
@@ -1005,7 +1021,11 @@ mixin _$Position {
 abstract class $PositionCopyWith<$Res> {
   factory $PositionCopyWith(Position value, $Res Function(Position) then) =
       _$PositionCopyWithImpl<$Res>;
-  $Res call({Money unit, Cost cost, Money price, Money perUnitPrice});
+  $Res call(
+      {Money unit,
+      @nullable Cost cost,
+      @nullable Money price,
+      @nullable Money perUnitPrice});
 
   $CostCopyWith<$Res> get cost;
 }
@@ -1050,7 +1070,11 @@ abstract class _$PositionCopyWith<$Res> implements $PositionCopyWith<$Res> {
   factory _$PositionCopyWith(_Position value, $Res Function(_Position) then) =
       __$PositionCopyWithImpl<$Res>;
   @override
-  $Res call({Money unit, Cost cost, Money price, Money perUnitPrice});
+  $Res call(
+      {Money unit,
+      @nullable Cost cost,
+      @nullable Money price,
+      @nullable Money perUnitPrice});
 
   @override
   $CostCopyWith<$Res> get cost;
@@ -1084,16 +1108,23 @@ class __$PositionCopyWithImpl<$Res> extends _$PositionCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_Position implements _Position {
-  _$_Position({@required this.unit, this.cost, this.price, this.perUnitPrice})
+  _$_Position(
+      {@required this.unit,
+      @nullable this.cost,
+      @nullable this.price,
+      @nullable this.perUnitPrice})
       : assert(unit != null);
 
   @override
   final Money unit;
   @override // amount + currency
+  @nullable
   final Cost cost;
   @override // {} or {{}}
+  @nullable
   final Money price;
   @override // @@ -> used only to balance when no cost is defined
+  @nullable
   final Money perUnitPrice;
 
   @override
@@ -1132,17 +1163,20 @@ class _$_Position implements _Position {
 abstract class _Position implements Position {
   factory _Position(
       {@required Money unit,
-      Cost cost,
-      Money price,
-      Money perUnitPrice}) = _$_Position;
+      @nullable Cost cost,
+      @nullable Money price,
+      @nullable Money perUnitPrice}) = _$_Position;
 
   @override
   Money get unit;
   @override // amount + currency
+  @nullable
   Cost get cost;
   @override // {} or {{}}
+  @nullable
   Money get price;
   @override // @@ -> used only to balance when no cost is defined
+  @nullable
   Money get perUnitPrice;
   @override
   _$PositionCopyWith<_Position> get copyWith;
