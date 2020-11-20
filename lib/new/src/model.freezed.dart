@@ -14,7 +14,7 @@ class _$MetaValueTearOff {
   const _$MetaValueTearOff();
 
 // ignore: unused_element
-  _MetaValue call({@required String value, String comment}) {
+  _MetaValue call({@required String value, @nullable String comment}) {
     return _MetaValue(
       value: value,
       comment: comment,
@@ -29,6 +29,7 @@ const $MetaValue = _$MetaValueTearOff();
 /// @nodoc
 mixin _$MetaValue {
   String get value;
+  @nullable
   String get comment;
 
   $MetaValueCopyWith<MetaValue> get copyWith;
@@ -38,7 +39,7 @@ mixin _$MetaValue {
 abstract class $MetaValueCopyWith<$Res> {
   factory $MetaValueCopyWith(MetaValue value, $Res Function(MetaValue) then) =
       _$MetaValueCopyWithImpl<$Res>;
-  $Res call({String value, String comment});
+  $Res call({String value, @nullable String comment});
 }
 
 /// @nodoc
@@ -67,7 +68,7 @@ abstract class _$MetaValueCopyWith<$Res> implements $MetaValueCopyWith<$Res> {
           _MetaValue value, $Res Function(_MetaValue) then) =
       __$MetaValueCopyWithImpl<$Res>;
   @override
-  $Res call({String value, String comment});
+  $Res call({String value, @nullable String comment});
 }
 
 /// @nodoc
@@ -93,11 +94,13 @@ class __$MetaValueCopyWithImpl<$Res> extends _$MetaValueCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_MetaValue implements _MetaValue {
-  _$_MetaValue({@required this.value, this.comment}) : assert(value != null);
+  _$_MetaValue({@required this.value, @nullable this.comment})
+      : assert(value != null);
 
   @override
   final String value;
   @override
+  @nullable
   final String comment;
 
   @override
@@ -127,11 +130,13 @@ class _$_MetaValue implements _MetaValue {
 }
 
 abstract class _MetaValue implements MetaValue {
-  factory _MetaValue({@required String value, String comment}) = _$_MetaValue;
+  factory _MetaValue({@required String value, @nullable String comment}) =
+      _$_MetaValue;
 
   @override
   String get value;
   @override
+  @nullable
   String get comment;
   @override
   _$MetaValueCopyWith<_MetaValue> get copyWith;
@@ -1197,7 +1202,11 @@ class _$CostTearOff {
   const _$CostTearOff();
 
 // ignore: unused_element
-  _Cost call({Money value, Money perUnitValue, DateTime date, String label}) {
+  _Cost call(
+      {@nullable Money value,
+      @nullable Money perUnitValue,
+      @nullable DateTime date,
+      @nullable String label}) {
     return _Cost(
       value: value,
       perUnitValue: perUnitValue,
@@ -1213,9 +1222,13 @@ const $Cost = _$CostTearOff();
 
 /// @nodoc
 mixin _$Cost {
+  @nullable
   Money get value; // amount + currency
+  @nullable
   Money get perUnitValue; // amount + currency
+  @nullable
   DateTime get date;
+  @nullable
   String get label;
 
   $CostCopyWith<Cost> get copyWith;
@@ -1225,7 +1238,11 @@ mixin _$Cost {
 abstract class $CostCopyWith<$Res> {
   factory $CostCopyWith(Cost value, $Res Function(Cost) then) =
       _$CostCopyWithImpl<$Res>;
-  $Res call({Money value, Money perUnitValue, DateTime date, String label});
+  $Res call(
+      {@nullable Money value,
+      @nullable Money perUnitValue,
+      @nullable DateTime date,
+      @nullable String label});
 }
 
 /// @nodoc
@@ -1258,7 +1275,11 @@ abstract class _$CostCopyWith<$Res> implements $CostCopyWith<$Res> {
   factory _$CostCopyWith(_Cost value, $Res Function(_Cost) then) =
       __$CostCopyWithImpl<$Res>;
   @override
-  $Res call({Money value, Money perUnitValue, DateTime date, String label});
+  $Res call(
+      {@nullable Money value,
+      @nullable Money perUnitValue,
+      @nullable DateTime date,
+      @nullable String label});
 }
 
 /// @nodoc
@@ -1289,15 +1310,23 @@ class __$CostCopyWithImpl<$Res> extends _$CostCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_Cost implements _Cost {
-  _$_Cost({this.value, this.perUnitValue, this.date, this.label});
+  _$_Cost(
+      {@nullable this.value,
+      @nullable this.perUnitValue,
+      @nullable this.date,
+      @nullable this.label});
 
   @override
+  @nullable
   final Money value;
   @override // amount + currency
+  @nullable
   final Money perUnitValue;
   @override // amount + currency
+  @nullable
   final DateTime date;
   @override
+  @nullable
   final String label;
 
   @override
@@ -1335,15 +1364,22 @@ class _$_Cost implements _Cost {
 
 abstract class _Cost implements Cost {
   factory _Cost(
-      {Money value, Money perUnitValue, DateTime date, String label}) = _$_Cost;
+      {@nullable Money value,
+      @nullable Money perUnitValue,
+      @nullable DateTime date,
+      @nullable String label}) = _$_Cost;
 
   @override
+  @nullable
   Money get value;
   @override // amount + currency
+  @nullable
   Money get perUnitValue;
   @override // amount + currency
+  @nullable
   DateTime get date;
   @override
+  @nullable
   String get label;
   @override
   _$CostCopyWith<_Cost> get copyWith;

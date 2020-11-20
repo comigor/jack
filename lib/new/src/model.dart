@@ -9,7 +9,7 @@ part 'model.freezed.dart';
 abstract class MetaValue with _$MetaValue {
   factory MetaValue({
     @required String value,
-    String comment,
+    @nullable String comment,
   }) = _MetaValue;
 }
 
@@ -48,7 +48,6 @@ abstract class CommodityDirective with _$CommodityDirective {
       ? int.tryParse(metadata['precision'].value)
       : precision_;
 }
-
 
 final formatter = DateFormat('yyyy-MM-dd');
 
@@ -179,10 +178,10 @@ abstract class Cost with _$Cost {
   // Per unit cost: {[amount],  [date],     [label]}
   //                {10.00 BRL, 2020-11-19, "lot-A"}
   factory Cost({
-    Money value, // amount + currency
-    Money perUnitValue, // amount + currency
-    DateTime date,
-    String label,
+    @nullable Money value, // amount + currency
+    @nullable Money perUnitValue, // amount + currency
+    @nullable DateTime date,
+    @nullable String label,
   }) = _Cost;
 }
 
