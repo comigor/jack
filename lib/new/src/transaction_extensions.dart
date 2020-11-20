@@ -41,6 +41,7 @@ extension TransactionExtension on Transaction {
   bool get isBalanced => _sumsMap(this).values.every((money) => money.isZero);
 
   Transaction balance() {
+    if (!isBalanced) return this;
     if (!canBeBalanced) return null;
 
     final calculatedUnit =
