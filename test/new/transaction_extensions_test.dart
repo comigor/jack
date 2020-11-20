@@ -94,7 +94,7 @@ void main() {
         ),
       ];
 
-      expect(beforeBalancing.balance().postings, equals(afterBalancing));
+      expect(beforeBalancing.balanced.postings, equals(afterBalancing));
     });
 
     test('with multiple currencies and price', () {
@@ -136,7 +136,7 @@ void main() {
         ),
       ];
 
-      expect(beforeBalancing.balance().postings, equals(afterBalancing));
+      expect(beforeBalancing.balanced.postings, equals(afterBalancing));
     });
 
     test('with multiple currencies and cost', () {
@@ -178,7 +178,7 @@ void main() {
         ),
       ];
 
-      expect(beforeBalancing.balance().postings, equals(afterBalancing));
+      expect(beforeBalancing.balanced.postings, equals(afterBalancing));
     });
 
     test('with multiple currencies, price and cost (price is ignored)', () {
@@ -222,12 +222,12 @@ void main() {
         ),
       ];
 
-      expect(beforeBalancing.balance().postings, equals(afterBalancing));
+      expect(beforeBalancing.balanced.postings, equals(afterBalancing));
     });
 
     test('balancing complex transactions', () {
       expect(
-        stocksBuy.balance().postings.last,
+        stocksBuy.balanced.postings.last,
         equals(
           Posting(
             account: Account(name: 'Assets:Clear:Cash'),

@@ -103,6 +103,48 @@ abstract class Transaction with _$Transaction {
 
         return buffer.toString();
       })();
+
+  @late
+  bool get canBeBalanced =>
+      postings.where((posting) => posting.position == null).length == 1;
+
+  @late
+  Map<Currency, Money> get sumsMap => (() {
+        final sums = <Currency, Money>{};
+        postings.map((p) => p.effectiveMoney).forEach((money) {
+          if (money != null) {
+            sums.update(
+              money.currency,
+              (oldMoney) => oldMoney += money,
+              ifAbsent: () => money,
+            );
+          }
+        });
+        return sums;
+      })();
+
+  @late
+  bool get isBalanced => sumsMap.values.every((money) => money.isZero);
+
+  @late
+  Transaction get balanced => (() {
+        if (isBalanced) return this;
+        if (!canBeBalanced) return null;
+
+        final calculatedUnit =
+            -sumsMap.values.where((money) => !money.isZero).single;
+
+        return copyWith(
+          postings: postings.map((p) {
+            if (p.position == null) {
+              return p.copyWith(
+                position: Position(unit: calculatedUnit),
+              );
+            }
+            return p;
+          }).toList(),
+        );
+      })();
 }
 
 @freezed
@@ -138,6 +180,26 @@ abstract class Posting with _$Posting {
         }
 
         return buffer.toString();
+      })();
+
+  @late
+  Money get effectiveMoney => (() {
+        if (position == null) return null;
+
+        final unit = position.unit;
+        final unitDouble = unit.minorUnits / unit.currency.minorDigitsFactor;
+
+        if (position.cost?.value != null) {
+          return position.cost.value;
+        } else if (position.cost?.perUnitValue != null) {
+          return position.cost.perUnitValue * unitDouble;
+        } else if (position.price != null) {
+          return position.price;
+        } else if (position.perUnitPrice != null) {
+          return position.perUnitPrice * unitDouble;
+        }
+
+        return position.unit;
       })();
 }
 

@@ -760,9 +760,87 @@ class _$_Transaction implements _Transaction {
     return _headerToString;
   }
 
+  bool _didcanBeBalanced = false;
+  bool _canBeBalanced;
+
+  @override
+  bool get canBeBalanced {
+    if (_didcanBeBalanced == false) {
+      _didcanBeBalanced = true;
+      _canBeBalanced =
+          postings.where((posting) => posting.position == null).length == 1;
+    }
+    return _canBeBalanced;
+  }
+
+  bool _didsumsMap = false;
+  Map<Currency, Money> _sumsMap;
+
+  @override
+  Map<Currency, Money> get sumsMap {
+    if (_didsumsMap == false) {
+      _didsumsMap = true;
+      _sumsMap = (() {
+        final sums = <Currency, Money>{};
+        postings.map((p) => p.effectiveMoney).forEach((money) {
+          if (money != null) {
+            sums.update(
+              money.currency,
+              (oldMoney) => oldMoney += money,
+              ifAbsent: () => money,
+            );
+          }
+        });
+        return sums;
+      })();
+    }
+    return _sumsMap;
+  }
+
+  bool _didisBalanced = false;
+  bool _isBalanced;
+
+  @override
+  bool get isBalanced {
+    if (_didisBalanced == false) {
+      _didisBalanced = true;
+      _isBalanced = sumsMap.values.every((money) => money.isZero);
+    }
+    return _isBalanced;
+  }
+
+  bool _didbalanced = false;
+  Transaction _balanced;
+
+  @override
+  Transaction get balanced {
+    if (_didbalanced == false) {
+      _didbalanced = true;
+      _balanced = (() {
+        if (isBalanced) return this;
+        if (!canBeBalanced) return null;
+
+        final calculatedUnit =
+            -sumsMap.values.where((money) => !money.isZero).single;
+
+        return copyWith(
+          postings: postings.map((p) {
+            if (p.position == null) {
+              return p.copyWith(
+                position: Position(unit: calculatedUnit),
+              );
+            }
+            return p;
+          }).toList(),
+        );
+      })();
+    }
+    return _balanced;
+  }
+
   @override
   String toString() {
-    return 'Transaction(date: $date, flag: $flag, payee: $payee, narration: $narration, tags: $tags, links: $links, metadata: $metadata, postings: $postings, comment: $comment, stringify: $stringify, headerToString: $headerToString)';
+    return 'Transaction(date: $date, flag: $flag, payee: $payee, narration: $narration, tags: $tags, links: $links, metadata: $metadata, postings: $postings, comment: $comment, stringify: $stringify, headerToString: $headerToString, canBeBalanced: $canBeBalanced, sumsMap: $sumsMap, isBalanced: $isBalanced, balanced: $balanced)';
   }
 
   @override
@@ -1057,9 +1135,38 @@ class _$_Posting implements _Posting {
     return _stringify;
   }
 
+  bool _dideffectiveMoney = false;
+  Money _effectiveMoney;
+
+  @override
+  Money get effectiveMoney {
+    if (_dideffectiveMoney == false) {
+      _dideffectiveMoney = true;
+      _effectiveMoney = (() {
+        if (position == null) return null;
+
+        final unit = position.unit;
+        final unitDouble = unit.minorUnits / unit.currency.minorDigitsFactor;
+
+        if (position.cost?.value != null) {
+          return position.cost.value;
+        } else if (position.cost?.perUnitValue != null) {
+          return position.cost.perUnitValue * unitDouble;
+        } else if (position.price != null) {
+          return position.price;
+        } else if (position.perUnitPrice != null) {
+          return position.perUnitPrice * unitDouble;
+        }
+
+        return position.unit;
+      })();
+    }
+    return _effectiveMoney;
+  }
+
   @override
   String toString() {
-    return 'Posting(flag: $flag, account: $account, position: $position, comment: $comment, metadata: $metadata, stringify: $stringify)';
+    return 'Posting(flag: $flag, account: $account, position: $position, comment: $comment, metadata: $metadata, stringify: $stringify, effectiveMoney: $effectiveMoney)';
   }
 
   @override
