@@ -2,12 +2,22 @@ import 'package:money2/money2.dart';
 import 'model.dart';
 
 Money _getEffectiveMoney(Posting posting) {
-  if (posting.position?.cost?.value != null) {
+  if (posting.position == null) return null;
+
+  final unit = posting.position.unit;
+  final unitDouble = unit.minorUnits / unit.currency.minorDigitsFactor;
+
+  if (posting.position.cost?.value != null) {
     return posting.position.cost.value;
-  } else if (posting.position?.price != null) {
-    return posting.position?.price;
+  } else if (posting.position.cost?.perUnitValue != null) {
+    return posting.position.cost.perUnitValue * unitDouble;
+  } else if (posting.position.price != null) {
+    return posting.position.price;
+  } else if (posting.position.perUnitPrice != null) {
+    return posting.position.perUnitPrice * unitDouble;
   }
-  return posting.position?.unit;
+
+  return posting.position.unit;
 }
 
 Map<Currency, Money> _sumsMap(Transaction transaction) {
@@ -25,18 +35,13 @@ Map<Currency, Money> _sumsMap(Transaction transaction) {
 }
 
 extension TransactionExtension on Transaction {
-  bool get hasBlankPosting =>
+  bool get canBeBalanced =>
       postings.where((posting) => posting.position == null).length == 1;
 
-  bool get isBalanced {
-    if (hasBlankPosting) return true;
-
-    final sums = _sumsMap(this);
-    return sums.values.every((money) => money.isZero);
-  }
+  bool get isBalanced => _sumsMap(this).values.every((money) => money.isZero);
 
   Transaction balance() {
-    assert(!hasBlankPosting);
+    if (!canBeBalanced) return null;
 
     final calculatedUnit =
         -_sumsMap(this).values.where((money) => !money.isZero).single;

@@ -462,14 +462,14 @@ class _$TransactionTearOff {
 // ignore: unused_element
   _Transaction call(
       {@required DateTime date,
-      String flag = '*',
-      String payee,
-      String narration,
+      @nullable String flag,
+      @nullable String payee,
+      @nullable String narration,
       List<String> tags = const [],
       List<String> links = const [],
       Map<String, MetaValue> metadata = const {},
       List<Posting> postings = const [],
-      String comment}) {
+      @nullable String comment}) {
     return _Transaction(
       date: date,
       flag: flag,
@@ -491,13 +491,17 @@ const $Transaction = _$TransactionTearOff();
 /// @nodoc
 mixin _$Transaction {
   DateTime get date;
+  @nullable
   String get flag;
+  @nullable
   String get payee;
+  @nullable
   String get narration;
   List<String> get tags;
   List<String> get links;
   Map<String, MetaValue> get metadata;
   List<Posting> get postings;
+  @nullable
   String get comment;
 
   $TransactionCopyWith<Transaction> get copyWith;
@@ -510,14 +514,14 @@ abstract class $TransactionCopyWith<$Res> {
       _$TransactionCopyWithImpl<$Res>;
   $Res call(
       {DateTime date,
-      String flag,
-      String payee,
-      String narration,
+      @nullable String flag,
+      @nullable String payee,
+      @nullable String narration,
       List<String> tags,
       List<String> links,
       Map<String, MetaValue> metadata,
       List<Posting> postings,
-      String comment});
+      @nullable String comment});
 }
 
 /// @nodoc
@@ -566,14 +570,14 @@ abstract class _$TransactionCopyWith<$Res>
   @override
   $Res call(
       {DateTime date,
-      String flag,
-      String payee,
-      String narration,
+      @nullable String flag,
+      @nullable String payee,
+      @nullable String narration,
       List<String> tags,
       List<String> links,
       Map<String, MetaValue> metadata,
       List<Posting> postings,
-      String comment});
+      @nullable String comment});
 }
 
 /// @nodoc
@@ -619,16 +623,15 @@ class __$TransactionCopyWithImpl<$Res> extends _$TransactionCopyWithImpl<$Res>
 class _$_Transaction implements _Transaction {
   _$_Transaction(
       {@required this.date,
-      this.flag = '*',
-      this.payee,
-      this.narration,
+      @nullable this.flag,
+      @nullable this.payee,
+      @nullable this.narration,
       this.tags = const [],
       this.links = const [],
       this.metadata = const {},
       this.postings = const [],
-      this.comment})
+      @nullable this.comment})
       : assert(date != null),
-        assert(flag != null),
         assert(tags != null),
         assert(links != null),
         assert(metadata != null),
@@ -636,12 +639,14 @@ class _$_Transaction implements _Transaction {
 
   @override
   final DateTime date;
-  @JsonKey(defaultValue: '*')
   @override
+  @nullable
   final String flag;
   @override
+  @nullable
   final String payee;
   @override
+  @nullable
   final String narration;
   @JsonKey(defaultValue: const [])
   @override
@@ -656,6 +661,7 @@ class _$_Transaction implements _Transaction {
   @override
   final List<Posting> postings;
   @override
+  @nullable
   final String comment;
 
   @override
@@ -711,22 +717,25 @@ class _$_Transaction implements _Transaction {
 abstract class _Transaction implements Transaction {
   factory _Transaction(
       {@required DateTime date,
-      String flag,
-      String payee,
-      String narration,
+      @nullable String flag,
+      @nullable String payee,
+      @nullable String narration,
       List<String> tags,
       List<String> links,
       Map<String, MetaValue> metadata,
       List<Posting> postings,
-      String comment}) = _$_Transaction;
+      @nullable String comment}) = _$_Transaction;
 
   @override
   DateTime get date;
   @override
+  @nullable
   String get flag;
   @override
+  @nullable
   String get payee;
   @override
+  @nullable
   String get narration;
   @override
   List<String> get tags;
@@ -737,6 +746,7 @@ abstract class _Transaction implements Transaction {
   @override
   List<Posting> get postings;
   @override
+  @nullable
   String get comment;
   @override
   _$TransactionCopyWith<_Transaction> get copyWith;

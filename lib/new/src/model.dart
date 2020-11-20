@@ -49,10 +49,6 @@ abstract class CommodityDirective with _$CommodityDirective {
       : precision_;
 }
 
-extension CommodityDirectiveExt on CommodityDirective {
-  Currency toCurrency() =>
-      Currency.create(code, precision, pattern: '0.${'0' * precision} CCC');
-}
 
 final formatter = DateFormat('yyyy-MM-dd');
 
@@ -155,7 +151,7 @@ abstract class Position with _$Position {
     @required Money unit, // amount + currency
     @nullable Cost cost, // {} or {{}}
     @nullable Money price, // @@ -> used only to balance when no cost is defined
-    @nullable Money perUnitPrice, // @
+    @nullable Money perUnitPrice, // @ -> same
   }) = _Position;
 }
 

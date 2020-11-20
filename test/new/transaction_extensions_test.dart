@@ -2,6 +2,7 @@ import 'package:test/test.dart';
 import 'package:money2/money2.dart';
 
 import 'package:jack/new/jack.dart';
+import 'helpers.dart';
 
 void main() {
   final c01 = Currency.create('BRL', 2);
@@ -21,7 +22,7 @@ void main() {
           ),
         ],
       );
-      expect(transaction.isBalanced, isTrue);
+      expect(transaction.canBeBalanced, isTrue);
     });
 
     test('simple postings', () {
@@ -38,7 +39,7 @@ void main() {
           ),
         ],
       );
-      expect(transaction.isBalanced, isTrue);
+      expect(transaction.canBeBalanced, isFalse);
     });
 
     test('postings with multiple ccurrencies', () {
@@ -63,7 +64,7 @@ void main() {
           ),
         ],
       );
-      expect(transaction.isBalanced, isTrue);
+      expect(transaction.canBeBalanced, isFalse);
     });
   });
 
@@ -222,6 +223,22 @@ void main() {
       ];
 
       expect(beforeBalancing.balance().postings, equals(afterBalancing));
+    });
+
+    test('balancing complex transactions', () {
+      expect(
+        stocksBuy.balance().postings.last,
+        equals(
+          Posting(
+            account: Account(name: 'Assets:Clear:Cash'),
+            position: Position(
+              unit: Money.parse('-2278.00 BRL',
+                  Currency.create('BRL', 2, pattern: '0.00 CCC')),
+            ),
+            comment: 'should be -2278.00 BRL',
+          ),
+        ),
+      );
     });
   });
 }

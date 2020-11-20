@@ -91,7 +91,7 @@ void main() {
     test('a posting with account and comment', () {
       final posting = Posting(
         account: Account(name: 'A'),
-        comment: '; empty posting',
+        comment: 'empty posting',
       );
       expect(posting.print(), equals('A ; empty posting'));
     });
@@ -101,7 +101,7 @@ void main() {
         flag: '!',
         account: Account(name: 'A'),
         position: Position(unit: Money.from(10, c01)),
-        comment: '; not empty anymore',
+        comment: 'not empty anymore',
       );
       expect(posting.print(), equals('! A 10.00 BRL ; not empty anymore'));
     });
@@ -111,7 +111,7 @@ void main() {
         account: Account(name: 'A'),
         metadata: {
           'a-meta': MetaValue(value: 'aaaaaaa'),
-          'b-meta': MetaValue(value: 'bbbbbbb', comment: '; comm'),
+          'b-meta': MetaValue(value: 'bbbbbbb', comment: 'comm'),
         },
       );
       expect(posting.print(), equals('''A

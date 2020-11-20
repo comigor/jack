@@ -18,9 +18,6 @@ class BeancountParserDefinition extends BeancountGrammarDefinition {
       comment?.toString()?.trim()?.replaceFirst(RegExp(r'^; +'), '');
 
   @override
-  Parser numberToken() =>
-      super.numberToken().map((each) => double.parse(each.toString()));
-  @override
   Parser stringToken() =>
       super.stringToken().map((each) => each.toString().replaceAll('"', ''));
   @override
@@ -47,11 +44,23 @@ class BeancountParserDefinition extends BeancountGrammarDefinition {
   Parser amountWithCurrencyToken() =>
       super.amountWithCurrencyToken().map((each) {
         final e = each as List;
-        // TODO: use custom precision
+        final ccode = e.last.toString();
+        // TODO: use precision from currency list
+        final precision = 2;
+        final currency = Currency.create(ccode, precision,
+            pattern: '0.${'0' * precision} CCC');
+
+        final match = RegExp(r'([-+]?)(\d+)(?:\.(\d+))?').firstMatch(
+            e.first.toString().replaceAll(RegExp(r'[^-+.\d]+'), ''));
+
+        final isNegative = match.group(1) == '-';
+        final msd = match.group(2) ?? '0';
+        final lsd = (match.group(3) ?? '')
+            .padLeft(precision, '0')
+            .substring(0, precision);
+
         return Money.parse(
-          e.join(' '),
-          Currency.create(e.last.toString(), 2, pattern: '0.${'0' * 2} CCC'),
-        );
+            '${isNegative ? '-' : ''}$msd.$lsd $ccode', currency);
       });
   @override
   Parser costToken() => super.costToken().map((each) {
