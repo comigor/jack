@@ -19,7 +19,7 @@ abstract class BalanceAction with _$BalanceAction {
 extension BalanceActionPrint on BalanceAction {
   String print() {
     final buffer = StringBuffer()
-      ..write('${formatter.format(date)} balance ${account.print()} $unit');
+      ..write('${formatter.format(date)} balance ${account.stringify} $unit');
 
     for (final meta in metadata.entries) {
       buffer.write('\n  ${meta.key}: ${meta.value.value}');
@@ -42,7 +42,7 @@ abstract class AccountAction with _$AccountAction {
 extension AccountActionPrint on AccountAction {
   String print() {
     final buffer = StringBuffer()
-      ..write('${formatter.format(date)} account ${account.print()}');
+      ..write('${formatter.format(date)} account ${account.stringify}');
 
     if (currencies.isNotEmpty) {
       buffer.write(' ${currencies.join(',')}');
@@ -70,7 +70,7 @@ extension PadActionPrint on PadAction {
   String print() {
     final buffer = StringBuffer()
       ..write(
-          '${formatter.format(date)} pad ${account.print()} ${padAccount.print()}');
+          '${formatter.format(date)} pad ${account.stringify} ${padAccount.stringify}');
 
     if (comment.isNotEmpty) {
       buffer.write(' $comment');

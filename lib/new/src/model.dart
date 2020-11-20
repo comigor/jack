@@ -11,27 +11,25 @@ abstract class MetaValue with _$MetaValue {
     @required String value,
     @nullable String comment,
   }) = _MetaValue;
-}
 
-extension MetaValuePrint on MetaValue {
-  String print() {
-    final buffer = StringBuffer()..write('"$value"');
+  @late
+  String get stringify => (() {
+        final buffer = StringBuffer()..write('"$value"');
 
-    if (comment != null && comment.isNotEmpty) {
-      buffer.write(' ; $comment');
-    }
+        if (comment != null && comment.isNotEmpty) {
+          buffer.write(' ; $comment');
+        }
 
-    return buffer.toString();
-  }
+        return buffer.toString();
+      })();
 }
 
 @freezed
 abstract class Account with _$Account {
   factory Account({@required String name}) = _Account;
-}
 
-extension AccountPrint on Account {
-  String print() => name;
+  @late
+  String get stringify => name;
 }
 
 @freezed
@@ -64,47 +62,47 @@ abstract class Transaction with _$Transaction {
     @Default([]) List<Posting> postings,
     @nullable String comment,
   }) = _Transaction;
-}
 
-extension TransactionPrint on Transaction {
-  String print() {
-    final buffer = StringBuffer()..write(headerToString());
+  @late
+  String get stringify => (() {
+        final buffer = StringBuffer()..write(headerToString);
 
-    for (final meta in metadata.entries) {
-      buffer.write('\n  ${meta.key}: ${meta.value.print()}');
-    }
+        for (final meta in metadata.entries) {
+          buffer.write('\n  ${meta.key}: ${meta.value.stringify}');
+        }
 
-    for (final posting in postings) {
-      buffer.write('\n  ${posting.print().replaceAll('\n', '\n  ')}');
-    }
+        for (final posting in postings) {
+          buffer.write('\n  ${posting.stringify.replaceAll('\n', '\n  ')}');
+        }
 
-    return buffer.toString();
-  }
+        return buffer.toString();
+      })();
 
-  String headerToString() {
-    final buffer = StringBuffer()..write('${formatter.format(date)} $flag');
+  @late
+  String get headerToString => (() {
+        final buffer = StringBuffer()..write('${formatter.format(date)} $flag');
 
-    if (payee != null && payee.isNotEmpty) {
-      buffer.write(' "$payee" "${narration ?? ''}"');
-    } else {
-      if (narration != null && narration.isNotEmpty) {
-        buffer.write(' "$narration"');
-      }
-    }
+        if (payee != null && payee.isNotEmpty) {
+          buffer.write(' "$payee" "${narration ?? ''}"');
+        } else {
+          if (narration != null && narration.isNotEmpty) {
+            buffer.write(' "$narration"');
+          }
+        }
 
-    for (final tag in tags.where((t) => t != null)) {
-      buffer.write(' #$tag');
-    }
-    for (final link in links.where((l) => l != null)) {
-      buffer.write(' ^$link');
-    }
+        for (final tag in tags.where((t) => t != null)) {
+          buffer.write(' #$tag');
+        }
+        for (final link in links.where((l) => l != null)) {
+          buffer.write(' ^$link');
+        }
 
-    if (comment != null && comment.isNotEmpty) {
-      buffer.write(' ; $comment');
-    }
+        if (comment != null && comment.isNotEmpty) {
+          buffer.write(' ; $comment');
+        }
 
-    return buffer.toString();
-  }
+        return buffer.toString();
+      })();
 }
 
 @freezed
@@ -116,32 +114,31 @@ abstract class Posting with _$Posting {
     @nullable String comment,
     @Default({}) Map<String, MetaValue> metadata,
   }) = _Posting;
-}
 
-extension PostingPrint on Posting {
-  String print() {
-    final buffer = StringBuffer();
+  @late
+  String get stringify => (() {
+        final buffer = StringBuffer();
 
-    if (flag != null) {
-      buffer.write('$flag ');
-    }
+        if (flag != null) {
+          buffer.write('$flag ');
+        }
 
-    buffer.write(account.print());
+        buffer.write(account.stringify);
 
-    if (position != null) {
-      buffer.write(' ${position.print()}');
-    }
+        if (position != null) {
+          buffer.write(' ${position.stringify}');
+        }
 
-    if (comment != null && comment.isNotEmpty) {
-      buffer.write(' ; $comment');
-    }
+        if (comment != null && comment.isNotEmpty) {
+          buffer.write(' ; $comment');
+        }
 
-    for (final meta in metadata.entries) {
-      buffer.write('\n  ${meta.key}: ${meta.value.print()}');
-    }
+        for (final meta in metadata.entries) {
+          buffer.write('\n  ${meta.key}: ${meta.value.stringify}');
+        }
 
-    return buffer.toString();
-  }
+        return buffer.toString();
+      })();
 }
 
 @freezed
@@ -152,23 +149,23 @@ abstract class Position with _$Position {
     @nullable Money price, // @@ -> used only to balance when no cost is defined
     @nullable Money perUnitPrice, // @ -> same
   }) = _Position;
-}
 
-extension PositionPrint on Position {
-  String print() {
-    final buffer = StringBuffer()..write(unit);
+  @late
+  String get stringify => (() {
+        final buffer = StringBuffer()..write(unit);
 
-    if (cost != null) {
-      buffer.write(' ${cost.print()}');
-    }
+        if (cost != null) {
+          buffer.write(' ${cost.stringify}');
+        }
 
-    if ((price ?? perUnitPrice) != null) {
-      final isAbsolutePrice = price != null;
-      buffer.write(' ${isAbsolutePrice ? '@@' : '@'} ${price ?? perUnitPrice}');
-    }
+        if ((price ?? perUnitPrice) != null) {
+          final isAbsolutePrice = price != null;
+          buffer.write(
+              ' ${isAbsolutePrice ? '@@' : '@'} ${price ?? perUnitPrice}');
+        }
 
-    return buffer.toString();
-  }
+        return buffer.toString();
+      })();
 }
 
 @freezed
@@ -183,21 +180,20 @@ abstract class Cost with _$Cost {
     @nullable DateTime date,
     @nullable String label,
   }) = _Cost;
-}
 
-extension CostPrint on Cost {
-  String print() {
-    final isAbsoluteValue = value != null;
-    final lotData = [
-      if ((value ?? perUnitValue) != null) value ?? perUnitValue,
-      if (date != null) formatter.format(date),
-      if (label != null) '"$label"'
-    ];
+  @late
+  String get stringify => (() {
+        final isAbsoluteValue = value != null;
+        final lotData = [
+          if ((value ?? perUnitValue) != null) value ?? perUnitValue,
+          if (date != null) formatter.format(date),
+          if (label != null) '"$label"'
+        ];
 
-    final buffer = StringBuffer()
-      ..write(isAbsoluteValue ? '{{' : '{')
-      ..write(lotData.join(', '))
-      ..write(isAbsoluteValue ? '}}' : '}');
-    return buffer.toString();
-  }
+        final buffer = StringBuffer()
+          ..write(isAbsoluteValue ? '{{' : '{')
+          ..write(lotData.join(', '))
+          ..write(isAbsoluteValue ? '}}' : '}');
+        return buffer.toString();
+      })();
 }

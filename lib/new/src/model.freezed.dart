@@ -103,9 +103,29 @@ class _$_MetaValue implements _MetaValue {
   @nullable
   final String comment;
 
+  bool _didstringify = false;
+  String _stringify;
+
+  @override
+  String get stringify {
+    if (_didstringify == false) {
+      _didstringify = true;
+      _stringify = (() {
+        final buffer = StringBuffer()..write('"$value"');
+
+        if (comment != null && comment.isNotEmpty) {
+          buffer.write(' ; $comment');
+        }
+
+        return buffer.toString();
+      })();
+    }
+    return _stringify;
+  }
+
   @override
   String toString() {
-    return 'MetaValue(value: $value, comment: $comment)';
+    return 'MetaValue(value: $value, comment: $comment, stringify: $stringify)';
   }
 
   @override
@@ -224,9 +244,21 @@ class _$_Account implements _Account {
   @override
   final String name;
 
+  bool _didstringify = false;
+  String _stringify;
+
+  @override
+  String get stringify {
+    if (_didstringify == false) {
+      _didstringify = true;
+      _stringify = name;
+    }
+    return _stringify;
+  }
+
   @override
   String toString() {
-    return 'Account(name: $name)';
+    return 'Account(name: $name, stringify: $stringify)';
   }
 
   @override
@@ -669,9 +701,68 @@ class _$_Transaction implements _Transaction {
   @nullable
   final String comment;
 
+  bool _didstringify = false;
+  String _stringify;
+
+  @override
+  String get stringify {
+    if (_didstringify == false) {
+      _didstringify = true;
+      _stringify = (() {
+        final buffer = StringBuffer()..write(headerToString);
+
+        for (final meta in metadata.entries) {
+          buffer.write('\n  ${meta.key}: ${meta.value.stringify}');
+        }
+
+        for (final posting in postings) {
+          buffer.write('\n  ${posting.stringify.replaceAll('\n', '\n  ')}');
+        }
+
+        return buffer.toString();
+      })();
+    }
+    return _stringify;
+  }
+
+  bool _didheaderToString = false;
+  String _headerToString;
+
+  @override
+  String get headerToString {
+    if (_didheaderToString == false) {
+      _didheaderToString = true;
+      _headerToString = (() {
+        final buffer = StringBuffer()..write('${formatter.format(date)} $flag');
+
+        if (payee != null && payee.isNotEmpty) {
+          buffer.write(' "$payee" "${narration ?? ''}"');
+        } else {
+          if (narration != null && narration.isNotEmpty) {
+            buffer.write(' "$narration"');
+          }
+        }
+
+        for (final tag in tags.where((t) => t != null)) {
+          buffer.write(' #$tag');
+        }
+        for (final link in links.where((l) => l != null)) {
+          buffer.write(' ^$link');
+        }
+
+        if (comment != null && comment.isNotEmpty) {
+          buffer.write(' ; $comment');
+        }
+
+        return buffer.toString();
+      })();
+    }
+    return _headerToString;
+  }
+
   @override
   String toString() {
-    return 'Transaction(date: $date, flag: $flag, payee: $payee, narration: $narration, tags: $tags, links: $links, metadata: $metadata, postings: $postings, comment: $comment)';
+    return 'Transaction(date: $date, flag: $flag, payee: $payee, narration: $narration, tags: $tags, links: $links, metadata: $metadata, postings: $postings, comment: $comment, stringify: $stringify, headerToString: $headerToString)';
   }
 
   @override
@@ -932,9 +1023,43 @@ class _$_Posting implements _Posting {
   @override
   final Map<String, MetaValue> metadata;
 
+  bool _didstringify = false;
+  String _stringify;
+
+  @override
+  String get stringify {
+    if (_didstringify == false) {
+      _didstringify = true;
+      _stringify = (() {
+        final buffer = StringBuffer();
+
+        if (flag != null) {
+          buffer.write('$flag ');
+        }
+
+        buffer.write(account.stringify);
+
+        if (position != null) {
+          buffer.write(' ${position.stringify}');
+        }
+
+        if (comment != null && comment.isNotEmpty) {
+          buffer.write(' ; $comment');
+        }
+
+        for (final meta in metadata.entries) {
+          buffer.write('\n  ${meta.key}: ${meta.value.stringify}');
+        }
+
+        return buffer.toString();
+      })();
+    }
+    return _stringify;
+  }
+
   @override
   String toString() {
-    return 'Posting(flag: $flag, account: $account, position: $position, comment: $comment, metadata: $metadata)';
+    return 'Posting(flag: $flag, account: $account, position: $position, comment: $comment, metadata: $metadata, stringify: $stringify)';
   }
 
   @override
@@ -1142,9 +1267,35 @@ class _$_Position implements _Position {
   @nullable
   final Money perUnitPrice;
 
+  bool _didstringify = false;
+  String _stringify;
+
+  @override
+  String get stringify {
+    if (_didstringify == false) {
+      _didstringify = true;
+      _stringify = (() {
+        final buffer = StringBuffer()..write(unit);
+
+        if (cost != null) {
+          buffer.write(' ${cost.stringify}');
+        }
+
+        if ((price ?? perUnitPrice) != null) {
+          final isAbsolutePrice = price != null;
+          buffer.write(
+              ' ${isAbsolutePrice ? '@@' : '@'} ${price ?? perUnitPrice}');
+        }
+
+        return buffer.toString();
+      })();
+    }
+    return _stringify;
+  }
+
   @override
   String toString() {
-    return 'Position(unit: $unit, cost: $cost, price: $price, perUnitPrice: $perUnitPrice)';
+    return 'Position(unit: $unit, cost: $cost, price: $price, perUnitPrice: $perUnitPrice, stringify: $stringify)';
   }
 
   @override
@@ -1329,9 +1480,34 @@ class _$_Cost implements _Cost {
   @nullable
   final String label;
 
+  bool _didstringify = false;
+  String _stringify;
+
+  @override
+  String get stringify {
+    if (_didstringify == false) {
+      _didstringify = true;
+      _stringify = (() {
+        final isAbsoluteValue = value != null;
+        final lotData = [
+          if ((value ?? perUnitValue) != null) value ?? perUnitValue,
+          if (date != null) formatter.format(date),
+          if (label != null) '"$label"'
+        ];
+
+        final buffer = StringBuffer()
+          ..write(isAbsoluteValue ? '{{' : '{')
+          ..write(lotData.join(', '))
+          ..write(isAbsoluteValue ? '}}' : '}');
+        return buffer.toString();
+      })();
+    }
+    return _stringify;
+  }
+
   @override
   String toString() {
-    return 'Cost(value: $value, perUnitValue: $perUnitValue, date: $date, label: $label)';
+    return 'Cost(value: $value, perUnitValue: $perUnitValue, date: $date, label: $label, stringify: $stringify)';
   }
 
   @override

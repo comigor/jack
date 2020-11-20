@@ -9,27 +9,27 @@ void main() {
   group('on Cost.print', () {
     test('an empty cost', () {
       final cost = Cost();
-      expect(cost.print(), equals('{}'));
+      expect(cost.stringify, equals('{}'));
     });
 
     test('a cost with per unit value', () {
       final cost = Cost(perUnitValue: Money.from(102.345, c01));
-      expect(cost.print(), equals('{102.34 BRL}'));
+      expect(cost.stringify, equals('{102.34 BRL}'));
     });
 
     test('a cost with absolute value', () {
       final cost = Cost(value: Money.from(102.345, c01));
-      expect(cost.print(), equals('{{102.34 BRL}}'));
+      expect(cost.stringify, equals('{{102.34 BRL}}'));
     });
 
     test('a cost with date', () {
       final cost = Cost(date: DateTime(2020, 04, 21));
-      expect(cost.print(), equals('{2020-04-21}'));
+      expect(cost.stringify, equals('{2020-04-21}'));
     });
 
     test('a cost with label', () {
       final cost = Cost(label: 'some-tag');
-      expect(cost.print(), equals('{"some-tag"}'));
+      expect(cost.stringify, equals('{"some-tag"}'));
     });
 
     test('a cost with per-unit value, date and label', () {
@@ -38,14 +38,14 @@ void main() {
         date: DateTime(2020, 04, 21),
         label: 'some-tag',
       );
-      expect(cost.print(), equals('{13.00 BRL, 2020-04-21, "some-tag"}'));
+      expect(cost.stringify, equals('{13.00 BRL, 2020-04-21, "some-tag"}'));
     });
   });
 
   group('on Position.print', () {
     test('a position with just unit', () {
       final position = Position(unit: Money.from(10, c01));
-      expect(position.print(), equals('10.00 BRL'));
+      expect(position.stringify, equals('10.00 BRL'));
     });
 
     test('a position with unit and cost', () {
@@ -53,7 +53,7 @@ void main() {
         unit: Money.from(10, c01),
         cost: Cost(),
       );
-      expect(position.print(), equals('10.00 BRL {}'));
+      expect(position.stringify, equals('10.00 BRL {}'));
     });
 
     test('a position with unit and absolute price', () {
@@ -61,7 +61,7 @@ void main() {
         unit: Money.from(10, c01),
         perUnitPrice: Money.from(2, c01),
       );
-      expect(position.print(), equals('10.00 BRL @ 2.00 BRL'));
+      expect(position.stringify, equals('10.00 BRL @ 2.00 BRL'));
     });
 
     test('a position with unit and per-unit price', () {
@@ -69,7 +69,7 @@ void main() {
         unit: Money.from(10, c01),
         price: Money.from(2, c01),
       );
-      expect(position.print(), equals('10.00 BRL @@ 2.00 BRL'));
+      expect(position.stringify, equals('10.00 BRL @@ 2.00 BRL'));
     });
 
     test('a position with unit, cost and absolute price', () {
@@ -78,14 +78,14 @@ void main() {
         cost: Cost(),
         perUnitPrice: Money.from(2, c01),
       );
-      expect(position.print(), equals('10.00 BRL {} @ 2.00 BRL'));
+      expect(position.stringify, equals('10.00 BRL {} @ 2.00 BRL'));
     });
   });
 
   group('on Posting.print', () {
     test('a posting with just an account', () {
       final posting = Posting(account: Account(name: 'A'));
-      expect(posting.print(), equals('A'));
+      expect(posting.stringify, equals('A'));
     });
 
     test('a posting with account and comment', () {
@@ -93,7 +93,7 @@ void main() {
         account: Account(name: 'A'),
         comment: 'empty posting',
       );
-      expect(posting.print(), equals('A ; empty posting'));
+      expect(posting.stringify, equals('A ; empty posting'));
     });
 
     test('a posting lots of things', () {
@@ -103,7 +103,7 @@ void main() {
         position: Position(unit: Money.from(10, c01)),
         comment: 'not empty anymore',
       );
-      expect(posting.print(), equals('! A 10.00 BRL ; not empty anymore'));
+      expect(posting.stringify, equals('! A 10.00 BRL ; not empty anymore'));
     });
 
     test('a posting with metadata', () {
@@ -114,7 +114,7 @@ void main() {
           'b-meta': MetaValue(value: 'bbbbbbb', comment: 'comm'),
         },
       );
-      expect(posting.print(), equals('''A
+      expect(posting.stringify, equals('''A
   a-meta: "aaaaaaa"
   b-meta: "bbbbbbb" ; comm'''));
     });

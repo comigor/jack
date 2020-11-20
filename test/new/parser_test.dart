@@ -24,7 +24,7 @@ void main() {
           .trim();
       final transaction =
           bg.parse(fullTransactionRecord).value.first as Transaction;
-      expect(transaction.print().trim(), fullTransactionRecord);
+      expect(transaction.stringify.trim(), fullTransactionRecord);
     });
   });
 }
