@@ -134,7 +134,7 @@ void main() {
           ),
         ],
       );
-      expect(transaction.stringify, equals('''2020-11-21
+      expect(transaction.stringify, equals('''2020-11-21 *
   A 10.00 BRL
   B'''));
     });
@@ -153,7 +153,7 @@ void main() {
           ),
         ],
       );
-      expect(transaction.stringify, equals('''2020-11-21 "payee" ""
+      expect(transaction.stringify, equals('''2020-11-21 * "payee" ""
   A 10.00 BRL
   B'''));
     });
@@ -172,7 +172,7 @@ void main() {
           ),
         ],
       );
-      expect(transaction.stringify, equals('''2020-11-21 "narration"
+      expect(transaction.stringify, equals('''2020-11-21 * "narration"
   A 10.00 BRL
   B'''));
     });

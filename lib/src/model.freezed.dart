@@ -294,7 +294,7 @@ class _$TransactionTearOff {
 // ignore: unused_element
   _Transaction call(
       {@required DateTime date,
-      @nullable String flag,
+      String flag = '*',
       @nullable String payee,
       @nullable String narration,
       List<String> tags = const [],
@@ -323,7 +323,6 @@ const $Transaction = _$TransactionTearOff();
 /// @nodoc
 mixin _$Transaction {
   DateTime get date;
-  @nullable
   String get flag;
   @nullable
   String get payee;
@@ -346,7 +345,7 @@ abstract class $TransactionCopyWith<$Res> {
       _$TransactionCopyWithImpl<$Res>;
   $Res call(
       {DateTime date,
-      @nullable String flag,
+      String flag,
       @nullable String payee,
       @nullable String narration,
       List<String> tags,
@@ -402,7 +401,7 @@ abstract class _$TransactionCopyWith<$Res>
   @override
   $Res call(
       {DateTime date,
-      @nullable String flag,
+      String flag,
       @nullable String payee,
       @nullable String narration,
       List<String> tags,
@@ -455,7 +454,7 @@ class __$TransactionCopyWithImpl<$Res> extends _$TransactionCopyWithImpl<$Res>
 class _$_Transaction implements _Transaction {
   _$_Transaction(
       {@required this.date,
-      @nullable this.flag,
+      this.flag = '*',
       @nullable this.payee,
       @nullable this.narration,
       this.tags = const [],
@@ -464,6 +463,7 @@ class _$_Transaction implements _Transaction {
       this.postings = const [],
       @nullable this.comment})
       : assert(date != null),
+        assert(flag != null),
         assert(tags != null),
         assert(links != null),
         assert(metadata != null),
@@ -471,8 +471,8 @@ class _$_Transaction implements _Transaction {
 
   @override
   final DateTime date;
+  @JsonKey(defaultValue: '*')
   @override
-  @nullable
   final String flag;
   @override
   @nullable
@@ -528,11 +528,7 @@ class _$_Transaction implements _Transaction {
     if (_didheaderToString == false) {
       _didheaderToString = true;
       _headerToString = (() {
-        final buffer = StringBuffer()..write('${formatter.format(date)}');
-
-        if (flag != null && flag.isNotEmpty) {
-          buffer.write(' $flag');
-        }
+        final buffer = StringBuffer()..write('${formatter.format(date)} $flag');
 
         if (payee != null && payee.isNotEmpty) {
           buffer.write(' "$payee" "${narration ?? ''}"');
@@ -688,7 +684,7 @@ class _$_Transaction implements _Transaction {
 abstract class _Transaction implements Transaction {
   factory _Transaction(
       {@required DateTime date,
-      @nullable String flag,
+      String flag,
       @nullable String payee,
       @nullable String narration,
       List<String> tags,
@@ -700,7 +696,6 @@ abstract class _Transaction implements Transaction {
   @override
   DateTime get date;
   @override
-  @nullable
   String get flag;
   @override
   @nullable

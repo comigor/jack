@@ -38,7 +38,7 @@ final formatter = DateFormat('yyyy-MM-dd');
 abstract class Transaction with _$Transaction {
   factory Transaction({
     @required DateTime date,
-    @nullable String flag,
+    @Default('*') String flag,
     @nullable String payee,
     @nullable String narration,
     @Default([]) List<String> tags,
@@ -65,11 +65,7 @@ abstract class Transaction with _$Transaction {
 
   @late
   String get headerToString => (() {
-        final buffer = StringBuffer()..write('${formatter.format(date)}');
-
-        if (flag != null && flag.isNotEmpty) {
-          buffer.write(' $flag');
-        }
+        final buffer = StringBuffer()..write('${formatter.format(date)} $flag');
 
         if (payee != null && payee.isNotEmpty) {
           buffer.write(' "$payee" "${narration ?? ''}"');
