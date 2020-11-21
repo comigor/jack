@@ -1,7 +1,7 @@
 import 'package:test/test.dart';
 import 'package:money2/money2.dart';
 
-import 'package:jack/new/jack.dart';
+import 'package:jack/jack.dart';
 import 'helpers.dart';
 
 void main() {

@@ -12,7 +12,7 @@ class BeancountGrammarDefinition extends GrammarDefinition {
   Parser token(Parser parser) => parser.flatten().trim(anyOf(' \t\r'));
 
   Parser value() => ref((transaction() |
-          balance() |
+          balanceAction() |
           accountAction() |
           padAction() |
           noteAction() |
@@ -53,14 +53,25 @@ class BeancountGrammarDefinition extends GrammarDefinition {
       stringToken() &
       comment();
   Parser metadataToken() => singleMetadataToken().star();
-  Parser costToken() => numberToken() & currencyToken();
+  Parser amountWithCurrencyToken() => numberToken() & currencyToken();
+  Parser costToken() =>
+      ref(token, char('{').repeat(1, 2)) &
+      (amountWithCurrencyToken() | dateToken() | stringToken())
+          .separatedBy(char(','), includeSeparators: false) &
+      ref(token, char('}').repeat(1, 2));
+  Parser priceToken() =>
+      ref(token, char('@').repeat(1, 2)) & amountWithCurrencyToken();
 
   Parser tags() => tagToken().star();
   Parser links() => linkToken().star();
+  Parser singlePosition() =>
+      amountWithCurrencyToken() &
+      costToken().optional() &
+      priceToken().optional();
   Parser singlePosting() =>
       flagToken().optional() &
       accountToken() &
-      costToken().optional() &
+      singlePosition().optional() &
       comment() &
       metadataToken();
   Parser postings() => singlePosting().star();
@@ -74,11 +85,11 @@ class BeancountGrammarDefinition extends GrammarDefinition {
       comment() &
       metadataToken() &
       postings();
-  Parser balance() =>
+  Parser balanceAction() =>
       dateToken() &
       string('balance') &
       accountToken() &
-      costToken() &
+      amountWithCurrencyToken() &
       comment() &
       metadataToken();
   Parser accountAction() =>
@@ -96,7 +107,7 @@ class BeancountGrammarDefinition extends GrammarDefinition {
       string('custom') &
       stringToken() &
       (accountToken() |
-              costToken() |
+              amountWithCurrencyToken() |
               stringToken() |
               dateToken() |
               currencyToken())

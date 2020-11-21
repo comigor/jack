@@ -1,4 +1,4 @@
-import 'package:jack/new/jack.dart';
+import 'package:jack/jack.dart';
 
 final bg = BeancountParser();
 

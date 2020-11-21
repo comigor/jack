@@ -1,7 +1,9 @@
 import 'dart:core';
 
+import 'package:money2/money2.dart';
 import 'package:petitparser/petitparser.dart';
 
+import 'actions.dart';
 import 'grammar.dart';
 import 'model.dart';
 
@@ -12,9 +14,9 @@ class BeancountParser extends GrammarParser {
 class BeancountParserDefinition extends BeancountGrammarDefinition {
   const BeancountParserDefinition();
 
-  @override
-  Parser numberToken() =>
-      super.numberToken().map((each) => double.parse(each.toString()));
+  String _sanitizeComment(dynamic comment) =>
+      comment?.toString()?.trim()?.replaceFirst(RegExp(r'^; +'), '');
+
   @override
   Parser stringToken() =>
       super.stringToken().map((each) => each.toString().replaceAll('"', ''));
@@ -23,7 +25,7 @@ class BeancountParserDefinition extends BeancountGrammarDefinition {
       super.dateToken().map((each) => DateTime.parse(each.toString()));
   @override
   Parser accountToken() =>
-      super.accountToken().map((each) => Account(each.toString()));
+      super.accountToken().map((each) => Account(name: each.toString()));
   @override
   Parser tagToken() =>
       super.tagToken().map((each) => each.toString().substring(1));
@@ -34,29 +36,76 @@ class BeancountParserDefinition extends BeancountGrammarDefinition {
   Parser metadataToken() => super.metadataToken().map((each) => {
         for (var e in each as List)
           e.first.toString(): MetaValue(
-            e.elementAt(2).toString(),
-            comment: e.elementAt(3).toString().trim(),
+            value: e.elementAt(2).toString(),
+            comment: e.elementAt(3) as String,
           )
+      });
+  @override
+  Parser amountWithCurrencyToken() =>
+      super.amountWithCurrencyToken().map((each) {
+        final e = each as List;
+        final ccode = e.last.toString();
+        // TODO: use precision from currency list
+        final precision = 2;
+        final currency = Currency.create(ccode, precision,
+            pattern: '0.${'0' * precision} CCC');
+
+        final match = RegExp(r'([-+]?)(\d+)(?:\.(\d+))?').firstMatch(
+            e.first.toString().replaceAll(RegExp(r'[^-+.\d]+'), ''));
+
+        final isNegative = match.group(1) == '-';
+        final msd = match.group(2) ?? '0';
+        final lsd = (match.group(3) ?? '')
+            .padLeft(precision, '0')
+            .substring(0, precision);
+
+        return Money.parse(
+            '${isNegative ? '-' : ''}$msd.$lsd $ccode', currency);
       });
   @override
   Parser costToken() => super.costToken().map((each) {
         final e = each as List;
+        final type = e.first as String;
+        final items = e.elementAt(1) as List;
+        final value =
+            items.singleWhere((e) => e is Money, orElse: () => null) as Money;
+        final date = items.singleWhere((e) => e is DateTime, orElse: () => null)
+            as DateTime;
+        final label =
+            items.singleWhere((e) => e is String, orElse: () => null) as String;
+
         return Cost(
-          amount: double.parse(e.first.toString()),
-          currency: e.last.toString(),
+          perUnitValue: type == '{' ? value : null,
+          value: type == '{{' ? value : null,
+          date: date,
+          label: label,
         );
       });
 
   @override
   Parser singlePosting() => super.singlePosting().map((each) {
         final e = each as List;
-        final cost = e.elementAt(2) as Cost;
         return Posting(
           flag: e.first?.toString(),
           account: e.elementAt(1) as Account,
-          cost: cost,
-          comment: e.elementAt(3)?.toString(),
+          position: e.elementAt(2) as Position,
+          comment: e.elementAt(3) as String,
           metadata: e.last as Map<String, MetaValue>,
+        );
+      });
+
+  @override
+  Parser singlePosition() => super.singlePosition().map((each) {
+        final e = each as List;
+        final price = e.elementAt(2) as List;
+        final type = price?.first as String;
+        final unit = price?.last as Money;
+
+        return Position(
+          unit: e.first as Money,
+          cost: e.elementAt(1) as Cost,
+          perUnitPrice: type == '@' ? unit : null,
+          price: type == '@@' ? unit : null,
         );
       });
 
@@ -90,16 +139,16 @@ class BeancountParserDefinition extends BeancountGrammarDefinition {
           links: e.elementAt(4) as List<String>,
           metadata: e.elementAt(6) as Map<String, MetaValue>,
           postings: e.last as List<Posting>,
-          comment: e.elementAt(5)?.toString(),
+          comment: e.elementAt(5) as String,
         );
       });
   @override
-  Parser balance() => super.balance().map((each) {
+  Parser balanceAction() => super.balanceAction().map((each) {
         final e = each as List;
-        return Balance(
+        return BalanceAction(
           date: e.first as DateTime,
           account: e.elementAt(2) as Account,
-          cost: e.elementAt(3) as Cost,
+          unit: e.elementAt(3) as Money,
           metadata: e.elementAt(5) as Map<String, MetaValue>,
         );
       });
@@ -108,14 +157,13 @@ class BeancountParserDefinition extends BeancountGrammarDefinition {
         final e = each as List;
         return AccountAction(
           date: e.first as DateTime,
-          action: e.elementAt(1)?.toString(),
           account: e.elementAt(2) as Account,
           currencies: ((e.elementAt(3) as List) ?? [])
               .where(
                   (i) => i.toString().trim().isNotEmpty && i.toString() != ',')
               .toList()
               .cast<String>(),
-          comment: e.last.toString(),
+          comment: e.elementAt(4) as String,
         );
       });
   @override
@@ -141,18 +189,18 @@ class BeancountParserDefinition extends BeancountGrammarDefinition {
         final e = each as List;
         final type = e.elementAt(2).toString().replaceAll('"', '');
 
-        if (type == 'budget') {
-          return BudgetAction(
-            date: e.first as DateTime,
-            type: e.elementAt(2).toString().replaceAll('"', ''),
-            values: e.elementAt(3) as List,
-          );
-        }
+        // if (type == 'budget') {
+        //   return BudgetAction(
+        //     date: e.first as DateTime,
+        //     type: e.elementAt(2).toString().replaceAll('"', ''),
+        //     values: e.elementAt(3) as List,
+        //   );
+        // }
 
         return CustomAction(
           date: e.first as DateTime,
           type: e.elementAt(2).toString().replaceAll('"', ''),
-          values: e.elementAt(3) as List,
+          values: (e.elementAt(3) as List).map((e) => e.toString()).toList(),
         );
       });
 
@@ -168,7 +216,7 @@ class BeancountParserDefinition extends BeancountGrammarDefinition {
   Parser blankLine() => super.blankLine().map((each) => each.trim());
 
   @override
-  Parser comment() => super.comment().map((each) => each.trim());
+  Parser comment() => super.comment().map(_sanitizeComment);
   @override
   Parser fullLineComment() =>
       super.fullLineComment().map((each) => each.trim());

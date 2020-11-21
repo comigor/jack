@@ -1,7 +1,7 @@
 import 'package:test/test.dart';
 import 'package:money2/money2.dart';
 
-import 'package:jack/new/jack.dart';
+import 'package:jack/jack.dart';
 
 void main() {
   final c01 = Currency.create('BRL', 2, pattern: r'0.00 CCC');
