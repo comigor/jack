@@ -3,10 +3,18 @@ import 'dart:io';
 import 'package:jack/jack.dart';
 
 void main() {
-  final bg = BeancountParser();
   final file = File('${Directory.current.absolute.path}/../beancount/main.bean')
       .readAsStringSync();
-  final result = bg.parse(file);
+
+  final bg = BeancountParser();
+  final defs = bg.parse(file).value as List;
+
+  final bg2 = BeancountParser(
+    currencyList:
+        defs.whereType<CommodityAction>().map((c) => c.currency).toList(),
+  );
+
+  final result = bg2.parse(file);
   // print(result.message);
 
   final l = result.value as List;

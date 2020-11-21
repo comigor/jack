@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.3.1
+- Major refactor.
+
 ## 0.2.1
 - Configure GitHub actions.
 

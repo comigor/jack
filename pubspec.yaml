@@ -1,6 +1,5 @@
 name: jack
-version: 0.3.0
-publish_to: none
+version: 0.3.1
 
 description: >
   Jack.
@@ -15,7 +14,7 @@ dependencies:
   # money2: ^1.4.3
   money2:
     git:
-      url: git@github.com:comigor/money.dart.git
+      url: https://github.com/comigor/money.dart.git
       ref: precision-0
   freezed_annotation:
 
