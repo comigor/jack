@@ -1,5 +1,5 @@
 name: jack
-version: 0.3.1
+version: 0.3.2
 
 description: >
   Jack.
@@ -11,6 +11,7 @@ environment:
 dependencies:
   intl: ^0.16.1
   petitparser: ^3.1.0
+  meta: ^1.2.4
   # money2: ^1.4.3
   money2:
     git:

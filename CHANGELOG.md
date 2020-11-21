@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.3.2
+- Add `meta` as a direct dependency
+
 ## 0.3.1
 - Major refactor.
 
