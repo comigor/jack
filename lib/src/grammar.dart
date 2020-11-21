@@ -80,7 +80,9 @@ class BeancountGrammarDefinition extends GrammarDefinition {
       comment() &
       metadataToken();
   Parser postings() => singlePosting().star();
-  Parser currencies() => currencyToken().separatedBy(char(',')).optional();
+  Parser currencies() => currencyToken()
+      .separatedBy(char(','), includeSeparators: false)
+      .optional();
   Parser transaction() =>
       dateToken() &
       flagToken() &

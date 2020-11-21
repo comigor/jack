@@ -30,7 +30,7 @@ void main() {
     test('on actions', () {
       final bg = BeancountParser();
       final actionsString = '''
-2020-11-20 open Assets:Cash BRL ; comment
+2020-11-20 open Assets:Cash BRL,USD ; comment
   meta: "data" ; comment
 2020-11-20 close Assets:Cash ; comment
   meta: "data" ; comment
