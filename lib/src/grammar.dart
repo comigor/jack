@@ -12,10 +12,15 @@ class BeancountGrammarDefinition extends GrammarDefinition {
   Parser token(Parser parser) => parser.flatten().trim(anyOf(' \t\r'));
 
   Parser value() => ref((transaction() |
-          balanceAction() |
           accountAction() |
+          commodityAction() |
+          balanceAction() |
           padAction() |
           noteAction() |
+          documentAction() |
+          priceAction() |
+          eventAction() |
+          queryAction() |
           customAction() |
           option() |
           fullLineComment() |
@@ -85,6 +90,21 @@ class BeancountGrammarDefinition extends GrammarDefinition {
       comment() &
       metadataToken() &
       postings();
+
+  Parser accountAction() =>
+      dateToken() &
+      accountActionPrimitive() &
+      accountToken() &
+      currencies().optional() &
+      (string('STRICT') | string('NONE')).optional() &
+      comment() &
+      metadataToken();
+  Parser commodityAction() =>
+      dateToken() &
+      string('commodity') &
+      currencyToken() &
+      comment() &
+      metadataToken();
   Parser balanceAction() =>
       dateToken() &
       string('balance') &
@@ -92,16 +112,48 @@ class BeancountGrammarDefinition extends GrammarDefinition {
       amountWithCurrencyToken() &
       comment() &
       metadataToken();
-  Parser accountAction() =>
-      dateToken() &
-      accountActionPrimitive() &
-      accountToken() &
-      currencies() &
-      comment();
   Parser padAction() =>
-      dateToken() & string('pad') & accountToken() & accountToken() & comment();
+      dateToken() &
+      string('pad') &
+      accountToken() &
+      accountToken() &
+      comment() &
+      metadataToken();
   Parser noteAction() =>
-      dateToken() & string('note') & accountToken() & stringToken() & comment();
+      dateToken() &
+      string('note') &
+      accountToken() &
+      stringToken() &
+      comment() &
+      metadataToken();
+  Parser documentAction() =>
+      dateToken() &
+      string('document') &
+      accountToken() &
+      stringToken() &
+      comment() &
+      metadataToken();
+  Parser priceAction() =>
+      dateToken() &
+      string('price') &
+      currencyToken() &
+      amountWithCurrencyToken() &
+      comment() &
+      metadataToken();
+  Parser eventAction() =>
+      dateToken() &
+      string('event') &
+      stringToken() &
+      stringToken() &
+      comment() &
+      metadataToken();
+  Parser queryAction() =>
+      dateToken() &
+      string('query') &
+      stringToken() &
+      stringToken() &
+      comment() &
+      metadataToken();
   Parser customAction() =>
       dateToken() &
       string('custom') &
@@ -112,9 +164,11 @@ class BeancountGrammarDefinition extends GrammarDefinition {
               dateToken() |
               currencyToken())
           .star() &
-      comment();
+      comment() &
+      metadataToken();
   Parser option() =>
       string('option') & stringToken() & stringToken() & comment();
+
   Parser fullLineComment() =>
       ref(token, char(';') & noneOf('\n').star() & char('\n').optional());
   Parser comment() => ref(token,

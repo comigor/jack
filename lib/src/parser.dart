@@ -142,6 +142,51 @@ class BeancountParserDefinition extends BeancountGrammarDefinition {
           comment: e.elementAt(5) as String,
         );
       });
+
+  @override
+  Parser accountAction() => super.accountAction().map((each) {
+        final e = each as List;
+        final date = e.first as DateTime;
+        final type = e.elementAt(1).toString().replaceAll('"', '');
+        final account = e.elementAt(2) as Account;
+        final currencies =
+            (e.elementAt(3) as List)?.map((e) => e.toString())?.toList();
+        final bookingMethod = e.elementAt(4)?.toString()?.replaceAll('"', '');
+        final comment = e.elementAt(5) as String;
+        final metadata = e.elementAt(6) as Map<String, MetaValue>;
+
+        switch (type) {
+          case 'open':
+            return AccountAction.open(
+              date: date,
+              type: type,
+              account: account,
+              currencies: currencies,
+              bookingMethod: bookingMethod,
+              comment: comment,
+              metadata: metadata,
+            );
+          case 'close':
+          default:
+            return AccountAction.close(
+              date: date,
+              type: type,
+              account: account,
+              comment: comment,
+              metadata: metadata,
+            );
+        }
+      });
+  @override
+  Parser commodityAction() => super.commodityAction().map((each) {
+        final e = each as List;
+        return CommodityAction(
+          date: e.first as DateTime,
+          currency: e.elementAt(2) as String,
+          comment: e.elementAt(3) as String,
+          metadata: e.elementAt(4) as Map<String, MetaValue>,
+        );
+      });
   @override
   Parser balanceAction() => super.balanceAction().map((each) {
         final e = each as List;
@@ -149,21 +194,8 @@ class BeancountParserDefinition extends BeancountGrammarDefinition {
           date: e.first as DateTime,
           account: e.elementAt(2) as Account,
           unit: e.elementAt(3) as Money,
-          metadata: e.elementAt(5) as Map<String, MetaValue>,
-        );
-      });
-  @override
-  Parser accountAction() => super.accountAction().map((each) {
-        final e = each as List;
-        return AccountAction(
-          date: e.first as DateTime,
-          account: e.elementAt(2) as Account,
-          currencies: ((e.elementAt(3) as List) ?? [])
-              .where(
-                  (i) => i.toString().trim().isNotEmpty && i.toString() != ',')
-              .toList()
-              .cast<String>(),
           comment: e.elementAt(4) as String,
+          metadata: e.elementAt(5) as Map<String, MetaValue>,
         );
       });
   @override
@@ -173,6 +205,8 @@ class BeancountParserDefinition extends BeancountGrammarDefinition {
           date: e.first as DateTime,
           account: e.elementAt(2) as Account,
           padAccount: e.elementAt(3) as Account,
+          comment: e.elementAt(4) as String,
+          metadata: e.elementAt(5) as Map<String, MetaValue>,
         );
       });
   @override
@@ -182,26 +216,81 @@ class BeancountParserDefinition extends BeancountGrammarDefinition {
           date: e.first as DateTime,
           account: e.elementAt(2) as Account,
           note: e.elementAt(3).toString().replaceAll('"', ''),
+          comment: e.elementAt(4) as String,
+          metadata: e.elementAt(5) as Map<String, MetaValue>,
+        );
+      });
+  @override
+  Parser documentAction() => super.documentAction().map((each) {
+        final e = each as List;
+        return DocumentAction(
+          date: e.first as DateTime,
+          account: e.elementAt(2) as Account,
+          path: e.elementAt(3).toString().replaceAll('"', ''),
+          comment: e.elementAt(4) as String,
+          metadata: e.elementAt(5) as Map<String, MetaValue>,
+        );
+      });
+  @override
+  Parser priceAction() => super.priceAction().map((each) {
+        final e = each as List;
+        return PriceAction(
+          date: e.first as DateTime,
+          currency: e.elementAt(2) as String,
+          amount: e.elementAt(3) as Money,
+          comment: e.elementAt(4) as String,
+          metadata: e.elementAt(5) as Map<String, MetaValue>,
+        );
+      });
+  @override
+  Parser eventAction() => super.eventAction().map((each) {
+        final e = each as List;
+        return EventAction(
+          date: e.first as DateTime,
+          name: e.elementAt(2).toString().replaceAll('"', ''),
+          value: e.elementAt(3).toString().replaceAll('"', ''),
+          comment: e.elementAt(4) as String,
+          metadata: e.elementAt(5) as Map<String, MetaValue>,
+        );
+      });
+  @override
+  Parser queryAction() => super.queryAction().map((each) {
+        final e = each as List;
+        return QueryAction(
+          date: e.first as DateTime,
+          name: e.elementAt(2).toString().replaceAll('"', ''),
+          query: e.elementAt(3).toString().replaceAll('"', ''),
+          comment: e.elementAt(4) as String,
+          metadata: e.elementAt(5) as Map<String, MetaValue>,
         );
       });
   @override
   Parser customAction() => super.customAction().map((each) {
         final e = each as List;
+        final date = e.first as DateTime;
         final type = e.elementAt(2).toString().replaceAll('"', '');
+        final values = e.elementAt(3) as List;
+        final comment = e.elementAt(4) as String;
+        final metadata = e.elementAt(5) as Map<String, MetaValue>;
 
-        // if (type == 'budget') {
-        //   return BudgetAction(
-        //     date: e.first as DateTime,
-        //     type: e.elementAt(2).toString().replaceAll('"', ''),
-        //     values: e.elementAt(3) as List,
-        //   );
-        // }
-
-        return CustomAction(
-          date: e.first as DateTime,
-          type: e.elementAt(2).toString().replaceAll('"', ''),
-          values: (e.elementAt(3) as List).map((e) => e.toString()).toList(),
-        );
+        switch (type) {
+          case 'budget':
+            return CustomAction.budget(
+              date: date,
+              values: values,
+              comment: comment,
+              metadata: metadata,
+            );
+          case 'custom':
+          default:
+            return CustomAction.custom(
+              date: date,
+              type: type,
+              values: values,
+              comment: comment,
+              metadata: metadata,
+            );
+        }
       });
 
   @override
