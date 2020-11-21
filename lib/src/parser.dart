@@ -6,6 +6,7 @@ import 'package:petitparser/petitparser.dart';
 import 'actions.dart';
 import 'grammar.dart';
 import 'model.dart';
+import 'money_extension.dart';
 
 class BeancountParser extends GrammarParser {
   BeancountParser({
@@ -56,19 +57,9 @@ class BeancountParserDefinition extends BeancountGrammarDefinition {
           (c) => c.code == ccode,
           orElse: () => Currency.create(ccode, 2, pattern: '0.00 CCC'),
         );
-        final hasDecimals = currency.minorDigits > 0;
 
-        final match = RegExp(r'([-+]?)(\d+)(?:\.(\d+))?').firstMatch(
-            e.first.toString().replaceAll(RegExp(r'[^-+.\d]+'), ''));
-
-        final isNegative = match.group(1) == '-';
-        final msd = match.group(2) ?? '0';
-        final lsd = (match.group(3) ?? '')
-            .padLeft(currency.minorDigits, '0')
-            .substring(0, currency.minorDigits);
-
-        return Money.parse(
-          '${isNegative ? '-' : ''}$msd${hasDecimals ? '.' : ''}$lsd $ccode',
+        return MoneyExt.fromLooseString(
+          e.first.toString(),
           currency,
         );
       });

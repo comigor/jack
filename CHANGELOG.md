@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.3.3
+- Create and export `MoneyExt.fromLooseString`
+
 ## 0.3.2
 - Add `meta` as a direct dependency
 
