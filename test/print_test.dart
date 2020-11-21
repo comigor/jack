@@ -119,4 +119,62 @@ void main() {
   b-meta: "bbbbbbb" ; comm'''));
     });
   });
+
+  group('on Transaction.printify', () {
+    test('a transaction without payee and narration', () {
+      final transaction = Transaction(
+        date: DateTime.parse('2020-11-21'),
+        postings: [
+          Posting(
+            account: Account(name: 'A'),
+            position: Position(unit: Money.from(10, c01)),
+          ),
+          Posting(
+            account: Account(name: 'B'),
+          ),
+        ],
+      );
+      expect(transaction.stringify, equals('''2020-11-21
+  A 10.00 BRL
+  B'''));
+    });
+
+    test('a transaction with only payee', () {
+      final transaction = Transaction(
+        date: DateTime.parse('2020-11-21'),
+        payee: 'payee',
+        postings: [
+          Posting(
+            account: Account(name: 'A'),
+            position: Position(unit: Money.from(10, c01)),
+          ),
+          Posting(
+            account: Account(name: 'B'),
+          ),
+        ],
+      );
+      expect(transaction.stringify, equals('''2020-11-21 "payee" ""
+  A 10.00 BRL
+  B'''));
+    });
+
+    test('a transaction with only narration', () {
+      final transaction = Transaction(
+        date: DateTime.parse('2020-11-21'),
+        narration: 'narration',
+        postings: [
+          Posting(
+            account: Account(name: 'A'),
+            position: Position(unit: Money.from(10, c01)),
+          ),
+          Posting(
+            account: Account(name: 'B'),
+          ),
+        ],
+      );
+      expect(transaction.stringify, equals('''2020-11-21 "narration"
+  A 10.00 BRL
+  B'''));
+    });
+  });
 }

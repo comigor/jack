@@ -528,14 +528,16 @@ class _$_Transaction implements _Transaction {
     if (_didheaderToString == false) {
       _didheaderToString = true;
       _headerToString = (() {
-        final buffer = StringBuffer()..write('${formatter.format(date)} $flag');
+        final buffer = StringBuffer()..write('${formatter.format(date)}');
+
+        if (flag != null && flag.isNotEmpty) {
+          buffer.write(' $flag');
+        }
 
         if (payee != null && payee.isNotEmpty) {
           buffer.write(' "$payee" "${narration ?? ''}"');
-        } else {
-          if (narration != null && narration.isNotEmpty) {
-            buffer.write(' "$narration"');
-          }
+        } else if (narration != null && narration.isNotEmpty) {
+          buffer.write(' "$narration"');
         }
 
         for (final tag in tags.where((t) => t != null)) {

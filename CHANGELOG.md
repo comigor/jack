@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.3.4
+- Fix transaction flag print
+
 ## 0.3.3
 - Create and export `MoneyExt.fromLooseString`
 
