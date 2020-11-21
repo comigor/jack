@@ -57,7 +57,7 @@ abstract class AccountAction with _$AccountAction {
 abstract class CommodityAction with _$CommodityAction {
   factory CommodityAction({
     @required DateTime date,
-    @required String currency,
+    @required String code,
     @nullable String comment,
     @Default({}) Map<String, MetaValue> metadata,
   }) = _CommodityAction;
@@ -65,7 +65,7 @@ abstract class CommodityAction with _$CommodityAction {
   @late
   String get stringify => (() {
         final buffer = StringBuffer()
-          ..write('${formatter.format(date)} commodity $currency');
+          ..write('${formatter.format(date)} commodity $code');
 
         if (comment != null && comment.isNotEmpty) {
           buffer.write(' ; $comment');
@@ -77,6 +77,15 @@ abstract class CommodityAction with _$CommodityAction {
 
         return buffer.toString();
       })();
+
+  @late
+  int get precision => metadata.containsKey('precision')
+      ? int.tryParse(metadata['precision'].value)
+      : 2;
+
+  @late
+  Currency get currency => Currency.create(code, precision,
+      pattern: '0${precision > 0 ? '.' : ''}${'0' * precision} CCC');
 }
 
 @freezed

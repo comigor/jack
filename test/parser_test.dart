@@ -5,7 +5,13 @@ import 'package:jack/jack.dart';
 void main() {
   group('Beancount parser can go back-and-forth on records', () {
     test('on a full transaction', () {
-      final bg = BeancountParser();
+      final commoditiesDefinition = '''
+2019-01-21 commodity BITCOIN
+  precision: "8"
+2019-01-21 commodity NFLX
+  precision: "0"
+'''
+          .trim();
       final fullTransactionRecord = '''
 2019-01-22 ! "Payee" "Comment" #tag ^link ; comments
   meta: "data" ; are
@@ -13,7 +19,9 @@ void main() {
     meta: "data" ; ignored
     x: "y"
   ! Liabilities:B -330.66 BRL
-  Income:C:D:E:F -99.00 BITCOIN
+  Income:C:D -99.00000001 BITCOIN
+  Income:E -99.00 USD
+  Income:F 1234 NFLX
   Equity:G 1234.56 USD {10.00 BRL} ; blah
   Equity:H 1234.56 USD {{10.00 BRL, 2020-11-19, "tag"}}
   Equity:I 1234.56 USD @ 10.01 BRL ; blah
@@ -22,8 +30,17 @@ void main() {
   Assets:I
 '''
           .trim();
+
+      final bg = BeancountParser();
+      final defs = bg.parse(commoditiesDefinition).value as List;
+
+      final bg2 = BeancountParser(
+        currencyList:
+            defs.whereType<CommodityAction>().map((c) => c.currency).toList(),
+      );
+
       final transaction =
-          bg.parse(fullTransactionRecord).value.first as Transaction;
+          bg2.parse(fullTransactionRecord).value.first as Transaction;
       expect(transaction.stringify.trim(), fullTransactionRecord);
     });
 

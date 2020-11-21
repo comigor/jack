@@ -767,12 +767,12 @@ class _$CommodityActionTearOff {
 // ignore: unused_element
   _CommodityAction call(
       {@required DateTime date,
-      @required String currency,
+      @required String code,
       @nullable String comment,
       Map<String, MetaValue> metadata = const {}}) {
     return _CommodityAction(
       date: date,
-      currency: currency,
+      code: code,
       comment: comment,
       metadata: metadata,
     );
@@ -786,7 +786,7 @@ const $CommodityAction = _$CommodityActionTearOff();
 /// @nodoc
 mixin _$CommodityAction {
   DateTime get date;
-  String get currency;
+  String get code;
   @nullable
   String get comment;
   Map<String, MetaValue> get metadata;
@@ -801,7 +801,7 @@ abstract class $CommodityActionCopyWith<$Res> {
       _$CommodityActionCopyWithImpl<$Res>;
   $Res call(
       {DateTime date,
-      String currency,
+      String code,
       @nullable String comment,
       Map<String, MetaValue> metadata});
 }
@@ -818,13 +818,13 @@ class _$CommodityActionCopyWithImpl<$Res>
   @override
   $Res call({
     Object date = freezed,
-    Object currency = freezed,
+    Object code = freezed,
     Object comment = freezed,
     Object metadata = freezed,
   }) {
     return _then(_value.copyWith(
       date: date == freezed ? _value.date : date as DateTime,
-      currency: currency == freezed ? _value.currency : currency as String,
+      code: code == freezed ? _value.code : code as String,
       comment: comment == freezed ? _value.comment : comment as String,
       metadata: metadata == freezed
           ? _value.metadata
@@ -842,7 +842,7 @@ abstract class _$CommodityActionCopyWith<$Res>
   @override
   $Res call(
       {DateTime date,
-      String currency,
+      String code,
       @nullable String comment,
       Map<String, MetaValue> metadata});
 }
@@ -861,13 +861,13 @@ class __$CommodityActionCopyWithImpl<$Res>
   @override
   $Res call({
     Object date = freezed,
-    Object currency = freezed,
+    Object code = freezed,
     Object comment = freezed,
     Object metadata = freezed,
   }) {
     return _then(_CommodityAction(
       date: date == freezed ? _value.date : date as DateTime,
-      currency: currency == freezed ? _value.currency : currency as String,
+      code: code == freezed ? _value.code : code as String,
       comment: comment == freezed ? _value.comment : comment as String,
       metadata: metadata == freezed
           ? _value.metadata
@@ -880,17 +880,17 @@ class __$CommodityActionCopyWithImpl<$Res>
 class _$_CommodityAction implements _CommodityAction {
   _$_CommodityAction(
       {@required this.date,
-      @required this.currency,
+      @required this.code,
       @nullable this.comment,
       this.metadata = const {}})
       : assert(date != null),
-        assert(currency != null),
+        assert(code != null),
         assert(metadata != null);
 
   @override
   final DateTime date;
   @override
-  final String currency;
+  final String code;
   @override
   @nullable
   final String comment;
@@ -907,7 +907,7 @@ class _$_CommodityAction implements _CommodityAction {
       _didstringify = true;
       _stringify = (() {
         final buffer = StringBuffer()
-          ..write('${formatter.format(date)} commodity $currency');
+          ..write('${formatter.format(date)} commodity $code');
 
         if (comment != null && comment.isNotEmpty) {
           buffer.write(' ; $comment');
@@ -923,9 +923,36 @@ class _$_CommodityAction implements _CommodityAction {
     return _stringify;
   }
 
+  bool _didprecision = false;
+  int _precision;
+
+  @override
+  int get precision {
+    if (_didprecision == false) {
+      _didprecision = true;
+      _precision = metadata.containsKey('precision')
+          ? int.tryParse(metadata['precision'].value)
+          : 2;
+    }
+    return _precision;
+  }
+
+  bool _didcurrency = false;
+  Currency _currency;
+
+  @override
+  Currency get currency {
+    if (_didcurrency == false) {
+      _didcurrency = true;
+      _currency = Currency.create(code, precision,
+          pattern: '0${precision > 0 ? '.' : ''}${'0' * precision} CCC');
+    }
+    return _currency;
+  }
+
   @override
   String toString() {
-    return 'CommodityAction(date: $date, currency: $currency, comment: $comment, metadata: $metadata, stringify: $stringify)';
+    return 'CommodityAction(date: $date, code: $code, comment: $comment, metadata: $metadata, stringify: $stringify, precision: $precision, currency: $currency)';
   }
 
   @override
@@ -934,9 +961,8 @@ class _$_CommodityAction implements _CommodityAction {
         (other is _CommodityAction &&
             (identical(other.date, date) ||
                 const DeepCollectionEquality().equals(other.date, date)) &&
-            (identical(other.currency, currency) ||
-                const DeepCollectionEquality()
-                    .equals(other.currency, currency)) &&
+            (identical(other.code, code) ||
+                const DeepCollectionEquality().equals(other.code, code)) &&
             (identical(other.comment, comment) ||
                 const DeepCollectionEquality()
                     .equals(other.comment, comment)) &&
@@ -949,7 +975,7 @@ class _$_CommodityAction implements _CommodityAction {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(date) ^
-      const DeepCollectionEquality().hash(currency) ^
+      const DeepCollectionEquality().hash(code) ^
       const DeepCollectionEquality().hash(comment) ^
       const DeepCollectionEquality().hash(metadata);
 
@@ -961,14 +987,14 @@ class _$_CommodityAction implements _CommodityAction {
 abstract class _CommodityAction implements CommodityAction {
   factory _CommodityAction(
       {@required DateTime date,
-      @required String currency,
+      @required String code,
       @nullable String comment,
       Map<String, MetaValue> metadata}) = _$_CommodityAction;
 
   @override
   DateTime get date;
   @override
-  String get currency;
+  String get code;
   @override
   @nullable
   String get comment;

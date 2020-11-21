@@ -16,7 +16,7 @@ dependencies:
   money2:
     git:
       url: git@github.com:comigor/money.dart.git
-      ref: master
+      ref: precision-0
   freezed_annotation:
 
 dev_dependencies:

@@ -32,21 +32,6 @@ abstract class Account with _$Account {
   String get stringify => name;
 }
 
-@freezed
-abstract class CommodityDirective with _$CommodityDirective {
-  factory CommodityDirective({
-    @required DateTime date,
-    @required String code,
-    @Default({}) Map<String, MetaValue> metadata,
-    @Default(2) int precision_,
-  }) = _CommodityDirective;
-
-  @late
-  int get precision => metadata.containsKey('precision')
-      ? int.tryParse(metadata['precision'].value)
-      : precision_;
-}
-
 final formatter = DateFormat('yyyy-MM-dd');
 
 @freezed

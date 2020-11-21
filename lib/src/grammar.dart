@@ -1,9 +1,5 @@
 import 'package:petitparser/petitparser.dart';
 
-class BeancountGrammar extends GrammarParser {
-  BeancountGrammar() : super(const BeancountGrammarDefinition());
-}
-
 class BeancountGrammarDefinition extends GrammarDefinition {
   const BeancountGrammarDefinition();
 

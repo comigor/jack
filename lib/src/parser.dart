@@ -8,11 +8,17 @@ import 'grammar.dart';
 import 'model.dart';
 
 class BeancountParser extends GrammarParser {
-  BeancountParser() : super(const BeancountParserDefinition());
+  BeancountParser({
+    List<Currency> currencyList = const [],
+  }) : super(BeancountParserDefinition(currencyList: currencyList));
 }
 
 class BeancountParserDefinition extends BeancountGrammarDefinition {
-  const BeancountParserDefinition();
+  BeancountParserDefinition({
+    this.currencyList = const [],
+  });
+
+  final List<Currency> currencyList;
 
   String _sanitizeComment(dynamic comment) =>
       comment?.toString()?.trim()?.replaceFirst(RegExp(r'^; +'), '');
@@ -45,10 +51,12 @@ class BeancountParserDefinition extends BeancountGrammarDefinition {
       super.amountWithCurrencyToken().map((each) {
         final e = each as List;
         final ccode = e.last.toString();
-        // TODO: use precision from currency list
-        final precision = 2;
-        final currency = Currency.create(ccode, precision,
-            pattern: '0.${'0' * precision} CCC');
+
+        final currency = currencyList.firstWhere(
+          (c) => c.code == ccode,
+          orElse: () => Currency.create(ccode, 2, pattern: '0.00 CCC'),
+        );
+        final hasDecimals = currency.minorDigits > 0;
 
         final match = RegExp(r'([-+]?)(\d+)(?:\.(\d+))?').firstMatch(
             e.first.toString().replaceAll(RegExp(r'[^-+.\d]+'), ''));
@@ -56,11 +64,13 @@ class BeancountParserDefinition extends BeancountGrammarDefinition {
         final isNegative = match.group(1) == '-';
         final msd = match.group(2) ?? '0';
         final lsd = (match.group(3) ?? '')
-            .padLeft(precision, '0')
-            .substring(0, precision);
+            .padLeft(currency.minorDigits, '0')
+            .substring(0, currency.minorDigits);
 
         return Money.parse(
-            '${isNegative ? '-' : ''}$msd.$lsd $ccode', currency);
+          '${isNegative ? '-' : ''}$msd${hasDecimals ? '.' : ''}$lsd $ccode',
+          currency,
+        );
       });
   @override
   Parser costToken() => super.costToken().map((each) {
@@ -182,7 +192,7 @@ class BeancountParserDefinition extends BeancountGrammarDefinition {
         final e = each as List;
         return CommodityAction(
           date: e.first as DateTime,
-          currency: e.elementAt(2) as String,
+          code: e.elementAt(2) as String,
           comment: e.elementAt(3) as String,
           metadata: e.elementAt(4) as Map<String, MetaValue>,
         );
