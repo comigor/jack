@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.3.6
+- Fix `MoneyExt.fromLooseString` decimal padding
+
 ## 0.3.5
 - REALLY fix transaction flag print
 

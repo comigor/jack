@@ -19,12 +19,13 @@ extension MoneyExt on Money {
     final isNegative = match.group(1) == '-';
     final msd = match.group(2) ?? '0';
     final lsd = (match.group(3) ?? '')
-        .padLeft(currency.minorDigits, '0')
+        .padRight(currency.minorDigits, '0')
         .substring(0, currency.minorDigits);
 
     return Money.parse(
       '${isNegative ? '-' : ''}$msd${hasDecimals ? '.' : ''}$lsd ${currency.code}',
       currency,
+      pattern: '0.${''.padLeft(currency.minorDigits, '0')} CCC',
     );
   }
 }
