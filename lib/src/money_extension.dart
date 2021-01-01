@@ -25,7 +25,8 @@ extension MoneyExt on Money {
     return Money.parse(
       '${isNegative ? '-' : ''}$msd${hasDecimals ? '.' : ''}$lsd ${currency.code}',
       currency,
-      pattern: '0.${''.padLeft(currency.minorDigits, '0')} CCC',
+      pattern:
+          '0${hasDecimals ? '.' : ''}${''.padLeft(currency.minorDigits, '0')} CCC',
     );
   }
 }

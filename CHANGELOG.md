@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.3.7
+- Really fix `MoneyExt.fromLooseString` decimal padding
+
 ## 0.3.6
 - Fix `MoneyExt.fromLooseString` decimal padding
 
