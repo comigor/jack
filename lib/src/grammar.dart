@@ -58,7 +58,8 @@ class BeancountGrammarDefinition extends GrammarDefinition {
   Parser costToken() =>
       ref(token, char('{').repeat(1, 2)) &
       (amountWithCurrencyToken() | dateToken() | stringToken())
-          .separatedBy(char(','), includeSeparators: false) &
+          .separatedBy(char(','), includeSeparators: false)
+          .optional() &
       ref(token, char('}').repeat(1, 2));
   Parser priceToken() =>
       ref(token, char('@').repeat(1, 2)) & amountWithCurrencyToken();

@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.4.1-nullsafety.0
+- Cost could be empty inside
+
 ## 0.4.0-nullsafety.0
 - First try to support nnbd. Still waiting for `freezed`/`build_runner`
 

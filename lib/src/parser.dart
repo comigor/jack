@@ -67,7 +67,7 @@ class BeancountParserDefinition extends BeancountGrammarDefinition {
   Parser costToken() => super.costToken().map((each) {
         final e = each as List;
         final type = e.first as String;
-        final items = e.elementAt(1) as List;
+        final items = e.elementAt(1) as List ?? [];
         final value =
             items.singleWhere((e) => e is Money, orElse: () => null) as Money;
         final date = items.singleWhere((e) => e is DateTime, orElse: () => null)

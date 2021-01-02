@@ -22,6 +22,7 @@ void main() {
   Income:C:D -99.00000001 BITCOIN
   Income:E -99.00 USD
   Income:F 1234 NFLX
+  Equity:G 1234.56 USD {} ; empty works
   Equity:G 1234.56 USD {10.00 BRL} ; blah
   Equity:H 1234.56 USD {{10.00 BRL, 2020-11-19, "tag"}}
   Equity:I 1234.56 USD @ 10.01 BRL ; blah
