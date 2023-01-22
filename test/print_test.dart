@@ -13,12 +13,12 @@ void main() {
     });
 
     test('a cost with per unit value', () {
-      final cost = Cost(perUnitValue: Money.from(102.345, c01));
+      final cost = Cost(perUnitValue: Money.fromNumWithCurrency(102.345, c01));
       expect(cost.stringify, equals('{102.34 BRL}'));
     });
 
     test('a cost with absolute value', () {
-      final cost = Cost(value: Money.from(102.345, c01));
+      final cost = Cost(value: Money.fromNumWithCurrency(102.345, c01));
       expect(cost.stringify, equals('{{102.34 BRL}}'));
     });
 
@@ -34,7 +34,7 @@ void main() {
 
     test('a cost with per-unit value, date and label', () {
       final cost = Cost(
-        perUnitValue: Money.from(13, c01),
+        perUnitValue: Money.fromNumWithCurrency(13, c01),
         date: DateTime(2020, 04, 21),
         label: 'some-tag',
       );
@@ -44,13 +44,13 @@ void main() {
 
   group('on Position.print', () {
     test('a position with just unit', () {
-      final position = Position(unit: Money.from(10, c01));
+      final position = Position(unit: Money.fromNumWithCurrency(10, c01));
       expect(position.stringify, equals('10.00 BRL'));
     });
 
     test('a position with unit and cost', () {
       final position = Position(
-        unit: Money.from(10, c01),
+        unit: Money.fromNumWithCurrency(10, c01),
         cost: Cost(),
       );
       expect(position.stringify, equals('10.00 BRL {}'));
@@ -58,25 +58,25 @@ void main() {
 
     test('a position with unit and absolute price', () {
       final position = Position(
-        unit: Money.from(10, c01),
-        perUnitPrice: Money.from(2, c01),
+        unit: Money.fromNumWithCurrency(10, c01),
+        perUnitPrice: Money.fromNumWithCurrency(2, c01),
       );
       expect(position.stringify, equals('10.00 BRL @ 2.00 BRL'));
     });
 
     test('a position with unit and per-unit price', () {
       final position = Position(
-        unit: Money.from(10, c01),
-        price: Money.from(2, c01),
+        unit: Money.fromNumWithCurrency(10, c01),
+        price: Money.fromNumWithCurrency(2, c01),
       );
       expect(position.stringify, equals('10.00 BRL @@ 2.00 BRL'));
     });
 
     test('a position with unit, cost and absolute price', () {
       final position = Position(
-        unit: Money.from(10, c01),
+        unit: Money.fromNumWithCurrency(10, c01),
         cost: Cost(),
-        perUnitPrice: Money.from(2, c01),
+        perUnitPrice: Money.fromNumWithCurrency(2, c01),
       );
       expect(position.stringify, equals('10.00 BRL {} @ 2.00 BRL'));
     });
@@ -100,7 +100,7 @@ void main() {
       final posting = Posting(
         flag: '!',
         account: Account(name: 'A'),
-        position: Position(unit: Money.from(10, c01)),
+        position: Position(unit: Money.fromNumWithCurrency(10, c01)),
         comment: 'not empty anymore',
       );
       expect(posting.stringify, equals('! A 10.00 BRL ; not empty anymore'));
@@ -127,7 +127,7 @@ void main() {
         postings: [
           Posting(
             account: Account(name: 'A'),
-            position: Position(unit: Money.from(10, c01)),
+            position: Position(unit: Money.fromNumWithCurrency(10, c01)),
           ),
           Posting(
             account: Account(name: 'B'),
@@ -146,7 +146,7 @@ void main() {
         postings: [
           Posting(
             account: Account(name: 'A'),
-            position: Position(unit: Money.from(10, c01)),
+            position: Position(unit: Money.fromNumWithCurrency(10, c01)),
           ),
           Posting(
             account: Account(name: 'B'),
@@ -165,7 +165,7 @@ void main() {
         postings: [
           Posting(
             account: Account(name: 'A'),
-            position: Position(unit: Money.from(10, c01)),
+            position: Position(unit: Money.fromNumWithCurrency(10, c01)),
           ),
           Posting(
             account: Account(name: 'B'),

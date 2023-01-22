@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.5.0
+- Properly convert to nnbd
+
 ## 0.4.1-nullsafety.0
 - Cost could be empty inside
 

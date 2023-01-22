@@ -22,7 +22,7 @@ class BeancountParserDefinition extends BeancountGrammarDefinition {
   final List<Currency> currencyList;
 
   String _sanitizeComment(dynamic comment) =>
-      comment?.toString()?.trim()?.replaceFirst(RegExp(r'^; +'), '');
+      comment.toString().trim().replaceFirst(RegExp(r'^; +'), '');
 
   @override
   Parser stringToken() =>
@@ -52,11 +52,13 @@ class BeancountParserDefinition extends BeancountGrammarDefinition {
       super.amountWithCurrencyToken().map((each) {
         final e = each as List;
         final ccode = e.last.toString();
-
+        
         final currency = currencyList.firstWhere(
           (c) => c.code == ccode,
           orElse: () => Currency.create(ccode, 2, pattern: '0.00 CCC'),
         );
+        
+        Currencies().register(currency);
 
         return MoneyExt.fromLooseString(
           e.first.toString(),
@@ -67,13 +69,13 @@ class BeancountParserDefinition extends BeancountGrammarDefinition {
   Parser costToken() => super.costToken().map((each) {
         final e = each as List;
         final type = e.first as String;
-        final items = e.elementAt(1) as List ?? [];
+        final items = e.elementAt(1) as List?;
         final value =
-            items.singleWhere((e) => e is Money, orElse: () => null) as Money;
-        final date = items.singleWhere((e) => e is DateTime, orElse: () => null)
-            as DateTime;
+            items?.singleWhere((e) => e is Money, orElse: () => null) as Money?;
+        final date = items?.singleWhere((e) => e is DateTime, orElse: () => null)
+            as DateTime?;
         final label =
-            items.singleWhere((e) => e is String, orElse: () => null) as String;
+            items?.singleWhere((e) => e is String, orElse: () => null) as String?;
 
         return Cost(
           perUnitValue: type == '{' ? value : null,
@@ -89,7 +91,7 @@ class BeancountParserDefinition extends BeancountGrammarDefinition {
         return Posting(
           flag: e.first?.toString(),
           account: e.elementAt(1) as Account,
-          position: e.elementAt(2) as Position,
+          position: e.elementAt(2) as Position?,
           comment: e.elementAt(3) as String,
           metadata: e.last as Map<String, MetaValue>,
         );
@@ -98,15 +100,16 @@ class BeancountParserDefinition extends BeancountGrammarDefinition {
   @override
   Parser singlePosition() => super.singlePosition().map((each) {
         final e = each as List;
-        final price = e.elementAt(2) as List;
-        final type = price?.first as String;
-        final unit = price?.last as Money;
+
+        final price = e.elementAt(2) as List?;
+        final type = price?.first as String?;
+        final unit = price?.last as Money?;
 
         return Position(
           unit: e.first as Money,
-          cost: e.elementAt(1) as Cost,
-          perUnitPrice: type == '@' ? unit : null,
-          price: type == '@@' ? unit : null,
+          cost: e.elementAt(1) as Cost?,
+          perUnitPrice: type == '@' ? unit! : null,
+          price: type == '@@' ? unit! : null,
         );
       });
 
@@ -133,7 +136,7 @@ class BeancountParserDefinition extends BeancountGrammarDefinition {
         }
         return Transaction(
           date: e.first as DateTime,
-          flag: e.elementAt(1)?.toString(),
+          flag: e.elementAt(1).toString(),
           payee: payee,
           narration: comment,
           tags: e.elementAt(3) as List<String>,
@@ -151,8 +154,8 @@ class BeancountParserDefinition extends BeancountGrammarDefinition {
         final type = e.elementAt(1).toString().replaceAll('"', '');
         final account = e.elementAt(2) as Account;
         final currencies =
-            (e.elementAt(3) as List)?.map((e) => e.toString())?.toList();
-        final bookingMethod = e.elementAt(4)?.toString()?.replaceAll('"', '');
+            (e.elementAt(3) as List?)?.map((e) => e.toString()).toList() ?? const [];
+        final bookingMethod = e.elementAt(4)?.toString().replaceAll('"', '');
         final comment = e.elementAt(5) as String;
         final metadata = e.elementAt(6) as Map<String, MetaValue>;
 
@@ -181,12 +184,17 @@ class BeancountParserDefinition extends BeancountGrammarDefinition {
   @override
   Parser commodityAction() => super.commodityAction().map((each) {
         final e = each as List;
-        return CommodityAction(
+
+        final commodityAction = CommodityAction(
           date: e.first as DateTime,
           code: e.elementAt(2) as String,
           comment: e.elementAt(3) as String,
           metadata: e.elementAt(4) as Map<String, MetaValue>,
         );
+        
+        Currencies().register(commodityAction.currency);
+
+        return commodityAction;
       });
   @override
   Parser balanceAction() => super.balanceAction().map((each) {

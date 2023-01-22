@@ -1,22 +1,22 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:intl/intl.dart';
-import 'package:meta/meta.dart';
 import 'package:money2/money2.dart';
 
 part 'model.freezed.dart';
 
 @freezed
 abstract class MetaValue with _$MetaValue {
+  MetaValue._();
+
   factory MetaValue({
-    @required String value,
-    @nullable String comment,
+    required String value,
+     String? comment,
   }) = _MetaValue;
 
-  @late
   String get stringify => (() {
         final buffer = StringBuffer()..write('"$value"');
 
-        if (comment != null && comment.isNotEmpty) {
+        if (comment != null && comment!.isNotEmpty) {
           buffer.write(' ; $comment');
         }
 
@@ -26,9 +26,10 @@ abstract class MetaValue with _$MetaValue {
 
 @freezed
 abstract class Account with _$Account {
-  factory Account({@required String name}) = _Account;
+  Account._();
 
-  @late
+  factory Account({required String name}) = _Account;
+
   String get stringify => name;
 }
 
@@ -36,19 +37,20 @@ final formatter = DateFormat('yyyy-MM-dd');
 
 @freezed
 abstract class Transaction with _$Transaction {
+  Transaction._();
+
   factory Transaction({
-    @required DateTime date,
+    required DateTime date,
     @Default('*') String flag,
-    @nullable String payee,
-    @nullable String narration,
+     String? payee,
+     String? narration,
     @Default([]) List<String> tags,
     @Default([]) List<String> links,
     @Default({}) Map<String, MetaValue> metadata,
     @Default([]) List<Posting> postings,
-    @nullable String comment,
+     String? comment,
   }) = _Transaction;
 
-  @late
   String get stringify => (() {
         final buffer = StringBuffer()..write(headerToString);
 
@@ -63,38 +65,35 @@ abstract class Transaction with _$Transaction {
         return buffer.toString();
       })();
 
-  @late
   String get headerToString => (() {
         final buffer = StringBuffer()..write('${formatter.format(date)} $flag');
 
-        if (payee != null && payee.isNotEmpty) {
+        if (payee != null && payee!.isNotEmpty) {
           buffer.write(' "$payee" "${narration ?? ''}"');
-        } else if (narration != null && narration.isNotEmpty) {
+        } else if (narration != null && narration!.isNotEmpty) {
           buffer.write(' "$narration"');
         }
 
-        for (final tag in tags.where((t) => t != null)) {
+        for (final tag in tags) {
           buffer.write(' #$tag');
         }
-        for (final link in links.where((l) => l != null)) {
+        for (final link in links) {
           buffer.write(' ^$link');
         }
 
-        if (comment != null && comment.isNotEmpty) {
+        if (comment != null && comment!.isNotEmpty) {
           buffer.write(' ; $comment');
         }
 
         return buffer.toString();
       })();
 
-  @late
   bool get canBeBalanced =>
       postings.where((posting) => posting.position == null).length == 1;
 
-  @late
   Map<Currency, Money> get sumsMap => (() {
         final sums = <Currency, Money>{};
-        postings.map((p) => p.effectiveMoney).forEach((money) {
+                  postings.map((p) => p.effectiveMoney).forEach((money) {
           if (money != null) {
             sums.update(
               money.currency,
@@ -106,11 +105,9 @@ abstract class Transaction with _$Transaction {
         return sums;
       })();
 
-  @late
   bool get isBalanced => sumsMap.values.every((money) => money.isZero);
 
-  @late
-  Transaction get balanced => (() {
+  Transaction? get balanced => (() {
         if (isBalanced) return this;
         if (!canBeBalanced) return null;
 
@@ -132,15 +129,16 @@ abstract class Transaction with _$Transaction {
 
 @freezed
 abstract class Posting with _$Posting {
+  Posting._();
+
   factory Posting({
-    @nullable String flag,
-    @required Account account,
-    @nullable Position position,
-    @nullable String comment,
+     String? flag,
+    required Account account,
+     Position? position,
+     String? comment,
     @Default({}) Map<String, MetaValue> metadata,
   }) = _Posting;
 
-  @late
   String get stringify => (() {
         final buffer = StringBuffer();
 
@@ -151,10 +149,10 @@ abstract class Posting with _$Posting {
         buffer.write(account.stringify);
 
         if (position != null) {
-          buffer.write(' ${position.stringify}');
+          buffer.write(' ${position!.stringify}');
         }
 
-        if (comment != null && comment.isNotEmpty) {
+        if (comment != null && comment!.isNotEmpty) {
           buffer.write(' ; $comment');
         }
 
@@ -165,42 +163,43 @@ abstract class Posting with _$Posting {
         return buffer.toString();
       })();
 
-  @late
-  Money get effectiveMoney => (() {
+  Money? get effectiveMoney => (() {
         if (position == null) return null;
+        final positionBang = position!;
 
-        final unit = position.unit;
-        final unitDouble = unit.minorUnits / unit.currency.minorDigitsFactor;
+        final unit = positionBang.unit;
+        final unitFixed = Fixed.fromBigInt(unit.minorUnits, scale: unit.currency.scale);
 
-        if (position.cost?.value != null) {
-          return position.cost.value;
-        } else if (position.cost?.perUnitValue != null) {
-          return position.cost.perUnitValue * unitDouble;
-        } else if (position.price != null) {
-          return position.price;
-        } else if (position.perUnitPrice != null) {
-          return position.perUnitPrice * unitDouble;
+        if (positionBang.cost?.value != null) {
+          return positionBang.cost!.value;
+        } else if (positionBang.cost?.perUnitValue != null) {
+          return positionBang.cost!.perUnitValue!.multiplyByFixed(unitFixed);
+        } else if (positionBang.price != null) {
+          return positionBang.price;
+        } else if (positionBang.perUnitPrice != null) {
+          return positionBang.perUnitPrice!.multiplyByFixed(unitFixed);
         }
 
-        return position.unit;
+        return positionBang.unit;
       })();
 }
 
 @freezed
 abstract class Position with _$Position {
+  Position._();
+
   factory Position({
-    @required Money unit, // amount + currency
-    @nullable Cost cost, // {} or {{}}
-    @nullable Money price, // @@ -> used only to balance when no cost is defined
-    @nullable Money perUnitPrice, // @ -> same
+    required Money unit, // amount + currency
+     Cost? cost, // {} or {{}}
+     Money? price, // @@ -> used only to balance when no cost is defined
+     Money? perUnitPrice, // @ -> same
   }) = _Position;
 
-  @late
   String get stringify => (() {
         final buffer = StringBuffer()..write(unit);
 
         if (cost != null) {
-          buffer.write(' ${cost.stringify}');
+          buffer.write(' ${cost!.stringify}');
         }
 
         if ((price ?? perUnitPrice) != null) {
@@ -215,23 +214,24 @@ abstract class Position with _$Position {
 
 @freezed
 abstract class Cost with _$Cost {
+  Cost._();
+
   // Absolute cost: {{[amount],  [date],     [label]}}
   //                {{10.00 BRL, 2020-11-19, "lot-A"}}
   // Per unit cost: {[amount],  [date],     [label]}
   //                {10.00 BRL, 2020-11-19, "lot-A"}
   factory Cost({
-    @nullable Money value, // amount + currency
-    @nullable Money perUnitValue, // amount + currency
-    @nullable DateTime date,
-    @nullable String label,
+     Money? value, // amount + currency
+     Money? perUnitValue, // amount + currency
+     DateTime? date,
+     String? label,
   }) = _Cost;
 
-  @late
   String get stringify => (() {
         final isAbsoluteValue = value != null;
         final lotData = [
           if ((value ?? perUnitValue) != null) value ?? perUnitValue,
-          if (date != null) formatter.format(date),
+          if (date != null) formatter.format(date!),
           if (label != null) '"$label"'
         ];
 

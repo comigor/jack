@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'actions.dart';
 
@@ -9,201 +11,205 @@ part of 'actions.dart';
 
 T _$identity<T>(T value) => value;
 
-/// @nodoc
-class _$AccountActionTearOff {
-  const _$AccountActionTearOff();
-
-// ignore: unused_element
-  AccountOpenAction open(
-      {@required DateTime date,
-      @required String type,
-      @required Account account,
-      List<String> currencies = const [],
-      @nullable String bookingMethod,
-      @nullable String comment,
-      Map<String, MetaValue> metadata = const {}}) {
-    return AccountOpenAction(
-      date: date,
-      type: type,
-      account: account,
-      currencies: currencies,
-      bookingMethod: bookingMethod,
-      comment: comment,
-      metadata: metadata,
-    );
-  }
-
-// ignore: unused_element
-  AccountCloseAction close(
-      {@required DateTime date,
-      @required String type,
-      @required Account account,
-      List<String> currencies = const [],
-      @nullable String bookingMethod,
-      @nullable String comment,
-      Map<String, MetaValue> metadata = const {}}) {
-    return AccountCloseAction(
-      date: date,
-      type: type,
-      account: account,
-      currencies: currencies,
-      bookingMethod: bookingMethod,
-      comment: comment,
-      metadata: metadata,
-    );
-  }
-}
-
-/// @nodoc
-// ignore: unused_element
-const $AccountAction = _$AccountActionTearOff();
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$AccountAction {
-  DateTime get date;
-  String get type;
-  Account get account;
-  List<String> get currencies;
-  @nullable
-  String get bookingMethod;
-  @nullable
-  String get comment;
-  Map<String, MetaValue> get metadata;
-
+  DateTime get date => throw _privateConstructorUsedError;
+  String get type => throw _privateConstructorUsedError;
+  Account get account => throw _privateConstructorUsedError;
+  List<String> get currencies => throw _privateConstructorUsedError;
+  String? get bookingMethod => throw _privateConstructorUsedError;
+  String? get comment => throw _privateConstructorUsedError;
+  Map<String, MetaValue> get metadata => throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required
-        Result open(
+  TResult when<TResult extends Object?>({
+    required TResult Function(
             DateTime date,
             String type,
             Account account,
             List<String> currencies,
-            @nullable String bookingMethod,
-            @nullable String comment,
-            Map<String, MetaValue> metadata),
-    @required
-        Result close(
+            String? bookingMethod,
+            String? comment,
+            Map<String, MetaValue> metadata)
+        open,
+    required TResult Function(
             DateTime date,
             String type,
             Account account,
             List<String> currencies,
-            @nullable String bookingMethod,
-            @nullable String comment,
-            Map<String, MetaValue> metadata),
-  });
+            String? bookingMethod,
+            String? comment,
+            Map<String, MetaValue> metadata)
+        close,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result open(
-        DateTime date,
-        String type,
-        Account account,
-        List<String> currencies,
-        @nullable String bookingMethod,
-        @nullable String comment,
-        Map<String, MetaValue> metadata),
-    Result close(
-        DateTime date,
-        String type,
-        Account account,
-        List<String> currencies,
-        @nullable String bookingMethod,
-        @nullable String comment,
-        Map<String, MetaValue> metadata),
-    @required Result orElse(),
-  });
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            DateTime date,
+            String type,
+            Account account,
+            List<String> currencies,
+            String? bookingMethod,
+            String? comment,
+            Map<String, MetaValue> metadata)?
+        open,
+    TResult? Function(
+            DateTime date,
+            String type,
+            Account account,
+            List<String> currencies,
+            String? bookingMethod,
+            String? comment,
+            Map<String, MetaValue> metadata)?
+        close,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result open(AccountOpenAction value),
-    @required Result close(AccountCloseAction value),
-  });
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            DateTime date,
+            String type,
+            Account account,
+            List<String> currencies,
+            String? bookingMethod,
+            String? comment,
+            Map<String, MetaValue> metadata)?
+        open,
+    TResult Function(
+            DateTime date,
+            String type,
+            Account account,
+            List<String> currencies,
+            String? bookingMethod,
+            String? comment,
+            Map<String, MetaValue> metadata)?
+        close,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result open(AccountOpenAction value),
-    Result close(AccountCloseAction value),
-    @required Result orElse(),
-  });
+  TResult map<TResult extends Object?>({
+    required TResult Function(AccountOpenAction value) open,
+    required TResult Function(AccountCloseAction value) close,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AccountOpenAction value)? open,
+    TResult? Function(AccountCloseAction value)? close,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AccountOpenAction value)? open,
+    TResult Function(AccountCloseAction value)? close,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 
-  $AccountActionCopyWith<AccountAction> get copyWith;
+  @JsonKey(ignore: true)
+  $AccountActionCopyWith<AccountAction> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $AccountActionCopyWith<$Res> {
   factory $AccountActionCopyWith(
           AccountAction value, $Res Function(AccountAction) then) =
-      _$AccountActionCopyWithImpl<$Res>;
+      _$AccountActionCopyWithImpl<$Res, AccountAction>;
+  @useResult
   $Res call(
       {DateTime date,
       String type,
       Account account,
       List<String> currencies,
-      @nullable String bookingMethod,
-      @nullable String comment,
+      String? bookingMethod,
+      String? comment,
       Map<String, MetaValue> metadata});
 
   $AccountCopyWith<$Res> get account;
 }
 
 /// @nodoc
-class _$AccountActionCopyWithImpl<$Res>
+class _$AccountActionCopyWithImpl<$Res, $Val extends AccountAction>
     implements $AccountActionCopyWith<$Res> {
   _$AccountActionCopyWithImpl(this._value, this._then);
 
-  final AccountAction _value;
   // ignore: unused_field
-  final $Res Function(AccountAction) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object date = freezed,
-    Object type = freezed,
-    Object account = freezed,
-    Object currencies = freezed,
-    Object bookingMethod = freezed,
-    Object comment = freezed,
-    Object metadata = freezed,
+    Object? date = null,
+    Object? type = null,
+    Object? account = null,
+    Object? currencies = null,
+    Object? bookingMethod = freezed,
+    Object? comment = freezed,
+    Object? metadata = null,
   }) {
     return _then(_value.copyWith(
-      date: date == freezed ? _value.date : date as DateTime,
-      type: type == freezed ? _value.type : type as String,
-      account: account == freezed ? _value.account : account as Account,
-      currencies: currencies == freezed
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      account: null == account
+          ? _value.account
+          : account // ignore: cast_nullable_to_non_nullable
+              as Account,
+      currencies: null == currencies
           ? _value.currencies
-          : currencies as List<String>,
-      bookingMethod: bookingMethod == freezed
+          : currencies // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      bookingMethod: freezed == bookingMethod
           ? _value.bookingMethod
-          : bookingMethod as String,
-      comment: comment == freezed ? _value.comment : comment as String,
-      metadata: metadata == freezed
+          : bookingMethod // ignore: cast_nullable_to_non_nullable
+              as String?,
+      comment: freezed == comment
+          ? _value.comment
+          : comment // ignore: cast_nullable_to_non_nullable
+              as String?,
+      metadata: null == metadata
           ? _value.metadata
-          : metadata as Map<String, MetaValue>,
-    ));
+          : metadata // ignore: cast_nullable_to_non_nullable
+              as Map<String, MetaValue>,
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $AccountCopyWith<$Res> get account {
-    if (_value.account == null) {
-      return null;
-    }
     return $AccountCopyWith<$Res>(_value.account, (value) {
-      return _then(_value.copyWith(account: value));
+      return _then(_value.copyWith(account: value) as $Val);
     });
   }
 }
 
 /// @nodoc
-abstract class $AccountOpenActionCopyWith<$Res>
+abstract class _$$AccountOpenActionCopyWith<$Res>
     implements $AccountActionCopyWith<$Res> {
-  factory $AccountOpenActionCopyWith(
-          AccountOpenAction value, $Res Function(AccountOpenAction) then) =
-      _$AccountOpenActionCopyWithImpl<$Res>;
+  factory _$$AccountOpenActionCopyWith(
+          _$AccountOpenAction value, $Res Function(_$AccountOpenAction) then) =
+      __$$AccountOpenActionCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {DateTime date,
       String type,
       Account account,
       List<String> currencies,
-      @nullable String bookingMethod,
-      @nullable String comment,
+      String? bookingMethod,
+      String? comment,
       Map<String, MetaValue> metadata});
 
   @override
@@ -211,59 +217,71 @@ abstract class $AccountOpenActionCopyWith<$Res>
 }
 
 /// @nodoc
-class _$AccountOpenActionCopyWithImpl<$Res>
-    extends _$AccountActionCopyWithImpl<$Res>
-    implements $AccountOpenActionCopyWith<$Res> {
-  _$AccountOpenActionCopyWithImpl(
-      AccountOpenAction _value, $Res Function(AccountOpenAction) _then)
-      : super(_value, (v) => _then(v as AccountOpenAction));
+class __$$AccountOpenActionCopyWithImpl<$Res>
+    extends _$AccountActionCopyWithImpl<$Res, _$AccountOpenAction>
+    implements _$$AccountOpenActionCopyWith<$Res> {
+  __$$AccountOpenActionCopyWithImpl(
+      _$AccountOpenAction _value, $Res Function(_$AccountOpenAction) _then)
+      : super(_value, _then);
 
-  @override
-  AccountOpenAction get _value => super._value as AccountOpenAction;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object date = freezed,
-    Object type = freezed,
-    Object account = freezed,
-    Object currencies = freezed,
-    Object bookingMethod = freezed,
-    Object comment = freezed,
-    Object metadata = freezed,
+    Object? date = null,
+    Object? type = null,
+    Object? account = null,
+    Object? currencies = null,
+    Object? bookingMethod = freezed,
+    Object? comment = freezed,
+    Object? metadata = null,
   }) {
-    return _then(AccountOpenAction(
-      date: date == freezed ? _value.date : date as DateTime,
-      type: type == freezed ? _value.type : type as String,
-      account: account == freezed ? _value.account : account as Account,
-      currencies: currencies == freezed
-          ? _value.currencies
-          : currencies as List<String>,
-      bookingMethod: bookingMethod == freezed
+    return _then(_$AccountOpenAction(
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      account: null == account
+          ? _value.account
+          : account // ignore: cast_nullable_to_non_nullable
+              as Account,
+      currencies: null == currencies
+          ? _value._currencies
+          : currencies // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      bookingMethod: freezed == bookingMethod
           ? _value.bookingMethod
-          : bookingMethod as String,
-      comment: comment == freezed ? _value.comment : comment as String,
-      metadata: metadata == freezed
-          ? _value.metadata
-          : metadata as Map<String, MetaValue>,
+          : bookingMethod // ignore: cast_nullable_to_non_nullable
+              as String?,
+      comment: freezed == comment
+          ? _value.comment
+          : comment // ignore: cast_nullable_to_non_nullable
+              as String?,
+      metadata: null == metadata
+          ? _value._metadata
+          : metadata // ignore: cast_nullable_to_non_nullable
+              as Map<String, MetaValue>,
     ));
   }
 }
 
 /// @nodoc
-class _$AccountOpenAction implements AccountOpenAction {
+
+class _$AccountOpenAction extends AccountOpenAction {
   _$AccountOpenAction(
-      {@required this.date,
-      @required this.type,
-      @required this.account,
-      this.currencies = const [],
-      @nullable this.bookingMethod,
-      @nullable this.comment,
-      this.metadata = const {}})
-      : assert(date != null),
-        assert(type != null),
-        assert(account != null),
-        assert(currencies != null),
-        assert(metadata != null);
+      {required this.date,
+      required this.type,
+      required this.account,
+      final List<String> currencies = const [],
+      this.bookingMethod,
+      this.comment,
+      final Map<String, MetaValue> metadata = const {}})
+      : _currencies = currencies,
+        _metadata = metadata,
+        super._();
 
   @override
   final DateTime date;
@@ -271,147 +289,141 @@ class _$AccountOpenAction implements AccountOpenAction {
   final String type;
   @override
   final Account account;
-  @JsonKey(defaultValue: const [])
+  final List<String> _currencies;
   @override
-  final List<String> currencies;
-  @override
-  @nullable
-  final String bookingMethod;
-  @override
-  @nullable
-  final String comment;
-  @JsonKey(defaultValue: const {})
-  @override
-  final Map<String, MetaValue> metadata;
-
-  bool _didstringify = false;
-  String _stringify;
+  @JsonKey()
+  List<String> get currencies {
+    if (_currencies is EqualUnmodifiableListView) return _currencies;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_currencies);
+  }
 
   @override
-  String get stringify {
-    if (_didstringify == false) {
-      _didstringify = true;
-      _stringify = (() {
-        final buffer = StringBuffer()
-          ..write('${formatter.format(date)} $type ${account.stringify}');
-
-        if (currencies.isNotEmpty) {
-          buffer.write(' ${currencies.join(',')}');
-        }
-
-        if (bookingMethod != null) {
-          buffer.write(' "$bookingMethod"');
-        }
-
-        if (comment != null && comment.isNotEmpty) {
-          buffer.write(' ; $comment');
-        }
-
-        for (final meta in metadata.entries) {
-          buffer.write('\n  ${meta.key}: ${meta.value.stringify}');
-        }
-
-        return buffer.toString();
-      })();
-    }
-    return _stringify;
+  final String? bookingMethod;
+  @override
+  final String? comment;
+  final Map<String, MetaValue> _metadata;
+  @override
+  @JsonKey()
+  Map<String, MetaValue> get metadata {
+    if (_metadata is EqualUnmodifiableMapView) return _metadata;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_metadata);
   }
 
   @override
   String toString() {
-    return 'AccountAction.open(date: $date, type: $type, account: $account, currencies: $currencies, bookingMethod: $bookingMethod, comment: $comment, metadata: $metadata, stringify: $stringify)';
+    return 'AccountAction.open(date: $date, type: $type, account: $account, currencies: $currencies, bookingMethod: $bookingMethod, comment: $comment, metadata: $metadata)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is AccountOpenAction &&
-            (identical(other.date, date) ||
-                const DeepCollectionEquality().equals(other.date, date)) &&
-            (identical(other.type, type) ||
-                const DeepCollectionEquality().equals(other.type, type)) &&
-            (identical(other.account, account) ||
-                const DeepCollectionEquality()
-                    .equals(other.account, account)) &&
-            (identical(other.currencies, currencies) ||
-                const DeepCollectionEquality()
-                    .equals(other.currencies, currencies)) &&
+        (other.runtimeType == runtimeType &&
+            other is _$AccountOpenAction &&
+            (identical(other.date, date) || other.date == date) &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.account, account) || other.account == account) &&
+            const DeepCollectionEquality()
+                .equals(other._currencies, _currencies) &&
             (identical(other.bookingMethod, bookingMethod) ||
-                const DeepCollectionEquality()
-                    .equals(other.bookingMethod, bookingMethod)) &&
-            (identical(other.comment, comment) ||
-                const DeepCollectionEquality()
-                    .equals(other.comment, comment)) &&
-            (identical(other.metadata, metadata) ||
-                const DeepCollectionEquality()
-                    .equals(other.metadata, metadata)));
+                other.bookingMethod == bookingMethod) &&
+            (identical(other.comment, comment) || other.comment == comment) &&
+            const DeepCollectionEquality().equals(other._metadata, _metadata));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(date) ^
-      const DeepCollectionEquality().hash(type) ^
-      const DeepCollectionEquality().hash(account) ^
-      const DeepCollectionEquality().hash(currencies) ^
-      const DeepCollectionEquality().hash(bookingMethod) ^
-      const DeepCollectionEquality().hash(comment) ^
-      const DeepCollectionEquality().hash(metadata);
+  int get hashCode => Object.hash(
+      runtimeType,
+      date,
+      type,
+      account,
+      const DeepCollectionEquality().hash(_currencies),
+      bookingMethod,
+      comment,
+      const DeepCollectionEquality().hash(_metadata));
 
+  @JsonKey(ignore: true)
   @override
-  $AccountOpenActionCopyWith<AccountOpenAction> get copyWith =>
-      _$AccountOpenActionCopyWithImpl<AccountOpenAction>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$AccountOpenActionCopyWith<_$AccountOpenAction> get copyWith =>
+      __$$AccountOpenActionCopyWithImpl<_$AccountOpenAction>(this, _$identity);
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required
-        Result open(
+  TResult when<TResult extends Object?>({
+    required TResult Function(
             DateTime date,
             String type,
             Account account,
             List<String> currencies,
-            @nullable String bookingMethod,
-            @nullable String comment,
-            Map<String, MetaValue> metadata),
-    @required
-        Result close(
+            String? bookingMethod,
+            String? comment,
+            Map<String, MetaValue> metadata)
+        open,
+    required TResult Function(
             DateTime date,
             String type,
             Account account,
             List<String> currencies,
-            @nullable String bookingMethod,
-            @nullable String comment,
-            Map<String, MetaValue> metadata),
+            String? bookingMethod,
+            String? comment,
+            Map<String, MetaValue> metadata)
+        close,
   }) {
-    assert(open != null);
-    assert(close != null);
     return open(
         date, type, account, currencies, bookingMethod, comment, metadata);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result open(
-        DateTime date,
-        String type,
-        Account account,
-        List<String> currencies,
-        @nullable String bookingMethod,
-        @nullable String comment,
-        Map<String, MetaValue> metadata),
-    Result close(
-        DateTime date,
-        String type,
-        Account account,
-        List<String> currencies,
-        @nullable String bookingMethod,
-        @nullable String comment,
-        Map<String, MetaValue> metadata),
-    @required Result orElse(),
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            DateTime date,
+            String type,
+            Account account,
+            List<String> currencies,
+            String? bookingMethod,
+            String? comment,
+            Map<String, MetaValue> metadata)?
+        open,
+    TResult? Function(
+            DateTime date,
+            String type,
+            Account account,
+            List<String> currencies,
+            String? bookingMethod,
+            String? comment,
+            Map<String, MetaValue> metadata)?
+        close,
   }) {
-    assert(orElse != null);
+    return open?.call(
+        date, type, account, currencies, bookingMethod, comment, metadata);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            DateTime date,
+            String type,
+            Account account,
+            List<String> currencies,
+            String? bookingMethod,
+            String? comment,
+            Map<String, MetaValue> metadata)?
+        open,
+    TResult Function(
+            DateTime date,
+            String type,
+            Account account,
+            List<String> currencies,
+            String? bookingMethod,
+            String? comment,
+            Map<String, MetaValue> metadata)?
+        close,
+    required TResult orElse(),
+  }) {
     if (open != null) {
       return open(
           date, type, account, currencies, bookingMethod, comment, metadata);
@@ -421,23 +433,29 @@ class _$AccountOpenAction implements AccountOpenAction {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result open(AccountOpenAction value),
-    @required Result close(AccountCloseAction value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(AccountOpenAction value) open,
+    required TResult Function(AccountCloseAction value) close,
   }) {
-    assert(open != null);
-    assert(close != null);
     return open(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result open(AccountOpenAction value),
-    Result close(AccountCloseAction value),
-    @required Result orElse(),
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AccountOpenAction value)? open,
+    TResult? Function(AccountCloseAction value)? close,
   }) {
-    assert(orElse != null);
+    return open?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AccountOpenAction value)? open,
+    TResult Function(AccountCloseAction value)? close,
+    required TResult orElse(),
+  }) {
     if (open != null) {
       return open(this);
     }
@@ -445,15 +463,16 @@ class _$AccountOpenAction implements AccountOpenAction {
   }
 }
 
-abstract class AccountOpenAction implements AccountAction {
+abstract class AccountOpenAction extends AccountAction {
   factory AccountOpenAction(
-      {@required DateTime date,
-      @required String type,
-      @required Account account,
-      List<String> currencies,
-      @nullable String bookingMethod,
-      @nullable String comment,
-      Map<String, MetaValue> metadata}) = _$AccountOpenAction;
+      {required final DateTime date,
+      required final String type,
+      required final Account account,
+      final List<String> currencies,
+      final String? bookingMethod,
+      final String? comment,
+      final Map<String, MetaValue> metadata}) = _$AccountOpenAction;
+  AccountOpenAction._() : super._();
 
   @override
   DateTime get date;
@@ -464,31 +483,32 @@ abstract class AccountOpenAction implements AccountAction {
   @override
   List<String> get currencies;
   @override
-  @nullable
-  String get bookingMethod;
+  String? get bookingMethod;
   @override
-  @nullable
-  String get comment;
+  String? get comment;
   @override
   Map<String, MetaValue> get metadata;
   @override
-  $AccountOpenActionCopyWith<AccountOpenAction> get copyWith;
+  @JsonKey(ignore: true)
+  _$$AccountOpenActionCopyWith<_$AccountOpenAction> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $AccountCloseActionCopyWith<$Res>
+abstract class _$$AccountCloseActionCopyWith<$Res>
     implements $AccountActionCopyWith<$Res> {
-  factory $AccountCloseActionCopyWith(
-          AccountCloseAction value, $Res Function(AccountCloseAction) then) =
-      _$AccountCloseActionCopyWithImpl<$Res>;
+  factory _$$AccountCloseActionCopyWith(_$AccountCloseAction value,
+          $Res Function(_$AccountCloseAction) then) =
+      __$$AccountCloseActionCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {DateTime date,
       String type,
       Account account,
       List<String> currencies,
-      @nullable String bookingMethod,
-      @nullable String comment,
+      String? bookingMethod,
+      String? comment,
       Map<String, MetaValue> metadata});
 
   @override
@@ -496,59 +516,71 @@ abstract class $AccountCloseActionCopyWith<$Res>
 }
 
 /// @nodoc
-class _$AccountCloseActionCopyWithImpl<$Res>
-    extends _$AccountActionCopyWithImpl<$Res>
-    implements $AccountCloseActionCopyWith<$Res> {
-  _$AccountCloseActionCopyWithImpl(
-      AccountCloseAction _value, $Res Function(AccountCloseAction) _then)
-      : super(_value, (v) => _then(v as AccountCloseAction));
+class __$$AccountCloseActionCopyWithImpl<$Res>
+    extends _$AccountActionCopyWithImpl<$Res, _$AccountCloseAction>
+    implements _$$AccountCloseActionCopyWith<$Res> {
+  __$$AccountCloseActionCopyWithImpl(
+      _$AccountCloseAction _value, $Res Function(_$AccountCloseAction) _then)
+      : super(_value, _then);
 
-  @override
-  AccountCloseAction get _value => super._value as AccountCloseAction;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object date = freezed,
-    Object type = freezed,
-    Object account = freezed,
-    Object currencies = freezed,
-    Object bookingMethod = freezed,
-    Object comment = freezed,
-    Object metadata = freezed,
+    Object? date = null,
+    Object? type = null,
+    Object? account = null,
+    Object? currencies = null,
+    Object? bookingMethod = freezed,
+    Object? comment = freezed,
+    Object? metadata = null,
   }) {
-    return _then(AccountCloseAction(
-      date: date == freezed ? _value.date : date as DateTime,
-      type: type == freezed ? _value.type : type as String,
-      account: account == freezed ? _value.account : account as Account,
-      currencies: currencies == freezed
-          ? _value.currencies
-          : currencies as List<String>,
-      bookingMethod: bookingMethod == freezed
+    return _then(_$AccountCloseAction(
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      account: null == account
+          ? _value.account
+          : account // ignore: cast_nullable_to_non_nullable
+              as Account,
+      currencies: null == currencies
+          ? _value._currencies
+          : currencies // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      bookingMethod: freezed == bookingMethod
           ? _value.bookingMethod
-          : bookingMethod as String,
-      comment: comment == freezed ? _value.comment : comment as String,
-      metadata: metadata == freezed
-          ? _value.metadata
-          : metadata as Map<String, MetaValue>,
+          : bookingMethod // ignore: cast_nullable_to_non_nullable
+              as String?,
+      comment: freezed == comment
+          ? _value.comment
+          : comment // ignore: cast_nullable_to_non_nullable
+              as String?,
+      metadata: null == metadata
+          ? _value._metadata
+          : metadata // ignore: cast_nullable_to_non_nullable
+              as Map<String, MetaValue>,
     ));
   }
 }
 
 /// @nodoc
-class _$AccountCloseAction implements AccountCloseAction {
+
+class _$AccountCloseAction extends AccountCloseAction {
   _$AccountCloseAction(
-      {@required this.date,
-      @required this.type,
-      @required this.account,
-      this.currencies = const [],
-      @nullable this.bookingMethod,
-      @nullable this.comment,
-      this.metadata = const {}})
-      : assert(date != null),
-        assert(type != null),
-        assert(account != null),
-        assert(currencies != null),
-        assert(metadata != null);
+      {required this.date,
+      required this.type,
+      required this.account,
+      final List<String> currencies = const [],
+      this.bookingMethod,
+      this.comment,
+      final Map<String, MetaValue> metadata = const {}})
+      : _currencies = currencies,
+        _metadata = metadata,
+        super._();
 
   @override
   final DateTime date;
@@ -556,147 +588,142 @@ class _$AccountCloseAction implements AccountCloseAction {
   final String type;
   @override
   final Account account;
-  @JsonKey(defaultValue: const [])
+  final List<String> _currencies;
   @override
-  final List<String> currencies;
-  @override
-  @nullable
-  final String bookingMethod;
-  @override
-  @nullable
-  final String comment;
-  @JsonKey(defaultValue: const {})
-  @override
-  final Map<String, MetaValue> metadata;
-
-  bool _didstringify = false;
-  String _stringify;
+  @JsonKey()
+  List<String> get currencies {
+    if (_currencies is EqualUnmodifiableListView) return _currencies;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_currencies);
+  }
 
   @override
-  String get stringify {
-    if (_didstringify == false) {
-      _didstringify = true;
-      _stringify = (() {
-        final buffer = StringBuffer()
-          ..write('${formatter.format(date)} $type ${account.stringify}');
-
-        if (currencies.isNotEmpty) {
-          buffer.write(' ${currencies.join(',')}');
-        }
-
-        if (bookingMethod != null) {
-          buffer.write(' "$bookingMethod"');
-        }
-
-        if (comment != null && comment.isNotEmpty) {
-          buffer.write(' ; $comment');
-        }
-
-        for (final meta in metadata.entries) {
-          buffer.write('\n  ${meta.key}: ${meta.value.stringify}');
-        }
-
-        return buffer.toString();
-      })();
-    }
-    return _stringify;
+  final String? bookingMethod;
+  @override
+  final String? comment;
+  final Map<String, MetaValue> _metadata;
+  @override
+  @JsonKey()
+  Map<String, MetaValue> get metadata {
+    if (_metadata is EqualUnmodifiableMapView) return _metadata;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_metadata);
   }
 
   @override
   String toString() {
-    return 'AccountAction.close(date: $date, type: $type, account: $account, currencies: $currencies, bookingMethod: $bookingMethod, comment: $comment, metadata: $metadata, stringify: $stringify)';
+    return 'AccountAction.close(date: $date, type: $type, account: $account, currencies: $currencies, bookingMethod: $bookingMethod, comment: $comment, metadata: $metadata)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is AccountCloseAction &&
-            (identical(other.date, date) ||
-                const DeepCollectionEquality().equals(other.date, date)) &&
-            (identical(other.type, type) ||
-                const DeepCollectionEquality().equals(other.type, type)) &&
-            (identical(other.account, account) ||
-                const DeepCollectionEquality()
-                    .equals(other.account, account)) &&
-            (identical(other.currencies, currencies) ||
-                const DeepCollectionEquality()
-                    .equals(other.currencies, currencies)) &&
+        (other.runtimeType == runtimeType &&
+            other is _$AccountCloseAction &&
+            (identical(other.date, date) || other.date == date) &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.account, account) || other.account == account) &&
+            const DeepCollectionEquality()
+                .equals(other._currencies, _currencies) &&
             (identical(other.bookingMethod, bookingMethod) ||
-                const DeepCollectionEquality()
-                    .equals(other.bookingMethod, bookingMethod)) &&
-            (identical(other.comment, comment) ||
-                const DeepCollectionEquality()
-                    .equals(other.comment, comment)) &&
-            (identical(other.metadata, metadata) ||
-                const DeepCollectionEquality()
-                    .equals(other.metadata, metadata)));
+                other.bookingMethod == bookingMethod) &&
+            (identical(other.comment, comment) || other.comment == comment) &&
+            const DeepCollectionEquality().equals(other._metadata, _metadata));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(date) ^
-      const DeepCollectionEquality().hash(type) ^
-      const DeepCollectionEquality().hash(account) ^
-      const DeepCollectionEquality().hash(currencies) ^
-      const DeepCollectionEquality().hash(bookingMethod) ^
-      const DeepCollectionEquality().hash(comment) ^
-      const DeepCollectionEquality().hash(metadata);
+  int get hashCode => Object.hash(
+      runtimeType,
+      date,
+      type,
+      account,
+      const DeepCollectionEquality().hash(_currencies),
+      bookingMethod,
+      comment,
+      const DeepCollectionEquality().hash(_metadata));
 
+  @JsonKey(ignore: true)
   @override
-  $AccountCloseActionCopyWith<AccountCloseAction> get copyWith =>
-      _$AccountCloseActionCopyWithImpl<AccountCloseAction>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$AccountCloseActionCopyWith<_$AccountCloseAction> get copyWith =>
+      __$$AccountCloseActionCopyWithImpl<_$AccountCloseAction>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required
-        Result open(
+  TResult when<TResult extends Object?>({
+    required TResult Function(
             DateTime date,
             String type,
             Account account,
             List<String> currencies,
-            @nullable String bookingMethod,
-            @nullable String comment,
-            Map<String, MetaValue> metadata),
-    @required
-        Result close(
+            String? bookingMethod,
+            String? comment,
+            Map<String, MetaValue> metadata)
+        open,
+    required TResult Function(
             DateTime date,
             String type,
             Account account,
             List<String> currencies,
-            @nullable String bookingMethod,
-            @nullable String comment,
-            Map<String, MetaValue> metadata),
+            String? bookingMethod,
+            String? comment,
+            Map<String, MetaValue> metadata)
+        close,
   }) {
-    assert(open != null);
-    assert(close != null);
     return close(
         date, type, account, currencies, bookingMethod, comment, metadata);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result open(
-        DateTime date,
-        String type,
-        Account account,
-        List<String> currencies,
-        @nullable String bookingMethod,
-        @nullable String comment,
-        Map<String, MetaValue> metadata),
-    Result close(
-        DateTime date,
-        String type,
-        Account account,
-        List<String> currencies,
-        @nullable String bookingMethod,
-        @nullable String comment,
-        Map<String, MetaValue> metadata),
-    @required Result orElse(),
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            DateTime date,
+            String type,
+            Account account,
+            List<String> currencies,
+            String? bookingMethod,
+            String? comment,
+            Map<String, MetaValue> metadata)?
+        open,
+    TResult? Function(
+            DateTime date,
+            String type,
+            Account account,
+            List<String> currencies,
+            String? bookingMethod,
+            String? comment,
+            Map<String, MetaValue> metadata)?
+        close,
   }) {
-    assert(orElse != null);
+    return close?.call(
+        date, type, account, currencies, bookingMethod, comment, metadata);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            DateTime date,
+            String type,
+            Account account,
+            List<String> currencies,
+            String? bookingMethod,
+            String? comment,
+            Map<String, MetaValue> metadata)?
+        open,
+    TResult Function(
+            DateTime date,
+            String type,
+            Account account,
+            List<String> currencies,
+            String? bookingMethod,
+            String? comment,
+            Map<String, MetaValue> metadata)?
+        close,
+    required TResult orElse(),
+  }) {
     if (close != null) {
       return close(
           date, type, account, currencies, bookingMethod, comment, metadata);
@@ -706,23 +733,29 @@ class _$AccountCloseAction implements AccountCloseAction {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result open(AccountOpenAction value),
-    @required Result close(AccountCloseAction value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(AccountOpenAction value) open,
+    required TResult Function(AccountCloseAction value) close,
   }) {
-    assert(open != null);
-    assert(close != null);
     return close(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result open(AccountOpenAction value),
-    Result close(AccountCloseAction value),
-    @required Result orElse(),
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AccountOpenAction value)? open,
+    TResult? Function(AccountCloseAction value)? close,
   }) {
-    assert(orElse != null);
+    return close?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AccountOpenAction value)? open,
+    TResult Function(AccountCloseAction value)? close,
+    required TResult orElse(),
+  }) {
     if (close != null) {
       return close(this);
     }
@@ -730,15 +763,16 @@ class _$AccountCloseAction implements AccountCloseAction {
   }
 }
 
-abstract class AccountCloseAction implements AccountAction {
+abstract class AccountCloseAction extends AccountAction {
   factory AccountCloseAction(
-      {@required DateTime date,
-      @required String type,
-      @required Account account,
-      List<String> currencies,
-      @nullable String bookingMethod,
-      @nullable String comment,
-      Map<String, MetaValue> metadata}) = _$AccountCloseAction;
+      {required final DateTime date,
+      required final String type,
+      required final Account account,
+      final List<String> currencies,
+      final String? bookingMethod,
+      final String? comment,
+      final Map<String, MetaValue> metadata}) = _$AccountCloseAction;
+  AccountCloseAction._() : super._();
 
   @override
   DateTime get date;
@@ -749,364 +783,302 @@ abstract class AccountCloseAction implements AccountAction {
   @override
   List<String> get currencies;
   @override
-  @nullable
-  String get bookingMethod;
+  String? get bookingMethod;
   @override
-  @nullable
-  String get comment;
+  String? get comment;
   @override
   Map<String, MetaValue> get metadata;
   @override
-  $AccountCloseActionCopyWith<AccountCloseAction> get copyWith;
+  @JsonKey(ignore: true)
+  _$$AccountCloseActionCopyWith<_$AccountCloseAction> get copyWith =>
+      throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class _$CommodityActionTearOff {
-  const _$CommodityActionTearOff();
-
-// ignore: unused_element
-  _CommodityAction call(
-      {@required DateTime date,
-      @required String code,
-      @nullable String comment,
-      Map<String, MetaValue> metadata = const {}}) {
-    return _CommodityAction(
-      date: date,
-      code: code,
-      comment: comment,
-      metadata: metadata,
-    );
-  }
-}
-
-/// @nodoc
-// ignore: unused_element
-const $CommodityAction = _$CommodityActionTearOff();
 
 /// @nodoc
 mixin _$CommodityAction {
-  DateTime get date;
-  String get code;
-  @nullable
-  String get comment;
-  Map<String, MetaValue> get metadata;
+  DateTime get date => throw _privateConstructorUsedError;
+  String get code => throw _privateConstructorUsedError;
+  String? get comment => throw _privateConstructorUsedError;
+  Map<String, MetaValue> get metadata => throw _privateConstructorUsedError;
 
-  $CommodityActionCopyWith<CommodityAction> get copyWith;
+  @JsonKey(ignore: true)
+  $CommodityActionCopyWith<CommodityAction> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $CommodityActionCopyWith<$Res> {
   factory $CommodityActionCopyWith(
           CommodityAction value, $Res Function(CommodityAction) then) =
-      _$CommodityActionCopyWithImpl<$Res>;
+      _$CommodityActionCopyWithImpl<$Res, CommodityAction>;
+  @useResult
   $Res call(
       {DateTime date,
       String code,
-      @nullable String comment,
+      String? comment,
       Map<String, MetaValue> metadata});
 }
 
 /// @nodoc
-class _$CommodityActionCopyWithImpl<$Res>
+class _$CommodityActionCopyWithImpl<$Res, $Val extends CommodityAction>
     implements $CommodityActionCopyWith<$Res> {
   _$CommodityActionCopyWithImpl(this._value, this._then);
 
-  final CommodityAction _value;
   // ignore: unused_field
-  final $Res Function(CommodityAction) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object date = freezed,
-    Object code = freezed,
-    Object comment = freezed,
-    Object metadata = freezed,
+    Object? date = null,
+    Object? code = null,
+    Object? comment = freezed,
+    Object? metadata = null,
   }) {
     return _then(_value.copyWith(
-      date: date == freezed ? _value.date : date as DateTime,
-      code: code == freezed ? _value.code : code as String,
-      comment: comment == freezed ? _value.comment : comment as String,
-      metadata: metadata == freezed
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      code: null == code
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as String,
+      comment: freezed == comment
+          ? _value.comment
+          : comment // ignore: cast_nullable_to_non_nullable
+              as String?,
+      metadata: null == metadata
           ? _value.metadata
-          : metadata as Map<String, MetaValue>,
-    ));
+          : metadata // ignore: cast_nullable_to_non_nullable
+              as Map<String, MetaValue>,
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$CommodityActionCopyWith<$Res>
+abstract class _$$_CommodityActionCopyWith<$Res>
     implements $CommodityActionCopyWith<$Res> {
-  factory _$CommodityActionCopyWith(
-          _CommodityAction value, $Res Function(_CommodityAction) then) =
-      __$CommodityActionCopyWithImpl<$Res>;
+  factory _$$_CommodityActionCopyWith(
+          _$_CommodityAction value, $Res Function(_$_CommodityAction) then) =
+      __$$_CommodityActionCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {DateTime date,
       String code,
-      @nullable String comment,
+      String? comment,
       Map<String, MetaValue> metadata});
 }
 
 /// @nodoc
-class __$CommodityActionCopyWithImpl<$Res>
-    extends _$CommodityActionCopyWithImpl<$Res>
-    implements _$CommodityActionCopyWith<$Res> {
-  __$CommodityActionCopyWithImpl(
-      _CommodityAction _value, $Res Function(_CommodityAction) _then)
-      : super(_value, (v) => _then(v as _CommodityAction));
+class __$$_CommodityActionCopyWithImpl<$Res>
+    extends _$CommodityActionCopyWithImpl<$Res, _$_CommodityAction>
+    implements _$$_CommodityActionCopyWith<$Res> {
+  __$$_CommodityActionCopyWithImpl(
+      _$_CommodityAction _value, $Res Function(_$_CommodityAction) _then)
+      : super(_value, _then);
 
-  @override
-  _CommodityAction get _value => super._value as _CommodityAction;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object date = freezed,
-    Object code = freezed,
-    Object comment = freezed,
-    Object metadata = freezed,
+    Object? date = null,
+    Object? code = null,
+    Object? comment = freezed,
+    Object? metadata = null,
   }) {
-    return _then(_CommodityAction(
-      date: date == freezed ? _value.date : date as DateTime,
-      code: code == freezed ? _value.code : code as String,
-      comment: comment == freezed ? _value.comment : comment as String,
-      metadata: metadata == freezed
-          ? _value.metadata
-          : metadata as Map<String, MetaValue>,
+    return _then(_$_CommodityAction(
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      code: null == code
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as String,
+      comment: freezed == comment
+          ? _value.comment
+          : comment // ignore: cast_nullable_to_non_nullable
+              as String?,
+      metadata: null == metadata
+          ? _value._metadata
+          : metadata // ignore: cast_nullable_to_non_nullable
+              as Map<String, MetaValue>,
     ));
   }
 }
 
 /// @nodoc
-class _$_CommodityAction implements _CommodityAction {
+
+class _$_CommodityAction extends _CommodityAction {
   _$_CommodityAction(
-      {@required this.date,
-      @required this.code,
-      @nullable this.comment,
-      this.metadata = const {}})
-      : assert(date != null),
-        assert(code != null),
-        assert(metadata != null);
+      {required this.date,
+      required this.code,
+      this.comment,
+      final Map<String, MetaValue> metadata = const {}})
+      : _metadata = metadata,
+        super._();
 
   @override
   final DateTime date;
   @override
   final String code;
   @override
-  @nullable
-  final String comment;
-  @JsonKey(defaultValue: const {})
+  final String? comment;
+  final Map<String, MetaValue> _metadata;
   @override
-  final Map<String, MetaValue> metadata;
-
-  bool _didstringify = false;
-  String _stringify;
-
-  @override
-  String get stringify {
-    if (_didstringify == false) {
-      _didstringify = true;
-      _stringify = (() {
-        final buffer = StringBuffer()
-          ..write('${formatter.format(date)} commodity $code');
-
-        if (comment != null && comment.isNotEmpty) {
-          buffer.write(' ; $comment');
-        }
-
-        for (final meta in metadata.entries) {
-          buffer.write('\n  ${meta.key}: ${meta.value.stringify}');
-        }
-
-        return buffer.toString();
-      })();
-    }
-    return _stringify;
-  }
-
-  bool _didprecision = false;
-  int _precision;
-
-  @override
-  int get precision {
-    if (_didprecision == false) {
-      _didprecision = true;
-      _precision = metadata.containsKey('precision')
-          ? int.tryParse(metadata['precision'].value)
-          : 2;
-    }
-    return _precision;
-  }
-
-  bool _didcurrency = false;
-  Currency _currency;
-
-  @override
-  Currency get currency {
-    if (_didcurrency == false) {
-      _didcurrency = true;
-      _currency = Currency.create(code, precision,
-          pattern: '0${precision > 0 ? '.' : ''}${'0' * precision} CCC');
-    }
-    return _currency;
+  @JsonKey()
+  Map<String, MetaValue> get metadata {
+    if (_metadata is EqualUnmodifiableMapView) return _metadata;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_metadata);
   }
 
   @override
   String toString() {
-    return 'CommodityAction(date: $date, code: $code, comment: $comment, metadata: $metadata, stringify: $stringify, precision: $precision, currency: $currency)';
+    return 'CommodityAction(date: $date, code: $code, comment: $comment, metadata: $metadata)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _CommodityAction &&
-            (identical(other.date, date) ||
-                const DeepCollectionEquality().equals(other.date, date)) &&
-            (identical(other.code, code) ||
-                const DeepCollectionEquality().equals(other.code, code)) &&
-            (identical(other.comment, comment) ||
-                const DeepCollectionEquality()
-                    .equals(other.comment, comment)) &&
-            (identical(other.metadata, metadata) ||
-                const DeepCollectionEquality()
-                    .equals(other.metadata, metadata)));
+        (other.runtimeType == runtimeType &&
+            other is _$_CommodityAction &&
+            (identical(other.date, date) || other.date == date) &&
+            (identical(other.code, code) || other.code == code) &&
+            (identical(other.comment, comment) || other.comment == comment) &&
+            const DeepCollectionEquality().equals(other._metadata, _metadata));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(date) ^
-      const DeepCollectionEquality().hash(code) ^
-      const DeepCollectionEquality().hash(comment) ^
-      const DeepCollectionEquality().hash(metadata);
+  int get hashCode => Object.hash(runtimeType, date, code, comment,
+      const DeepCollectionEquality().hash(_metadata));
 
+  @JsonKey(ignore: true)
   @override
-  _$CommodityActionCopyWith<_CommodityAction> get copyWith =>
-      __$CommodityActionCopyWithImpl<_CommodityAction>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$_CommodityActionCopyWith<_$_CommodityAction> get copyWith =>
+      __$$_CommodityActionCopyWithImpl<_$_CommodityAction>(this, _$identity);
 }
 
-abstract class _CommodityAction implements CommodityAction {
+abstract class _CommodityAction extends CommodityAction {
   factory _CommodityAction(
-      {@required DateTime date,
-      @required String code,
-      @nullable String comment,
-      Map<String, MetaValue> metadata}) = _$_CommodityAction;
+      {required final DateTime date,
+      required final String code,
+      final String? comment,
+      final Map<String, MetaValue> metadata}) = _$_CommodityAction;
+  _CommodityAction._() : super._();
 
   @override
   DateTime get date;
   @override
   String get code;
   @override
-  @nullable
-  String get comment;
+  String? get comment;
   @override
   Map<String, MetaValue> get metadata;
   @override
-  _$CommodityActionCopyWith<_CommodityAction> get copyWith;
+  @JsonKey(ignore: true)
+  _$$_CommodityActionCopyWith<_$_CommodityAction> get copyWith =>
+      throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class _$BalanceActionTearOff {
-  const _$BalanceActionTearOff();
-
-// ignore: unused_element
-  _BalanceAction call(
-      {@required DateTime date,
-      @required Account account,
-      @required Money unit,
-      @nullable String comment,
-      Map<String, MetaValue> metadata = const {}}) {
-    return _BalanceAction(
-      date: date,
-      account: account,
-      unit: unit,
-      comment: comment,
-      metadata: metadata,
-    );
-  }
-}
-
-/// @nodoc
-// ignore: unused_element
-const $BalanceAction = _$BalanceActionTearOff();
 
 /// @nodoc
 mixin _$BalanceAction {
-  DateTime get date;
-  Account get account;
-  Money get unit;
-  @nullable
-  String get comment;
-  Map<String, MetaValue> get metadata;
+  DateTime get date => throw _privateConstructorUsedError;
+  Account get account => throw _privateConstructorUsedError;
+  Money get unit => throw _privateConstructorUsedError;
+  String? get comment => throw _privateConstructorUsedError;
+  Map<String, MetaValue> get metadata => throw _privateConstructorUsedError;
 
-  $BalanceActionCopyWith<BalanceAction> get copyWith;
+  @JsonKey(ignore: true)
+  $BalanceActionCopyWith<BalanceAction> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $BalanceActionCopyWith<$Res> {
   factory $BalanceActionCopyWith(
           BalanceAction value, $Res Function(BalanceAction) then) =
-      _$BalanceActionCopyWithImpl<$Res>;
+      _$BalanceActionCopyWithImpl<$Res, BalanceAction>;
+  @useResult
   $Res call(
       {DateTime date,
       Account account,
       Money unit,
-      @nullable String comment,
+      String? comment,
       Map<String, MetaValue> metadata});
 
   $AccountCopyWith<$Res> get account;
 }
 
 /// @nodoc
-class _$BalanceActionCopyWithImpl<$Res>
+class _$BalanceActionCopyWithImpl<$Res, $Val extends BalanceAction>
     implements $BalanceActionCopyWith<$Res> {
   _$BalanceActionCopyWithImpl(this._value, this._then);
 
-  final BalanceAction _value;
   // ignore: unused_field
-  final $Res Function(BalanceAction) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object date = freezed,
-    Object account = freezed,
-    Object unit = freezed,
-    Object comment = freezed,
-    Object metadata = freezed,
+    Object? date = null,
+    Object? account = null,
+    Object? unit = null,
+    Object? comment = freezed,
+    Object? metadata = null,
   }) {
     return _then(_value.copyWith(
-      date: date == freezed ? _value.date : date as DateTime,
-      account: account == freezed ? _value.account : account as Account,
-      unit: unit == freezed ? _value.unit : unit as Money,
-      comment: comment == freezed ? _value.comment : comment as String,
-      metadata: metadata == freezed
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      account: null == account
+          ? _value.account
+          : account // ignore: cast_nullable_to_non_nullable
+              as Account,
+      unit: null == unit
+          ? _value.unit
+          : unit // ignore: cast_nullable_to_non_nullable
+              as Money,
+      comment: freezed == comment
+          ? _value.comment
+          : comment // ignore: cast_nullable_to_non_nullable
+              as String?,
+      metadata: null == metadata
           ? _value.metadata
-          : metadata as Map<String, MetaValue>,
-    ));
+          : metadata // ignore: cast_nullable_to_non_nullable
+              as Map<String, MetaValue>,
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $AccountCopyWith<$Res> get account {
-    if (_value.account == null) {
-      return null;
-    }
     return $AccountCopyWith<$Res>(_value.account, (value) {
-      return _then(_value.copyWith(account: value));
+      return _then(_value.copyWith(account: value) as $Val);
     });
   }
 }
 
 /// @nodoc
-abstract class _$BalanceActionCopyWith<$Res>
+abstract class _$$_BalanceActionCopyWith<$Res>
     implements $BalanceActionCopyWith<$Res> {
-  factory _$BalanceActionCopyWith(
-          _BalanceAction value, $Res Function(_BalanceAction) then) =
-      __$BalanceActionCopyWithImpl<$Res>;
+  factory _$$_BalanceActionCopyWith(
+          _$_BalanceAction value, $Res Function(_$_BalanceAction) then) =
+      __$$_BalanceActionCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {DateTime date,
       Account account,
       Money unit,
-      @nullable String comment,
+      String? comment,
       Map<String, MetaValue> metadata});
 
   @override
@@ -1114,48 +1086,58 @@ abstract class _$BalanceActionCopyWith<$Res>
 }
 
 /// @nodoc
-class __$BalanceActionCopyWithImpl<$Res>
-    extends _$BalanceActionCopyWithImpl<$Res>
-    implements _$BalanceActionCopyWith<$Res> {
-  __$BalanceActionCopyWithImpl(
-      _BalanceAction _value, $Res Function(_BalanceAction) _then)
-      : super(_value, (v) => _then(v as _BalanceAction));
+class __$$_BalanceActionCopyWithImpl<$Res>
+    extends _$BalanceActionCopyWithImpl<$Res, _$_BalanceAction>
+    implements _$$_BalanceActionCopyWith<$Res> {
+  __$$_BalanceActionCopyWithImpl(
+      _$_BalanceAction _value, $Res Function(_$_BalanceAction) _then)
+      : super(_value, _then);
 
-  @override
-  _BalanceAction get _value => super._value as _BalanceAction;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object date = freezed,
-    Object account = freezed,
-    Object unit = freezed,
-    Object comment = freezed,
-    Object metadata = freezed,
+    Object? date = null,
+    Object? account = null,
+    Object? unit = null,
+    Object? comment = freezed,
+    Object? metadata = null,
   }) {
-    return _then(_BalanceAction(
-      date: date == freezed ? _value.date : date as DateTime,
-      account: account == freezed ? _value.account : account as Account,
-      unit: unit == freezed ? _value.unit : unit as Money,
-      comment: comment == freezed ? _value.comment : comment as String,
-      metadata: metadata == freezed
-          ? _value.metadata
-          : metadata as Map<String, MetaValue>,
+    return _then(_$_BalanceAction(
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      account: null == account
+          ? _value.account
+          : account // ignore: cast_nullable_to_non_nullable
+              as Account,
+      unit: null == unit
+          ? _value.unit
+          : unit // ignore: cast_nullable_to_non_nullable
+              as Money,
+      comment: freezed == comment
+          ? _value.comment
+          : comment // ignore: cast_nullable_to_non_nullable
+              as String?,
+      metadata: null == metadata
+          ? _value._metadata
+          : metadata // ignore: cast_nullable_to_non_nullable
+              as Map<String, MetaValue>,
     ));
   }
 }
 
 /// @nodoc
-class _$_BalanceAction implements _BalanceAction {
+
+class _$_BalanceAction extends _BalanceAction {
   _$_BalanceAction(
-      {@required this.date,
-      @required this.account,
-      @required this.unit,
-      @nullable this.comment,
-      this.metadata = const {}})
-      : assert(date != null),
-        assert(account != null),
-        assert(unit != null),
-        assert(metadata != null);
+      {required this.date,
+      required this.account,
+      required this.unit,
+      this.comment,
+      final Map<String, MetaValue> metadata = const {}})
+      : _metadata = metadata,
+        super._();
 
   @override
   final DateTime date;
@@ -1164,83 +1146,52 @@ class _$_BalanceAction implements _BalanceAction {
   @override
   final Money unit;
   @override
-  @nullable
-  final String comment;
-  @JsonKey(defaultValue: const {})
+  final String? comment;
+  final Map<String, MetaValue> _metadata;
   @override
-  final Map<String, MetaValue> metadata;
-
-  bool _didstringify = false;
-  String _stringify;
-
-  @override
-  String get stringify {
-    if (_didstringify == false) {
-      _didstringify = true;
-      _stringify = (() {
-        final buffer = StringBuffer()
-          ..write(
-              '${formatter.format(date)} balance ${account.stringify} $unit');
-
-        if (comment != null && comment.isNotEmpty) {
-          buffer.write(' ; $comment');
-        }
-
-        for (final meta in metadata.entries) {
-          buffer.write('\n  ${meta.key}: ${meta.value.stringify}');
-        }
-
-        return buffer.toString();
-      })();
-    }
-    return _stringify;
+  @JsonKey()
+  Map<String, MetaValue> get metadata {
+    if (_metadata is EqualUnmodifiableMapView) return _metadata;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_metadata);
   }
 
   @override
   String toString() {
-    return 'BalanceAction(date: $date, account: $account, unit: $unit, comment: $comment, metadata: $metadata, stringify: $stringify)';
+    return 'BalanceAction(date: $date, account: $account, unit: $unit, comment: $comment, metadata: $metadata)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _BalanceAction &&
-            (identical(other.date, date) ||
-                const DeepCollectionEquality().equals(other.date, date)) &&
-            (identical(other.account, account) ||
-                const DeepCollectionEquality()
-                    .equals(other.account, account)) &&
-            (identical(other.unit, unit) ||
-                const DeepCollectionEquality().equals(other.unit, unit)) &&
-            (identical(other.comment, comment) ||
-                const DeepCollectionEquality()
-                    .equals(other.comment, comment)) &&
-            (identical(other.metadata, metadata) ||
-                const DeepCollectionEquality()
-                    .equals(other.metadata, metadata)));
+        (other.runtimeType == runtimeType &&
+            other is _$_BalanceAction &&
+            (identical(other.date, date) || other.date == date) &&
+            (identical(other.account, account) || other.account == account) &&
+            (identical(other.unit, unit) || other.unit == unit) &&
+            (identical(other.comment, comment) || other.comment == comment) &&
+            const DeepCollectionEquality().equals(other._metadata, _metadata));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(date) ^
-      const DeepCollectionEquality().hash(account) ^
-      const DeepCollectionEquality().hash(unit) ^
-      const DeepCollectionEquality().hash(comment) ^
-      const DeepCollectionEquality().hash(metadata);
+  int get hashCode => Object.hash(runtimeType, date, account, unit, comment,
+      const DeepCollectionEquality().hash(_metadata));
 
+  @JsonKey(ignore: true)
   @override
-  _$BalanceActionCopyWith<_BalanceAction> get copyWith =>
-      __$BalanceActionCopyWithImpl<_BalanceAction>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$_BalanceActionCopyWith<_$_BalanceAction> get copyWith =>
+      __$$_BalanceActionCopyWithImpl<_$_BalanceAction>(this, _$identity);
 }
 
-abstract class _BalanceAction implements BalanceAction {
+abstract class _BalanceAction extends BalanceAction {
   factory _BalanceAction(
-      {@required DateTime date,
-      @required Account account,
-      @required Money unit,
-      @nullable String comment,
-      Map<String, MetaValue> metadata}) = _$_BalanceAction;
+      {required final DateTime date,
+      required final Account account,
+      required final Money unit,
+      final String? comment,
+      final Map<String, MetaValue> metadata}) = _$_BalanceAction;
+  _BalanceAction._() : super._();
 
   @override
   DateTime get date;
@@ -1249,60 +1200,38 @@ abstract class _BalanceAction implements BalanceAction {
   @override
   Money get unit;
   @override
-  @nullable
-  String get comment;
+  String? get comment;
   @override
   Map<String, MetaValue> get metadata;
   @override
-  _$BalanceActionCopyWith<_BalanceAction> get copyWith;
+  @JsonKey(ignore: true)
+  _$$_BalanceActionCopyWith<_$_BalanceAction> get copyWith =>
+      throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class _$PadActionTearOff {
-  const _$PadActionTearOff();
-
-// ignore: unused_element
-  _PadAction call(
-      {@required DateTime date,
-      @required Account account,
-      @required Account padAccount,
-      @nullable String comment,
-      Map<String, MetaValue> metadata = const {}}) {
-    return _PadAction(
-      date: date,
-      account: account,
-      padAccount: padAccount,
-      comment: comment,
-      metadata: metadata,
-    );
-  }
-}
-
-/// @nodoc
-// ignore: unused_element
-const $PadAction = _$PadActionTearOff();
 
 /// @nodoc
 mixin _$PadAction {
-  DateTime get date;
-  Account get account;
-  Account get padAccount;
-  @nullable
-  String get comment;
-  Map<String, MetaValue> get metadata;
+  DateTime get date => throw _privateConstructorUsedError;
+  Account get account => throw _privateConstructorUsedError;
+  Account get padAccount => throw _privateConstructorUsedError;
+  String? get comment => throw _privateConstructorUsedError;
+  Map<String, MetaValue> get metadata => throw _privateConstructorUsedError;
 
-  $PadActionCopyWith<PadAction> get copyWith;
+  @JsonKey(ignore: true)
+  $PadActionCopyWith<PadAction> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $PadActionCopyWith<$Res> {
   factory $PadActionCopyWith(PadAction value, $Res Function(PadAction) then) =
-      _$PadActionCopyWithImpl<$Res>;
+      _$PadActionCopyWithImpl<$Res, PadAction>;
+  @useResult
   $Res call(
       {DateTime date,
       Account account,
       Account padAccount,
-      @nullable String comment,
+      String? comment,
       Map<String, MetaValue> metadata});
 
   $AccountCopyWith<$Res> get account;
@@ -1310,65 +1239,77 @@ abstract class $PadActionCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PadActionCopyWithImpl<$Res> implements $PadActionCopyWith<$Res> {
+class _$PadActionCopyWithImpl<$Res, $Val extends PadAction>
+    implements $PadActionCopyWith<$Res> {
   _$PadActionCopyWithImpl(this._value, this._then);
 
-  final PadAction _value;
   // ignore: unused_field
-  final $Res Function(PadAction) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object date = freezed,
-    Object account = freezed,
-    Object padAccount = freezed,
-    Object comment = freezed,
-    Object metadata = freezed,
+    Object? date = null,
+    Object? account = null,
+    Object? padAccount = null,
+    Object? comment = freezed,
+    Object? metadata = null,
   }) {
     return _then(_value.copyWith(
-      date: date == freezed ? _value.date : date as DateTime,
-      account: account == freezed ? _value.account : account as Account,
-      padAccount:
-          padAccount == freezed ? _value.padAccount : padAccount as Account,
-      comment: comment == freezed ? _value.comment : comment as String,
-      metadata: metadata == freezed
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      account: null == account
+          ? _value.account
+          : account // ignore: cast_nullable_to_non_nullable
+              as Account,
+      padAccount: null == padAccount
+          ? _value.padAccount
+          : padAccount // ignore: cast_nullable_to_non_nullable
+              as Account,
+      comment: freezed == comment
+          ? _value.comment
+          : comment // ignore: cast_nullable_to_non_nullable
+              as String?,
+      metadata: null == metadata
           ? _value.metadata
-          : metadata as Map<String, MetaValue>,
-    ));
+          : metadata // ignore: cast_nullable_to_non_nullable
+              as Map<String, MetaValue>,
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $AccountCopyWith<$Res> get account {
-    if (_value.account == null) {
-      return null;
-    }
     return $AccountCopyWith<$Res>(_value.account, (value) {
-      return _then(_value.copyWith(account: value));
+      return _then(_value.copyWith(account: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $AccountCopyWith<$Res> get padAccount {
-    if (_value.padAccount == null) {
-      return null;
-    }
     return $AccountCopyWith<$Res>(_value.padAccount, (value) {
-      return _then(_value.copyWith(padAccount: value));
+      return _then(_value.copyWith(padAccount: value) as $Val);
     });
   }
 }
 
 /// @nodoc
-abstract class _$PadActionCopyWith<$Res> implements $PadActionCopyWith<$Res> {
-  factory _$PadActionCopyWith(
-          _PadAction value, $Res Function(_PadAction) then) =
-      __$PadActionCopyWithImpl<$Res>;
+abstract class _$$_PadActionCopyWith<$Res> implements $PadActionCopyWith<$Res> {
+  factory _$$_PadActionCopyWith(
+          _$_PadAction value, $Res Function(_$_PadAction) then) =
+      __$$_PadActionCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {DateTime date,
       Account account,
       Account padAccount,
-      @nullable String comment,
+      String? comment,
       Map<String, MetaValue> metadata});
 
   @override
@@ -1378,47 +1319,58 @@ abstract class _$PadActionCopyWith<$Res> implements $PadActionCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$PadActionCopyWithImpl<$Res> extends _$PadActionCopyWithImpl<$Res>
-    implements _$PadActionCopyWith<$Res> {
-  __$PadActionCopyWithImpl(_PadAction _value, $Res Function(_PadAction) _then)
-      : super(_value, (v) => _then(v as _PadAction));
+class __$$_PadActionCopyWithImpl<$Res>
+    extends _$PadActionCopyWithImpl<$Res, _$_PadAction>
+    implements _$$_PadActionCopyWith<$Res> {
+  __$$_PadActionCopyWithImpl(
+      _$_PadAction _value, $Res Function(_$_PadAction) _then)
+      : super(_value, _then);
 
-  @override
-  _PadAction get _value => super._value as _PadAction;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object date = freezed,
-    Object account = freezed,
-    Object padAccount = freezed,
-    Object comment = freezed,
-    Object metadata = freezed,
+    Object? date = null,
+    Object? account = null,
+    Object? padAccount = null,
+    Object? comment = freezed,
+    Object? metadata = null,
   }) {
-    return _then(_PadAction(
-      date: date == freezed ? _value.date : date as DateTime,
-      account: account == freezed ? _value.account : account as Account,
-      padAccount:
-          padAccount == freezed ? _value.padAccount : padAccount as Account,
-      comment: comment == freezed ? _value.comment : comment as String,
-      metadata: metadata == freezed
-          ? _value.metadata
-          : metadata as Map<String, MetaValue>,
+    return _then(_$_PadAction(
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      account: null == account
+          ? _value.account
+          : account // ignore: cast_nullable_to_non_nullable
+              as Account,
+      padAccount: null == padAccount
+          ? _value.padAccount
+          : padAccount // ignore: cast_nullable_to_non_nullable
+              as Account,
+      comment: freezed == comment
+          ? _value.comment
+          : comment // ignore: cast_nullable_to_non_nullable
+              as String?,
+      metadata: null == metadata
+          ? _value._metadata
+          : metadata // ignore: cast_nullable_to_non_nullable
+              as Map<String, MetaValue>,
     ));
   }
 }
 
 /// @nodoc
-class _$_PadAction implements _PadAction {
+
+class _$_PadAction extends _PadAction {
   _$_PadAction(
-      {@required this.date,
-      @required this.account,
-      @required this.padAccount,
-      @nullable this.comment,
-      this.metadata = const {}})
-      : assert(date != null),
-        assert(account != null),
-        assert(padAccount != null),
-        assert(metadata != null);
+      {required this.date,
+      required this.account,
+      required this.padAccount,
+      this.comment,
+      final Map<String, MetaValue> metadata = const {}})
+      : _metadata = metadata,
+        super._();
 
   @override
   final DateTime date;
@@ -1427,84 +1379,53 @@ class _$_PadAction implements _PadAction {
   @override
   final Account padAccount;
   @override
-  @nullable
-  final String comment;
-  @JsonKey(defaultValue: const {})
+  final String? comment;
+  final Map<String, MetaValue> _metadata;
   @override
-  final Map<String, MetaValue> metadata;
-
-  bool _didstringify = false;
-  String _stringify;
-
-  @override
-  String get stringify {
-    if (_didstringify == false) {
-      _didstringify = true;
-      _stringify = (() {
-        final buffer = StringBuffer()
-          ..write(
-              '${formatter.format(date)} pad ${account.stringify} ${padAccount.stringify}');
-
-        if (comment != null && comment.isNotEmpty) {
-          buffer.write(' ; $comment');
-        }
-
-        for (final meta in metadata.entries) {
-          buffer.write('\n  ${meta.key}: ${meta.value.stringify}');
-        }
-
-        return buffer.toString();
-      })();
-    }
-    return _stringify;
+  @JsonKey()
+  Map<String, MetaValue> get metadata {
+    if (_metadata is EqualUnmodifiableMapView) return _metadata;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_metadata);
   }
 
   @override
   String toString() {
-    return 'PadAction(date: $date, account: $account, padAccount: $padAccount, comment: $comment, metadata: $metadata, stringify: $stringify)';
+    return 'PadAction(date: $date, account: $account, padAccount: $padAccount, comment: $comment, metadata: $metadata)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _PadAction &&
-            (identical(other.date, date) ||
-                const DeepCollectionEquality().equals(other.date, date)) &&
-            (identical(other.account, account) ||
-                const DeepCollectionEquality()
-                    .equals(other.account, account)) &&
+        (other.runtimeType == runtimeType &&
+            other is _$_PadAction &&
+            (identical(other.date, date) || other.date == date) &&
+            (identical(other.account, account) || other.account == account) &&
             (identical(other.padAccount, padAccount) ||
-                const DeepCollectionEquality()
-                    .equals(other.padAccount, padAccount)) &&
-            (identical(other.comment, comment) ||
-                const DeepCollectionEquality()
-                    .equals(other.comment, comment)) &&
-            (identical(other.metadata, metadata) ||
-                const DeepCollectionEquality()
-                    .equals(other.metadata, metadata)));
+                other.padAccount == padAccount) &&
+            (identical(other.comment, comment) || other.comment == comment) &&
+            const DeepCollectionEquality().equals(other._metadata, _metadata));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(date) ^
-      const DeepCollectionEquality().hash(account) ^
-      const DeepCollectionEquality().hash(padAccount) ^
-      const DeepCollectionEquality().hash(comment) ^
-      const DeepCollectionEquality().hash(metadata);
+  int get hashCode => Object.hash(runtimeType, date, account, padAccount,
+      comment, const DeepCollectionEquality().hash(_metadata));
 
+  @JsonKey(ignore: true)
   @override
-  _$PadActionCopyWith<_PadAction> get copyWith =>
-      __$PadActionCopyWithImpl<_PadAction>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$_PadActionCopyWith<_$_PadAction> get copyWith =>
+      __$$_PadActionCopyWithImpl<_$_PadAction>(this, _$identity);
 }
 
-abstract class _PadAction implements PadAction {
+abstract class _PadAction extends PadAction {
   factory _PadAction(
-      {@required DateTime date,
-      @required Account account,
-      @required Account padAccount,
-      @nullable String comment,
-      Map<String, MetaValue> metadata}) = _$_PadAction;
+      {required final DateTime date,
+      required final Account account,
+      required final Account padAccount,
+      final String? comment,
+      final Map<String, MetaValue> metadata}) = _$_PadAction;
+  _PadAction._() : super._();
 
   @override
   DateTime get date;
@@ -1513,115 +1434,109 @@ abstract class _PadAction implements PadAction {
   @override
   Account get padAccount;
   @override
-  @nullable
-  String get comment;
+  String? get comment;
   @override
   Map<String, MetaValue> get metadata;
   @override
-  _$PadActionCopyWith<_PadAction> get copyWith;
+  @JsonKey(ignore: true)
+  _$$_PadActionCopyWith<_$_PadAction> get copyWith =>
+      throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class _$NoteActionTearOff {
-  const _$NoteActionTearOff();
-
-// ignore: unused_element
-  _NoteAction call(
-      {@required DateTime date,
-      @required Account account,
-      @required String note,
-      @nullable String comment,
-      Map<String, MetaValue> metadata = const {}}) {
-    return _NoteAction(
-      date: date,
-      account: account,
-      note: note,
-      comment: comment,
-      metadata: metadata,
-    );
-  }
-}
-
-/// @nodoc
-// ignore: unused_element
-const $NoteAction = _$NoteActionTearOff();
 
 /// @nodoc
 mixin _$NoteAction {
-  DateTime get date;
-  Account get account;
-  String get note;
-  @nullable
-  String get comment;
-  Map<String, MetaValue> get metadata;
+  DateTime get date => throw _privateConstructorUsedError;
+  Account get account => throw _privateConstructorUsedError;
+  String get note => throw _privateConstructorUsedError;
+  String? get comment => throw _privateConstructorUsedError;
+  Map<String, MetaValue> get metadata => throw _privateConstructorUsedError;
 
-  $NoteActionCopyWith<NoteAction> get copyWith;
+  @JsonKey(ignore: true)
+  $NoteActionCopyWith<NoteAction> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $NoteActionCopyWith<$Res> {
   factory $NoteActionCopyWith(
           NoteAction value, $Res Function(NoteAction) then) =
-      _$NoteActionCopyWithImpl<$Res>;
+      _$NoteActionCopyWithImpl<$Res, NoteAction>;
+  @useResult
   $Res call(
       {DateTime date,
       Account account,
       String note,
-      @nullable String comment,
+      String? comment,
       Map<String, MetaValue> metadata});
 
   $AccountCopyWith<$Res> get account;
 }
 
 /// @nodoc
-class _$NoteActionCopyWithImpl<$Res> implements $NoteActionCopyWith<$Res> {
+class _$NoteActionCopyWithImpl<$Res, $Val extends NoteAction>
+    implements $NoteActionCopyWith<$Res> {
   _$NoteActionCopyWithImpl(this._value, this._then);
 
-  final NoteAction _value;
   // ignore: unused_field
-  final $Res Function(NoteAction) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object date = freezed,
-    Object account = freezed,
-    Object note = freezed,
-    Object comment = freezed,
-    Object metadata = freezed,
+    Object? date = null,
+    Object? account = null,
+    Object? note = null,
+    Object? comment = freezed,
+    Object? metadata = null,
   }) {
     return _then(_value.copyWith(
-      date: date == freezed ? _value.date : date as DateTime,
-      account: account == freezed ? _value.account : account as Account,
-      note: note == freezed ? _value.note : note as String,
-      comment: comment == freezed ? _value.comment : comment as String,
-      metadata: metadata == freezed
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      account: null == account
+          ? _value.account
+          : account // ignore: cast_nullable_to_non_nullable
+              as Account,
+      note: null == note
+          ? _value.note
+          : note // ignore: cast_nullable_to_non_nullable
+              as String,
+      comment: freezed == comment
+          ? _value.comment
+          : comment // ignore: cast_nullable_to_non_nullable
+              as String?,
+      metadata: null == metadata
           ? _value.metadata
-          : metadata as Map<String, MetaValue>,
-    ));
+          : metadata // ignore: cast_nullable_to_non_nullable
+              as Map<String, MetaValue>,
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $AccountCopyWith<$Res> get account {
-    if (_value.account == null) {
-      return null;
-    }
     return $AccountCopyWith<$Res>(_value.account, (value) {
-      return _then(_value.copyWith(account: value));
+      return _then(_value.copyWith(account: value) as $Val);
     });
   }
 }
 
 /// @nodoc
-abstract class _$NoteActionCopyWith<$Res> implements $NoteActionCopyWith<$Res> {
-  factory _$NoteActionCopyWith(
-          _NoteAction value, $Res Function(_NoteAction) then) =
-      __$NoteActionCopyWithImpl<$Res>;
+abstract class _$$_NoteActionCopyWith<$Res>
+    implements $NoteActionCopyWith<$Res> {
+  factory _$$_NoteActionCopyWith(
+          _$_NoteAction value, $Res Function(_$_NoteAction) then) =
+      __$$_NoteActionCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {DateTime date,
       Account account,
       String note,
-      @nullable String comment,
+      String? comment,
       Map<String, MetaValue> metadata});
 
   @override
@@ -1629,47 +1544,58 @@ abstract class _$NoteActionCopyWith<$Res> implements $NoteActionCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$NoteActionCopyWithImpl<$Res> extends _$NoteActionCopyWithImpl<$Res>
-    implements _$NoteActionCopyWith<$Res> {
-  __$NoteActionCopyWithImpl(
-      _NoteAction _value, $Res Function(_NoteAction) _then)
-      : super(_value, (v) => _then(v as _NoteAction));
+class __$$_NoteActionCopyWithImpl<$Res>
+    extends _$NoteActionCopyWithImpl<$Res, _$_NoteAction>
+    implements _$$_NoteActionCopyWith<$Res> {
+  __$$_NoteActionCopyWithImpl(
+      _$_NoteAction _value, $Res Function(_$_NoteAction) _then)
+      : super(_value, _then);
 
-  @override
-  _NoteAction get _value => super._value as _NoteAction;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object date = freezed,
-    Object account = freezed,
-    Object note = freezed,
-    Object comment = freezed,
-    Object metadata = freezed,
+    Object? date = null,
+    Object? account = null,
+    Object? note = null,
+    Object? comment = freezed,
+    Object? metadata = null,
   }) {
-    return _then(_NoteAction(
-      date: date == freezed ? _value.date : date as DateTime,
-      account: account == freezed ? _value.account : account as Account,
-      note: note == freezed ? _value.note : note as String,
-      comment: comment == freezed ? _value.comment : comment as String,
-      metadata: metadata == freezed
-          ? _value.metadata
-          : metadata as Map<String, MetaValue>,
+    return _then(_$_NoteAction(
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      account: null == account
+          ? _value.account
+          : account // ignore: cast_nullable_to_non_nullable
+              as Account,
+      note: null == note
+          ? _value.note
+          : note // ignore: cast_nullable_to_non_nullable
+              as String,
+      comment: freezed == comment
+          ? _value.comment
+          : comment // ignore: cast_nullable_to_non_nullable
+              as String?,
+      metadata: null == metadata
+          ? _value._metadata
+          : metadata // ignore: cast_nullable_to_non_nullable
+              as Map<String, MetaValue>,
     ));
   }
 }
 
 /// @nodoc
-class _$_NoteAction implements _NoteAction {
+
+class _$_NoteAction extends _NoteAction {
   _$_NoteAction(
-      {@required this.date,
-      @required this.account,
-      @required this.note,
-      @nullable this.comment,
-      this.metadata = const {}})
-      : assert(date != null),
-        assert(account != null),
-        assert(note != null),
-        assert(metadata != null);
+      {required this.date,
+      required this.account,
+      required this.note,
+      this.comment,
+      final Map<String, MetaValue> metadata = const {}})
+      : _metadata = metadata,
+        super._();
 
   @override
   final DateTime date;
@@ -1678,83 +1604,52 @@ class _$_NoteAction implements _NoteAction {
   @override
   final String note;
   @override
-  @nullable
-  final String comment;
-  @JsonKey(defaultValue: const {})
+  final String? comment;
+  final Map<String, MetaValue> _metadata;
   @override
-  final Map<String, MetaValue> metadata;
-
-  bool _didstringify = false;
-  String _stringify;
-
-  @override
-  String get stringify {
-    if (_didstringify == false) {
-      _didstringify = true;
-      _stringify = (() {
-        final buffer = StringBuffer()
-          ..write(
-              '${formatter.format(date)} note ${account.stringify} "$note"');
-
-        if (comment != null && comment.isNotEmpty) {
-          buffer.write(' ; $comment');
-        }
-
-        for (final meta in metadata.entries) {
-          buffer.write('\n  ${meta.key}: ${meta.value.stringify}');
-        }
-
-        return buffer.toString();
-      })();
-    }
-    return _stringify;
+  @JsonKey()
+  Map<String, MetaValue> get metadata {
+    if (_metadata is EqualUnmodifiableMapView) return _metadata;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_metadata);
   }
 
   @override
   String toString() {
-    return 'NoteAction(date: $date, account: $account, note: $note, comment: $comment, metadata: $metadata, stringify: $stringify)';
+    return 'NoteAction(date: $date, account: $account, note: $note, comment: $comment, metadata: $metadata)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _NoteAction &&
-            (identical(other.date, date) ||
-                const DeepCollectionEquality().equals(other.date, date)) &&
-            (identical(other.account, account) ||
-                const DeepCollectionEquality()
-                    .equals(other.account, account)) &&
-            (identical(other.note, note) ||
-                const DeepCollectionEquality().equals(other.note, note)) &&
-            (identical(other.comment, comment) ||
-                const DeepCollectionEquality()
-                    .equals(other.comment, comment)) &&
-            (identical(other.metadata, metadata) ||
-                const DeepCollectionEquality()
-                    .equals(other.metadata, metadata)));
+        (other.runtimeType == runtimeType &&
+            other is _$_NoteAction &&
+            (identical(other.date, date) || other.date == date) &&
+            (identical(other.account, account) || other.account == account) &&
+            (identical(other.note, note) || other.note == note) &&
+            (identical(other.comment, comment) || other.comment == comment) &&
+            const DeepCollectionEquality().equals(other._metadata, _metadata));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(date) ^
-      const DeepCollectionEquality().hash(account) ^
-      const DeepCollectionEquality().hash(note) ^
-      const DeepCollectionEquality().hash(comment) ^
-      const DeepCollectionEquality().hash(metadata);
+  int get hashCode => Object.hash(runtimeType, date, account, note, comment,
+      const DeepCollectionEquality().hash(_metadata));
 
+  @JsonKey(ignore: true)
   @override
-  _$NoteActionCopyWith<_NoteAction> get copyWith =>
-      __$NoteActionCopyWithImpl<_NoteAction>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$_NoteActionCopyWith<_$_NoteAction> get copyWith =>
+      __$$_NoteActionCopyWithImpl<_$_NoteAction>(this, _$identity);
 }
 
-abstract class _NoteAction implements NoteAction {
+abstract class _NoteAction extends NoteAction {
   factory _NoteAction(
-      {@required DateTime date,
-      @required Account account,
-      @required String note,
-      @nullable String comment,
-      Map<String, MetaValue> metadata}) = _$_NoteAction;
+      {required final DateTime date,
+      required final Account account,
+      required final String note,
+      final String? comment,
+      final Map<String, MetaValue> metadata}) = _$_NoteAction;
+  _NoteAction._() : super._();
 
   @override
   DateTime get date;
@@ -1763,117 +1658,109 @@ abstract class _NoteAction implements NoteAction {
   @override
   String get note;
   @override
-  @nullable
-  String get comment;
+  String? get comment;
   @override
   Map<String, MetaValue> get metadata;
   @override
-  _$NoteActionCopyWith<_NoteAction> get copyWith;
+  @JsonKey(ignore: true)
+  _$$_NoteActionCopyWith<_$_NoteAction> get copyWith =>
+      throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class _$DocumentActionTearOff {
-  const _$DocumentActionTearOff();
-
-// ignore: unused_element
-  _DocumentAction call(
-      {@required DateTime date,
-      @required Account account,
-      @required String path,
-      @nullable String comment,
-      Map<String, MetaValue> metadata = const {}}) {
-    return _DocumentAction(
-      date: date,
-      account: account,
-      path: path,
-      comment: comment,
-      metadata: metadata,
-    );
-  }
-}
-
-/// @nodoc
-// ignore: unused_element
-const $DocumentAction = _$DocumentActionTearOff();
 
 /// @nodoc
 mixin _$DocumentAction {
-  DateTime get date;
-  Account get account;
-  String get path;
-  @nullable
-  String get comment;
-  Map<String, MetaValue> get metadata;
+  DateTime get date => throw _privateConstructorUsedError;
+  Account get account => throw _privateConstructorUsedError;
+  String get path => throw _privateConstructorUsedError;
+  String? get comment => throw _privateConstructorUsedError;
+  Map<String, MetaValue> get metadata => throw _privateConstructorUsedError;
 
-  $DocumentActionCopyWith<DocumentAction> get copyWith;
+  @JsonKey(ignore: true)
+  $DocumentActionCopyWith<DocumentAction> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $DocumentActionCopyWith<$Res> {
   factory $DocumentActionCopyWith(
           DocumentAction value, $Res Function(DocumentAction) then) =
-      _$DocumentActionCopyWithImpl<$Res>;
+      _$DocumentActionCopyWithImpl<$Res, DocumentAction>;
+  @useResult
   $Res call(
       {DateTime date,
       Account account,
       String path,
-      @nullable String comment,
+      String? comment,
       Map<String, MetaValue> metadata});
 
   $AccountCopyWith<$Res> get account;
 }
 
 /// @nodoc
-class _$DocumentActionCopyWithImpl<$Res>
+class _$DocumentActionCopyWithImpl<$Res, $Val extends DocumentAction>
     implements $DocumentActionCopyWith<$Res> {
   _$DocumentActionCopyWithImpl(this._value, this._then);
 
-  final DocumentAction _value;
   // ignore: unused_field
-  final $Res Function(DocumentAction) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object date = freezed,
-    Object account = freezed,
-    Object path = freezed,
-    Object comment = freezed,
-    Object metadata = freezed,
+    Object? date = null,
+    Object? account = null,
+    Object? path = null,
+    Object? comment = freezed,
+    Object? metadata = null,
   }) {
     return _then(_value.copyWith(
-      date: date == freezed ? _value.date : date as DateTime,
-      account: account == freezed ? _value.account : account as Account,
-      path: path == freezed ? _value.path : path as String,
-      comment: comment == freezed ? _value.comment : comment as String,
-      metadata: metadata == freezed
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      account: null == account
+          ? _value.account
+          : account // ignore: cast_nullable_to_non_nullable
+              as Account,
+      path: null == path
+          ? _value.path
+          : path // ignore: cast_nullable_to_non_nullable
+              as String,
+      comment: freezed == comment
+          ? _value.comment
+          : comment // ignore: cast_nullable_to_non_nullable
+              as String?,
+      metadata: null == metadata
           ? _value.metadata
-          : metadata as Map<String, MetaValue>,
-    ));
+          : metadata // ignore: cast_nullable_to_non_nullable
+              as Map<String, MetaValue>,
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $AccountCopyWith<$Res> get account {
-    if (_value.account == null) {
-      return null;
-    }
     return $AccountCopyWith<$Res>(_value.account, (value) {
-      return _then(_value.copyWith(account: value));
+      return _then(_value.copyWith(account: value) as $Val);
     });
   }
 }
 
 /// @nodoc
-abstract class _$DocumentActionCopyWith<$Res>
+abstract class _$$_DocumentActionCopyWith<$Res>
     implements $DocumentActionCopyWith<$Res> {
-  factory _$DocumentActionCopyWith(
-          _DocumentAction value, $Res Function(_DocumentAction) then) =
-      __$DocumentActionCopyWithImpl<$Res>;
+  factory _$$_DocumentActionCopyWith(
+          _$_DocumentAction value, $Res Function(_$_DocumentAction) then) =
+      __$$_DocumentActionCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {DateTime date,
       Account account,
       String path,
-      @nullable String comment,
+      String? comment,
       Map<String, MetaValue> metadata});
 
   @override
@@ -1881,48 +1768,58 @@ abstract class _$DocumentActionCopyWith<$Res>
 }
 
 /// @nodoc
-class __$DocumentActionCopyWithImpl<$Res>
-    extends _$DocumentActionCopyWithImpl<$Res>
-    implements _$DocumentActionCopyWith<$Res> {
-  __$DocumentActionCopyWithImpl(
-      _DocumentAction _value, $Res Function(_DocumentAction) _then)
-      : super(_value, (v) => _then(v as _DocumentAction));
+class __$$_DocumentActionCopyWithImpl<$Res>
+    extends _$DocumentActionCopyWithImpl<$Res, _$_DocumentAction>
+    implements _$$_DocumentActionCopyWith<$Res> {
+  __$$_DocumentActionCopyWithImpl(
+      _$_DocumentAction _value, $Res Function(_$_DocumentAction) _then)
+      : super(_value, _then);
 
-  @override
-  _DocumentAction get _value => super._value as _DocumentAction;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object date = freezed,
-    Object account = freezed,
-    Object path = freezed,
-    Object comment = freezed,
-    Object metadata = freezed,
+    Object? date = null,
+    Object? account = null,
+    Object? path = null,
+    Object? comment = freezed,
+    Object? metadata = null,
   }) {
-    return _then(_DocumentAction(
-      date: date == freezed ? _value.date : date as DateTime,
-      account: account == freezed ? _value.account : account as Account,
-      path: path == freezed ? _value.path : path as String,
-      comment: comment == freezed ? _value.comment : comment as String,
-      metadata: metadata == freezed
-          ? _value.metadata
-          : metadata as Map<String, MetaValue>,
+    return _then(_$_DocumentAction(
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      account: null == account
+          ? _value.account
+          : account // ignore: cast_nullable_to_non_nullable
+              as Account,
+      path: null == path
+          ? _value.path
+          : path // ignore: cast_nullable_to_non_nullable
+              as String,
+      comment: freezed == comment
+          ? _value.comment
+          : comment // ignore: cast_nullable_to_non_nullable
+              as String?,
+      metadata: null == metadata
+          ? _value._metadata
+          : metadata // ignore: cast_nullable_to_non_nullable
+              as Map<String, MetaValue>,
     ));
   }
 }
 
 /// @nodoc
-class _$_DocumentAction implements _DocumentAction {
+
+class _$_DocumentAction extends _DocumentAction {
   _$_DocumentAction(
-      {@required this.date,
-      @required this.account,
-      @required this.path,
-      @nullable this.comment,
-      this.metadata = const {}})
-      : assert(date != null),
-        assert(account != null),
-        assert(path != null),
-        assert(metadata != null);
+      {required this.date,
+      required this.account,
+      required this.path,
+      this.comment,
+      final Map<String, MetaValue> metadata = const {}})
+      : _metadata = metadata,
+        super._();
 
   @override
   final DateTime date;
@@ -1931,83 +1828,52 @@ class _$_DocumentAction implements _DocumentAction {
   @override
   final String path;
   @override
-  @nullable
-  final String comment;
-  @JsonKey(defaultValue: const {})
+  final String? comment;
+  final Map<String, MetaValue> _metadata;
   @override
-  final Map<String, MetaValue> metadata;
-
-  bool _didstringify = false;
-  String _stringify;
-
-  @override
-  String get stringify {
-    if (_didstringify == false) {
-      _didstringify = true;
-      _stringify = (() {
-        final buffer = StringBuffer()
-          ..write(
-              '${formatter.format(date)} document ${account.stringify} "$path"');
-
-        if (comment != null && comment.isNotEmpty) {
-          buffer.write(' ; $comment');
-        }
-
-        for (final meta in metadata.entries) {
-          buffer.write('\n  ${meta.key}: ${meta.value.stringify}');
-        }
-
-        return buffer.toString();
-      })();
-    }
-    return _stringify;
+  @JsonKey()
+  Map<String, MetaValue> get metadata {
+    if (_metadata is EqualUnmodifiableMapView) return _metadata;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_metadata);
   }
 
   @override
   String toString() {
-    return 'DocumentAction(date: $date, account: $account, path: $path, comment: $comment, metadata: $metadata, stringify: $stringify)';
+    return 'DocumentAction(date: $date, account: $account, path: $path, comment: $comment, metadata: $metadata)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _DocumentAction &&
-            (identical(other.date, date) ||
-                const DeepCollectionEquality().equals(other.date, date)) &&
-            (identical(other.account, account) ||
-                const DeepCollectionEquality()
-                    .equals(other.account, account)) &&
-            (identical(other.path, path) ||
-                const DeepCollectionEquality().equals(other.path, path)) &&
-            (identical(other.comment, comment) ||
-                const DeepCollectionEquality()
-                    .equals(other.comment, comment)) &&
-            (identical(other.metadata, metadata) ||
-                const DeepCollectionEquality()
-                    .equals(other.metadata, metadata)));
+        (other.runtimeType == runtimeType &&
+            other is _$_DocumentAction &&
+            (identical(other.date, date) || other.date == date) &&
+            (identical(other.account, account) || other.account == account) &&
+            (identical(other.path, path) || other.path == path) &&
+            (identical(other.comment, comment) || other.comment == comment) &&
+            const DeepCollectionEquality().equals(other._metadata, _metadata));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(date) ^
-      const DeepCollectionEquality().hash(account) ^
-      const DeepCollectionEquality().hash(path) ^
-      const DeepCollectionEquality().hash(comment) ^
-      const DeepCollectionEquality().hash(metadata);
+  int get hashCode => Object.hash(runtimeType, date, account, path, comment,
+      const DeepCollectionEquality().hash(_metadata));
 
+  @JsonKey(ignore: true)
   @override
-  _$DocumentActionCopyWith<_DocumentAction> get copyWith =>
-      __$DocumentActionCopyWithImpl<_DocumentAction>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$_DocumentActionCopyWith<_$_DocumentAction> get copyWith =>
+      __$$_DocumentActionCopyWithImpl<_$_DocumentAction>(this, _$identity);
 }
 
-abstract class _DocumentAction implements DocumentAction {
+abstract class _DocumentAction extends DocumentAction {
   factory _DocumentAction(
-      {@required DateTime date,
-      @required Account account,
-      @required String path,
-      @nullable String comment,
-      Map<String, MetaValue> metadata}) = _$_DocumentAction;
+      {required final DateTime date,
+      required final Account account,
+      required final String path,
+      final String? comment,
+      final Map<String, MetaValue> metadata}) = _$_DocumentAction;
+  _DocumentAction._() : super._();
 
   @override
   DateTime get date;
@@ -2016,149 +1882,155 @@ abstract class _DocumentAction implements DocumentAction {
   @override
   String get path;
   @override
-  @nullable
-  String get comment;
+  String? get comment;
   @override
   Map<String, MetaValue> get metadata;
   @override
-  _$DocumentActionCopyWith<_DocumentAction> get copyWith;
+  @JsonKey(ignore: true)
+  _$$_DocumentActionCopyWith<_$_DocumentAction> get copyWith =>
+      throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class _$PriceActionTearOff {
-  const _$PriceActionTearOff();
-
-// ignore: unused_element
-  _PriceAction call(
-      {@required DateTime date,
-      @required String currency,
-      @required Money amount,
-      @nullable String comment,
-      Map<String, MetaValue> metadata = const {}}) {
-    return _PriceAction(
-      date: date,
-      currency: currency,
-      amount: amount,
-      comment: comment,
-      metadata: metadata,
-    );
-  }
-}
-
-/// @nodoc
-// ignore: unused_element
-const $PriceAction = _$PriceActionTearOff();
 
 /// @nodoc
 mixin _$PriceAction {
-  DateTime get date;
-  String get currency;
-  Money get amount;
-  @nullable
-  String get comment;
-  Map<String, MetaValue> get metadata;
+  DateTime get date => throw _privateConstructorUsedError;
+  String get currency => throw _privateConstructorUsedError;
+  Money get amount => throw _privateConstructorUsedError;
+  String? get comment => throw _privateConstructorUsedError;
+  Map<String, MetaValue> get metadata => throw _privateConstructorUsedError;
 
-  $PriceActionCopyWith<PriceAction> get copyWith;
+  @JsonKey(ignore: true)
+  $PriceActionCopyWith<PriceAction> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $PriceActionCopyWith<$Res> {
   factory $PriceActionCopyWith(
           PriceAction value, $Res Function(PriceAction) then) =
-      _$PriceActionCopyWithImpl<$Res>;
+      _$PriceActionCopyWithImpl<$Res, PriceAction>;
+  @useResult
   $Res call(
       {DateTime date,
       String currency,
       Money amount,
-      @nullable String comment,
+      String? comment,
       Map<String, MetaValue> metadata});
 }
 
 /// @nodoc
-class _$PriceActionCopyWithImpl<$Res> implements $PriceActionCopyWith<$Res> {
+class _$PriceActionCopyWithImpl<$Res, $Val extends PriceAction>
+    implements $PriceActionCopyWith<$Res> {
   _$PriceActionCopyWithImpl(this._value, this._then);
 
-  final PriceAction _value;
   // ignore: unused_field
-  final $Res Function(PriceAction) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object date = freezed,
-    Object currency = freezed,
-    Object amount = freezed,
-    Object comment = freezed,
-    Object metadata = freezed,
+    Object? date = null,
+    Object? currency = null,
+    Object? amount = null,
+    Object? comment = freezed,
+    Object? metadata = null,
   }) {
     return _then(_value.copyWith(
-      date: date == freezed ? _value.date : date as DateTime,
-      currency: currency == freezed ? _value.currency : currency as String,
-      amount: amount == freezed ? _value.amount : amount as Money,
-      comment: comment == freezed ? _value.comment : comment as String,
-      metadata: metadata == freezed
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      currency: null == currency
+          ? _value.currency
+          : currency // ignore: cast_nullable_to_non_nullable
+              as String,
+      amount: null == amount
+          ? _value.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as Money,
+      comment: freezed == comment
+          ? _value.comment
+          : comment // ignore: cast_nullable_to_non_nullable
+              as String?,
+      metadata: null == metadata
           ? _value.metadata
-          : metadata as Map<String, MetaValue>,
-    ));
+          : metadata // ignore: cast_nullable_to_non_nullable
+              as Map<String, MetaValue>,
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$PriceActionCopyWith<$Res>
+abstract class _$$_PriceActionCopyWith<$Res>
     implements $PriceActionCopyWith<$Res> {
-  factory _$PriceActionCopyWith(
-          _PriceAction value, $Res Function(_PriceAction) then) =
-      __$PriceActionCopyWithImpl<$Res>;
+  factory _$$_PriceActionCopyWith(
+          _$_PriceAction value, $Res Function(_$_PriceAction) then) =
+      __$$_PriceActionCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {DateTime date,
       String currency,
       Money amount,
-      @nullable String comment,
+      String? comment,
       Map<String, MetaValue> metadata});
 }
 
 /// @nodoc
-class __$PriceActionCopyWithImpl<$Res> extends _$PriceActionCopyWithImpl<$Res>
-    implements _$PriceActionCopyWith<$Res> {
-  __$PriceActionCopyWithImpl(
-      _PriceAction _value, $Res Function(_PriceAction) _then)
-      : super(_value, (v) => _then(v as _PriceAction));
+class __$$_PriceActionCopyWithImpl<$Res>
+    extends _$PriceActionCopyWithImpl<$Res, _$_PriceAction>
+    implements _$$_PriceActionCopyWith<$Res> {
+  __$$_PriceActionCopyWithImpl(
+      _$_PriceAction _value, $Res Function(_$_PriceAction) _then)
+      : super(_value, _then);
 
-  @override
-  _PriceAction get _value => super._value as _PriceAction;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object date = freezed,
-    Object currency = freezed,
-    Object amount = freezed,
-    Object comment = freezed,
-    Object metadata = freezed,
+    Object? date = null,
+    Object? currency = null,
+    Object? amount = null,
+    Object? comment = freezed,
+    Object? metadata = null,
   }) {
-    return _then(_PriceAction(
-      date: date == freezed ? _value.date : date as DateTime,
-      currency: currency == freezed ? _value.currency : currency as String,
-      amount: amount == freezed ? _value.amount : amount as Money,
-      comment: comment == freezed ? _value.comment : comment as String,
-      metadata: metadata == freezed
-          ? _value.metadata
-          : metadata as Map<String, MetaValue>,
+    return _then(_$_PriceAction(
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      currency: null == currency
+          ? _value.currency
+          : currency // ignore: cast_nullable_to_non_nullable
+              as String,
+      amount: null == amount
+          ? _value.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as Money,
+      comment: freezed == comment
+          ? _value.comment
+          : comment // ignore: cast_nullable_to_non_nullable
+              as String?,
+      metadata: null == metadata
+          ? _value._metadata
+          : metadata // ignore: cast_nullable_to_non_nullable
+              as Map<String, MetaValue>,
     ));
   }
 }
 
 /// @nodoc
-class _$_PriceAction implements _PriceAction {
+
+class _$_PriceAction extends _PriceAction {
   _$_PriceAction(
-      {@required this.date,
-      @required this.currency,
-      @required this.amount,
-      @nullable this.comment,
-      this.metadata = const {}})
-      : assert(date != null),
-        assert(currency != null),
-        assert(amount != null),
-        assert(metadata != null);
+      {required this.date,
+      required this.currency,
+      required this.amount,
+      this.comment,
+      final Map<String, MetaValue> metadata = const {}})
+      : _metadata = metadata,
+        super._();
 
   @override
   final DateTime date;
@@ -2167,82 +2039,53 @@ class _$_PriceAction implements _PriceAction {
   @override
   final Money amount;
   @override
-  @nullable
-  final String comment;
-  @JsonKey(defaultValue: const {})
+  final String? comment;
+  final Map<String, MetaValue> _metadata;
   @override
-  final Map<String, MetaValue> metadata;
-
-  bool _didstringify = false;
-  String _stringify;
-
-  @override
-  String get stringify {
-    if (_didstringify == false) {
-      _didstringify = true;
-      _stringify = (() {
-        final buffer = StringBuffer()
-          ..write('${formatter.format(date)} price $currency $amount');
-
-        if (comment != null && comment.isNotEmpty) {
-          buffer.write(' ; $comment');
-        }
-
-        for (final meta in metadata.entries) {
-          buffer.write('\n  ${meta.key}: ${meta.value.stringify}');
-        }
-
-        return buffer.toString();
-      })();
-    }
-    return _stringify;
+  @JsonKey()
+  Map<String, MetaValue> get metadata {
+    if (_metadata is EqualUnmodifiableMapView) return _metadata;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_metadata);
   }
 
   @override
   String toString() {
-    return 'PriceAction(date: $date, currency: $currency, amount: $amount, comment: $comment, metadata: $metadata, stringify: $stringify)';
+    return 'PriceAction(date: $date, currency: $currency, amount: $amount, comment: $comment, metadata: $metadata)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _PriceAction &&
-            (identical(other.date, date) ||
-                const DeepCollectionEquality().equals(other.date, date)) &&
+        (other.runtimeType == runtimeType &&
+            other is _$_PriceAction &&
+            (identical(other.date, date) || other.date == date) &&
             (identical(other.currency, currency) ||
-                const DeepCollectionEquality()
-                    .equals(other.currency, currency)) &&
-            (identical(other.amount, amount) ||
-                const DeepCollectionEquality().equals(other.amount, amount)) &&
-            (identical(other.comment, comment) ||
-                const DeepCollectionEquality()
-                    .equals(other.comment, comment)) &&
-            (identical(other.metadata, metadata) ||
-                const DeepCollectionEquality()
-                    .equals(other.metadata, metadata)));
+                other.currency == currency) &&
+            (identical(other.amount, amount) || other.amount == amount) &&
+            (identical(other.comment, comment) || other.comment == comment) &&
+            const DeepCollectionEquality().equals(other._metadata, _metadata));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(date) ^
-      const DeepCollectionEquality().hash(currency) ^
-      const DeepCollectionEquality().hash(amount) ^
-      const DeepCollectionEquality().hash(comment) ^
-      const DeepCollectionEquality().hash(metadata);
+  int get hashCode => Object.hash(runtimeType, date, currency, amount, comment,
+      const DeepCollectionEquality().hash(_metadata));
 
+  @JsonKey(ignore: true)
   @override
-  _$PriceActionCopyWith<_PriceAction> get copyWith =>
-      __$PriceActionCopyWithImpl<_PriceAction>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$_PriceActionCopyWith<_$_PriceAction> get copyWith =>
+      __$$_PriceActionCopyWithImpl<_$_PriceAction>(this, _$identity);
 }
 
-abstract class _PriceAction implements PriceAction {
+abstract class _PriceAction extends PriceAction {
   factory _PriceAction(
-      {@required DateTime date,
-      @required String currency,
-      @required Money amount,
-      @nullable String comment,
-      Map<String, MetaValue> metadata}) = _$_PriceAction;
+      {required final DateTime date,
+      required final String currency,
+      required final Money amount,
+      final String? comment,
+      final Map<String, MetaValue> metadata}) = _$_PriceAction;
+  _PriceAction._() : super._();
 
   @override
   DateTime get date;
@@ -2251,149 +2094,155 @@ abstract class _PriceAction implements PriceAction {
   @override
   Money get amount;
   @override
-  @nullable
-  String get comment;
+  String? get comment;
   @override
   Map<String, MetaValue> get metadata;
   @override
-  _$PriceActionCopyWith<_PriceAction> get copyWith;
+  @JsonKey(ignore: true)
+  _$$_PriceActionCopyWith<_$_PriceAction> get copyWith =>
+      throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class _$EventActionTearOff {
-  const _$EventActionTearOff();
-
-// ignore: unused_element
-  _EventAction call(
-      {@required DateTime date,
-      @required String name,
-      @required String value,
-      @nullable String comment,
-      Map<String, MetaValue> metadata = const {}}) {
-    return _EventAction(
-      date: date,
-      name: name,
-      value: value,
-      comment: comment,
-      metadata: metadata,
-    );
-  }
-}
-
-/// @nodoc
-// ignore: unused_element
-const $EventAction = _$EventActionTearOff();
 
 /// @nodoc
 mixin _$EventAction {
-  DateTime get date;
-  String get name;
-  String get value;
-  @nullable
-  String get comment;
-  Map<String, MetaValue> get metadata;
+  DateTime get date => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  String get value => throw _privateConstructorUsedError;
+  String? get comment => throw _privateConstructorUsedError;
+  Map<String, MetaValue> get metadata => throw _privateConstructorUsedError;
 
-  $EventActionCopyWith<EventAction> get copyWith;
+  @JsonKey(ignore: true)
+  $EventActionCopyWith<EventAction> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $EventActionCopyWith<$Res> {
   factory $EventActionCopyWith(
           EventAction value, $Res Function(EventAction) then) =
-      _$EventActionCopyWithImpl<$Res>;
+      _$EventActionCopyWithImpl<$Res, EventAction>;
+  @useResult
   $Res call(
       {DateTime date,
       String name,
       String value,
-      @nullable String comment,
+      String? comment,
       Map<String, MetaValue> metadata});
 }
 
 /// @nodoc
-class _$EventActionCopyWithImpl<$Res> implements $EventActionCopyWith<$Res> {
+class _$EventActionCopyWithImpl<$Res, $Val extends EventAction>
+    implements $EventActionCopyWith<$Res> {
   _$EventActionCopyWithImpl(this._value, this._then);
 
-  final EventAction _value;
   // ignore: unused_field
-  final $Res Function(EventAction) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object date = freezed,
-    Object name = freezed,
-    Object value = freezed,
-    Object comment = freezed,
-    Object metadata = freezed,
+    Object? date = null,
+    Object? name = null,
+    Object? value = null,
+    Object? comment = freezed,
+    Object? metadata = null,
   }) {
     return _then(_value.copyWith(
-      date: date == freezed ? _value.date : date as DateTime,
-      name: name == freezed ? _value.name : name as String,
-      value: value == freezed ? _value.value : value as String,
-      comment: comment == freezed ? _value.comment : comment as String,
-      metadata: metadata == freezed
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      value: null == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as String,
+      comment: freezed == comment
+          ? _value.comment
+          : comment // ignore: cast_nullable_to_non_nullable
+              as String?,
+      metadata: null == metadata
           ? _value.metadata
-          : metadata as Map<String, MetaValue>,
-    ));
+          : metadata // ignore: cast_nullable_to_non_nullable
+              as Map<String, MetaValue>,
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$EventActionCopyWith<$Res>
+abstract class _$$_EventActionCopyWith<$Res>
     implements $EventActionCopyWith<$Res> {
-  factory _$EventActionCopyWith(
-          _EventAction value, $Res Function(_EventAction) then) =
-      __$EventActionCopyWithImpl<$Res>;
+  factory _$$_EventActionCopyWith(
+          _$_EventAction value, $Res Function(_$_EventAction) then) =
+      __$$_EventActionCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {DateTime date,
       String name,
       String value,
-      @nullable String comment,
+      String? comment,
       Map<String, MetaValue> metadata});
 }
 
 /// @nodoc
-class __$EventActionCopyWithImpl<$Res> extends _$EventActionCopyWithImpl<$Res>
-    implements _$EventActionCopyWith<$Res> {
-  __$EventActionCopyWithImpl(
-      _EventAction _value, $Res Function(_EventAction) _then)
-      : super(_value, (v) => _then(v as _EventAction));
+class __$$_EventActionCopyWithImpl<$Res>
+    extends _$EventActionCopyWithImpl<$Res, _$_EventAction>
+    implements _$$_EventActionCopyWith<$Res> {
+  __$$_EventActionCopyWithImpl(
+      _$_EventAction _value, $Res Function(_$_EventAction) _then)
+      : super(_value, _then);
 
-  @override
-  _EventAction get _value => super._value as _EventAction;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object date = freezed,
-    Object name = freezed,
-    Object value = freezed,
-    Object comment = freezed,
-    Object metadata = freezed,
+    Object? date = null,
+    Object? name = null,
+    Object? value = null,
+    Object? comment = freezed,
+    Object? metadata = null,
   }) {
-    return _then(_EventAction(
-      date: date == freezed ? _value.date : date as DateTime,
-      name: name == freezed ? _value.name : name as String,
-      value: value == freezed ? _value.value : value as String,
-      comment: comment == freezed ? _value.comment : comment as String,
-      metadata: metadata == freezed
-          ? _value.metadata
-          : metadata as Map<String, MetaValue>,
+    return _then(_$_EventAction(
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      value: null == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as String,
+      comment: freezed == comment
+          ? _value.comment
+          : comment // ignore: cast_nullable_to_non_nullable
+              as String?,
+      metadata: null == metadata
+          ? _value._metadata
+          : metadata // ignore: cast_nullable_to_non_nullable
+              as Map<String, MetaValue>,
     ));
   }
 }
 
 /// @nodoc
-class _$_EventAction implements _EventAction {
+
+class _$_EventAction extends _EventAction {
   _$_EventAction(
-      {@required this.date,
-      @required this.name,
-      @required this.value,
-      @nullable this.comment,
-      this.metadata = const {}})
-      : assert(date != null),
-        assert(name != null),
-        assert(value != null),
-        assert(metadata != null);
+      {required this.date,
+      required this.name,
+      required this.value,
+      this.comment,
+      final Map<String, MetaValue> metadata = const {}})
+      : _metadata = metadata,
+        super._();
 
   @override
   final DateTime date;
@@ -2402,81 +2251,52 @@ class _$_EventAction implements _EventAction {
   @override
   final String value;
   @override
-  @nullable
-  final String comment;
-  @JsonKey(defaultValue: const {})
+  final String? comment;
+  final Map<String, MetaValue> _metadata;
   @override
-  final Map<String, MetaValue> metadata;
-
-  bool _didstringify = false;
-  String _stringify;
-
-  @override
-  String get stringify {
-    if (_didstringify == false) {
-      _didstringify = true;
-      _stringify = (() {
-        final buffer = StringBuffer()
-          ..write('${formatter.format(date)} event "$name" "$value"');
-
-        if (comment != null && comment.isNotEmpty) {
-          buffer.write(' ; $comment');
-        }
-
-        for (final meta in metadata.entries) {
-          buffer.write('\n  ${meta.key}: ${meta.value.stringify}');
-        }
-
-        return buffer.toString();
-      })();
-    }
-    return _stringify;
+  @JsonKey()
+  Map<String, MetaValue> get metadata {
+    if (_metadata is EqualUnmodifiableMapView) return _metadata;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_metadata);
   }
 
   @override
   String toString() {
-    return 'EventAction(date: $date, name: $name, value: $value, comment: $comment, metadata: $metadata, stringify: $stringify)';
+    return 'EventAction(date: $date, name: $name, value: $value, comment: $comment, metadata: $metadata)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _EventAction &&
-            (identical(other.date, date) ||
-                const DeepCollectionEquality().equals(other.date, date)) &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.value, value) ||
-                const DeepCollectionEquality().equals(other.value, value)) &&
-            (identical(other.comment, comment) ||
-                const DeepCollectionEquality()
-                    .equals(other.comment, comment)) &&
-            (identical(other.metadata, metadata) ||
-                const DeepCollectionEquality()
-                    .equals(other.metadata, metadata)));
+        (other.runtimeType == runtimeType &&
+            other is _$_EventAction &&
+            (identical(other.date, date) || other.date == date) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.value, value) || other.value == value) &&
+            (identical(other.comment, comment) || other.comment == comment) &&
+            const DeepCollectionEquality().equals(other._metadata, _metadata));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(date) ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(value) ^
-      const DeepCollectionEquality().hash(comment) ^
-      const DeepCollectionEquality().hash(metadata);
+  int get hashCode => Object.hash(runtimeType, date, name, value, comment,
+      const DeepCollectionEquality().hash(_metadata));
 
+  @JsonKey(ignore: true)
   @override
-  _$EventActionCopyWith<_EventAction> get copyWith =>
-      __$EventActionCopyWithImpl<_EventAction>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$_EventActionCopyWith<_$_EventAction> get copyWith =>
+      __$$_EventActionCopyWithImpl<_$_EventAction>(this, _$identity);
 }
 
-abstract class _EventAction implements EventAction {
+abstract class _EventAction extends EventAction {
   factory _EventAction(
-      {@required DateTime date,
-      @required String name,
-      @required String value,
-      @nullable String comment,
-      Map<String, MetaValue> metadata}) = _$_EventAction;
+      {required final DateTime date,
+      required final String name,
+      required final String value,
+      final String? comment,
+      final Map<String, MetaValue> metadata}) = _$_EventAction;
+  _EventAction._() : super._();
 
   @override
   DateTime get date;
@@ -2485,149 +2305,155 @@ abstract class _EventAction implements EventAction {
   @override
   String get value;
   @override
-  @nullable
-  String get comment;
+  String? get comment;
   @override
   Map<String, MetaValue> get metadata;
   @override
-  _$EventActionCopyWith<_EventAction> get copyWith;
+  @JsonKey(ignore: true)
+  _$$_EventActionCopyWith<_$_EventAction> get copyWith =>
+      throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class _$QueryActionTearOff {
-  const _$QueryActionTearOff();
-
-// ignore: unused_element
-  _QueryAction call(
-      {@required DateTime date,
-      @required String name,
-      @required String query,
-      @nullable String comment,
-      Map<String, MetaValue> metadata = const {}}) {
-    return _QueryAction(
-      date: date,
-      name: name,
-      query: query,
-      comment: comment,
-      metadata: metadata,
-    );
-  }
-}
-
-/// @nodoc
-// ignore: unused_element
-const $QueryAction = _$QueryActionTearOff();
 
 /// @nodoc
 mixin _$QueryAction {
-  DateTime get date;
-  String get name;
-  String get query;
-  @nullable
-  String get comment;
-  Map<String, MetaValue> get metadata;
+  DateTime get date => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  String get query => throw _privateConstructorUsedError;
+  String? get comment => throw _privateConstructorUsedError;
+  Map<String, MetaValue> get metadata => throw _privateConstructorUsedError;
 
-  $QueryActionCopyWith<QueryAction> get copyWith;
+  @JsonKey(ignore: true)
+  $QueryActionCopyWith<QueryAction> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $QueryActionCopyWith<$Res> {
   factory $QueryActionCopyWith(
           QueryAction value, $Res Function(QueryAction) then) =
-      _$QueryActionCopyWithImpl<$Res>;
+      _$QueryActionCopyWithImpl<$Res, QueryAction>;
+  @useResult
   $Res call(
       {DateTime date,
       String name,
       String query,
-      @nullable String comment,
+      String? comment,
       Map<String, MetaValue> metadata});
 }
 
 /// @nodoc
-class _$QueryActionCopyWithImpl<$Res> implements $QueryActionCopyWith<$Res> {
+class _$QueryActionCopyWithImpl<$Res, $Val extends QueryAction>
+    implements $QueryActionCopyWith<$Res> {
   _$QueryActionCopyWithImpl(this._value, this._then);
 
-  final QueryAction _value;
   // ignore: unused_field
-  final $Res Function(QueryAction) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object date = freezed,
-    Object name = freezed,
-    Object query = freezed,
-    Object comment = freezed,
-    Object metadata = freezed,
+    Object? date = null,
+    Object? name = null,
+    Object? query = null,
+    Object? comment = freezed,
+    Object? metadata = null,
   }) {
     return _then(_value.copyWith(
-      date: date == freezed ? _value.date : date as DateTime,
-      name: name == freezed ? _value.name : name as String,
-      query: query == freezed ? _value.query : query as String,
-      comment: comment == freezed ? _value.comment : comment as String,
-      metadata: metadata == freezed
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      query: null == query
+          ? _value.query
+          : query // ignore: cast_nullable_to_non_nullable
+              as String,
+      comment: freezed == comment
+          ? _value.comment
+          : comment // ignore: cast_nullable_to_non_nullable
+              as String?,
+      metadata: null == metadata
           ? _value.metadata
-          : metadata as Map<String, MetaValue>,
-    ));
+          : metadata // ignore: cast_nullable_to_non_nullable
+              as Map<String, MetaValue>,
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$QueryActionCopyWith<$Res>
+abstract class _$$_QueryActionCopyWith<$Res>
     implements $QueryActionCopyWith<$Res> {
-  factory _$QueryActionCopyWith(
-          _QueryAction value, $Res Function(_QueryAction) then) =
-      __$QueryActionCopyWithImpl<$Res>;
+  factory _$$_QueryActionCopyWith(
+          _$_QueryAction value, $Res Function(_$_QueryAction) then) =
+      __$$_QueryActionCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {DateTime date,
       String name,
       String query,
-      @nullable String comment,
+      String? comment,
       Map<String, MetaValue> metadata});
 }
 
 /// @nodoc
-class __$QueryActionCopyWithImpl<$Res> extends _$QueryActionCopyWithImpl<$Res>
-    implements _$QueryActionCopyWith<$Res> {
-  __$QueryActionCopyWithImpl(
-      _QueryAction _value, $Res Function(_QueryAction) _then)
-      : super(_value, (v) => _then(v as _QueryAction));
+class __$$_QueryActionCopyWithImpl<$Res>
+    extends _$QueryActionCopyWithImpl<$Res, _$_QueryAction>
+    implements _$$_QueryActionCopyWith<$Res> {
+  __$$_QueryActionCopyWithImpl(
+      _$_QueryAction _value, $Res Function(_$_QueryAction) _then)
+      : super(_value, _then);
 
-  @override
-  _QueryAction get _value => super._value as _QueryAction;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object date = freezed,
-    Object name = freezed,
-    Object query = freezed,
-    Object comment = freezed,
-    Object metadata = freezed,
+    Object? date = null,
+    Object? name = null,
+    Object? query = null,
+    Object? comment = freezed,
+    Object? metadata = null,
   }) {
-    return _then(_QueryAction(
-      date: date == freezed ? _value.date : date as DateTime,
-      name: name == freezed ? _value.name : name as String,
-      query: query == freezed ? _value.query : query as String,
-      comment: comment == freezed ? _value.comment : comment as String,
-      metadata: metadata == freezed
-          ? _value.metadata
-          : metadata as Map<String, MetaValue>,
+    return _then(_$_QueryAction(
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      query: null == query
+          ? _value.query
+          : query // ignore: cast_nullable_to_non_nullable
+              as String,
+      comment: freezed == comment
+          ? _value.comment
+          : comment // ignore: cast_nullable_to_non_nullable
+              as String?,
+      metadata: null == metadata
+          ? _value._metadata
+          : metadata // ignore: cast_nullable_to_non_nullable
+              as Map<String, MetaValue>,
     ));
   }
 }
 
 /// @nodoc
-class _$_QueryAction implements _QueryAction {
+
+class _$_QueryAction extends _QueryAction {
   _$_QueryAction(
-      {@required this.date,
-      @required this.name,
-      @required this.query,
-      @nullable this.comment,
-      this.metadata = const {}})
-      : assert(date != null),
-        assert(name != null),
-        assert(query != null),
-        assert(metadata != null);
+      {required this.date,
+      required this.name,
+      required this.query,
+      this.comment,
+      final Map<String, MetaValue> metadata = const {}})
+      : _metadata = metadata,
+        super._();
 
   @override
   final DateTime date;
@@ -2636,81 +2462,52 @@ class _$_QueryAction implements _QueryAction {
   @override
   final String query;
   @override
-  @nullable
-  final String comment;
-  @JsonKey(defaultValue: const {})
+  final String? comment;
+  final Map<String, MetaValue> _metadata;
   @override
-  final Map<String, MetaValue> metadata;
-
-  bool _didstringify = false;
-  String _stringify;
-
-  @override
-  String get stringify {
-    if (_didstringify == false) {
-      _didstringify = true;
-      _stringify = (() {
-        final buffer = StringBuffer()
-          ..write('${formatter.format(date)} query "$name" "$query"');
-
-        if (comment != null && comment.isNotEmpty) {
-          buffer.write(' ; $comment');
-        }
-
-        for (final meta in metadata.entries) {
-          buffer.write('\n  ${meta.key}: ${meta.value.stringify}');
-        }
-
-        return buffer.toString();
-      })();
-    }
-    return _stringify;
+  @JsonKey()
+  Map<String, MetaValue> get metadata {
+    if (_metadata is EqualUnmodifiableMapView) return _metadata;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_metadata);
   }
 
   @override
   String toString() {
-    return 'QueryAction(date: $date, name: $name, query: $query, comment: $comment, metadata: $metadata, stringify: $stringify)';
+    return 'QueryAction(date: $date, name: $name, query: $query, comment: $comment, metadata: $metadata)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _QueryAction &&
-            (identical(other.date, date) ||
-                const DeepCollectionEquality().equals(other.date, date)) &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.query, query) ||
-                const DeepCollectionEquality().equals(other.query, query)) &&
-            (identical(other.comment, comment) ||
-                const DeepCollectionEquality()
-                    .equals(other.comment, comment)) &&
-            (identical(other.metadata, metadata) ||
-                const DeepCollectionEquality()
-                    .equals(other.metadata, metadata)));
+        (other.runtimeType == runtimeType &&
+            other is _$_QueryAction &&
+            (identical(other.date, date) || other.date == date) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.query, query) || other.query == query) &&
+            (identical(other.comment, comment) || other.comment == comment) &&
+            const DeepCollectionEquality().equals(other._metadata, _metadata));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(date) ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(query) ^
-      const DeepCollectionEquality().hash(comment) ^
-      const DeepCollectionEquality().hash(metadata);
+  int get hashCode => Object.hash(runtimeType, date, name, query, comment,
+      const DeepCollectionEquality().hash(_metadata));
 
+  @JsonKey(ignore: true)
   @override
-  _$QueryActionCopyWith<_QueryAction> get copyWith =>
-      __$QueryActionCopyWithImpl<_QueryAction>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$_QueryActionCopyWith<_$_QueryAction> get copyWith =>
+      __$$_QueryActionCopyWithImpl<_$_QueryAction>(this, _$identity);
 }
 
-abstract class _QueryAction implements QueryAction {
+abstract class _QueryAction extends QueryAction {
   factory _QueryAction(
-      {@required DateTime date,
-      @required String name,
-      @required String query,
-      @nullable String comment,
-      Map<String, MetaValue> metadata}) = _$_QueryAction;
+      {required final DateTime date,
+      required final String name,
+      required final String query,
+      final String? comment,
+      final Map<String, MetaValue> metadata}) = _$_QueryAction;
+  _QueryAction._() : super._();
 
   @override
   DateTime get date;
@@ -2719,308 +2516,301 @@ abstract class _QueryAction implements QueryAction {
   @override
   String get query;
   @override
-  @nullable
-  String get comment;
+  String? get comment;
   @override
   Map<String, MetaValue> get metadata;
   @override
-  _$QueryActionCopyWith<_QueryAction> get copyWith;
+  @JsonKey(ignore: true)
+  _$$_QueryActionCopyWith<_$_QueryAction> get copyWith =>
+      throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class _$CustomActionTearOff {
-  const _$CustomActionTearOff();
-
-// ignore: unused_element
-  CustomCustomAction custom(
-      {@required DateTime date,
-      @required String type,
-      List<dynamic> values = const [],
-      @nullable String comment,
-      Map<String, MetaValue> metadata = const {}}) {
-    return CustomCustomAction(
-      date: date,
-      type: type,
-      values: values,
-      comment: comment,
-      metadata: metadata,
-    );
-  }
-
-// ignore: unused_element
-  BudgetAction budget(
-      {@required DateTime date,
-      String type = 'budget',
-      List<dynamic> values = const [],
-      @nullable String comment,
-      Map<String, MetaValue> metadata = const {}}) {
-    return BudgetAction(
-      date: date,
-      type: type,
-      values: values,
-      comment: comment,
-      metadata: metadata,
-    );
-  }
-}
-
-/// @nodoc
-// ignore: unused_element
-const $CustomAction = _$CustomActionTearOff();
 
 /// @nodoc
 mixin _$CustomAction {
-  DateTime get date;
-  String get type;
-  List<dynamic> get values;
-  @nullable
-  String get comment;
-  Map<String, MetaValue> get metadata;
+  DateTime get date => throw _privateConstructorUsedError;
+  String get type => throw _privateConstructorUsedError;
+  List<dynamic> get values => throw _privateConstructorUsedError;
+  String? get comment => throw _privateConstructorUsedError;
+  Map<String, MetaValue> get metadata => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(DateTime date, String type, List<dynamic> values,
+            String? comment, Map<String, MetaValue> metadata)
+        custom,
+    required TResult Function(DateTime date, String type, List<dynamic> values,
+            String? comment, Map<String, MetaValue> metadata)
+        budget,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(DateTime date, String type, List<dynamic> values,
+            String? comment, Map<String, MetaValue> metadata)?
+        custom,
+    TResult? Function(DateTime date, String type, List<dynamic> values,
+            String? comment, Map<String, MetaValue> metadata)?
+        budget,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(DateTime date, String type, List<dynamic> values,
+            String? comment, Map<String, MetaValue> metadata)?
+        custom,
+    TResult Function(DateTime date, String type, List<dynamic> values,
+            String? comment, Map<String, MetaValue> metadata)?
+        budget,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CustomCustomAction value) custom,
+    required TResult Function(BudgetAction value) budget,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CustomCustomAction value)? custom,
+    TResult? Function(BudgetAction value)? budget,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CustomCustomAction value)? custom,
+    TResult Function(BudgetAction value)? budget,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required
-        Result custom(DateTime date, String type, List<dynamic> values,
-            @nullable String comment, Map<String, MetaValue> metadata),
-    @required
-        Result budget(DateTime date, String type, List<dynamic> values,
-            @nullable String comment, Map<String, MetaValue> metadata),
-  });
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result custom(DateTime date, String type, List<dynamic> values,
-        @nullable String comment, Map<String, MetaValue> metadata),
-    Result budget(DateTime date, String type, List<dynamic> values,
-        @nullable String comment, Map<String, MetaValue> metadata),
-    @required Result orElse(),
-  });
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result custom(CustomCustomAction value),
-    @required Result budget(BudgetAction value),
-  });
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result custom(CustomCustomAction value),
-    Result budget(BudgetAction value),
-    @required Result orElse(),
-  });
-
-  $CustomActionCopyWith<CustomAction> get copyWith;
+  @JsonKey(ignore: true)
+  $CustomActionCopyWith<CustomAction> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $CustomActionCopyWith<$Res> {
   factory $CustomActionCopyWith(
           CustomAction value, $Res Function(CustomAction) then) =
-      _$CustomActionCopyWithImpl<$Res>;
+      _$CustomActionCopyWithImpl<$Res, CustomAction>;
+  @useResult
   $Res call(
       {DateTime date,
       String type,
       List<dynamic> values,
-      @nullable String comment,
+      String? comment,
       Map<String, MetaValue> metadata});
 }
 
 /// @nodoc
-class _$CustomActionCopyWithImpl<$Res> implements $CustomActionCopyWith<$Res> {
+class _$CustomActionCopyWithImpl<$Res, $Val extends CustomAction>
+    implements $CustomActionCopyWith<$Res> {
   _$CustomActionCopyWithImpl(this._value, this._then);
 
-  final CustomAction _value;
   // ignore: unused_field
-  final $Res Function(CustomAction) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object date = freezed,
-    Object type = freezed,
-    Object values = freezed,
-    Object comment = freezed,
-    Object metadata = freezed,
+    Object? date = null,
+    Object? type = null,
+    Object? values = null,
+    Object? comment = freezed,
+    Object? metadata = null,
   }) {
     return _then(_value.copyWith(
-      date: date == freezed ? _value.date : date as DateTime,
-      type: type == freezed ? _value.type : type as String,
-      values: values == freezed ? _value.values : values as List<dynamic>,
-      comment: comment == freezed ? _value.comment : comment as String,
-      metadata: metadata == freezed
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      values: null == values
+          ? _value.values
+          : values // ignore: cast_nullable_to_non_nullable
+              as List<dynamic>,
+      comment: freezed == comment
+          ? _value.comment
+          : comment // ignore: cast_nullable_to_non_nullable
+              as String?,
+      metadata: null == metadata
           ? _value.metadata
-          : metadata as Map<String, MetaValue>,
-    ));
+          : metadata // ignore: cast_nullable_to_non_nullable
+              as Map<String, MetaValue>,
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class $CustomCustomActionCopyWith<$Res>
+abstract class _$$CustomCustomActionCopyWith<$Res>
     implements $CustomActionCopyWith<$Res> {
-  factory $CustomCustomActionCopyWith(
-          CustomCustomAction value, $Res Function(CustomCustomAction) then) =
-      _$CustomCustomActionCopyWithImpl<$Res>;
+  factory _$$CustomCustomActionCopyWith(_$CustomCustomAction value,
+          $Res Function(_$CustomCustomAction) then) =
+      __$$CustomCustomActionCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {DateTime date,
       String type,
       List<dynamic> values,
-      @nullable String comment,
+      String? comment,
       Map<String, MetaValue> metadata});
 }
 
 /// @nodoc
-class _$CustomCustomActionCopyWithImpl<$Res>
-    extends _$CustomActionCopyWithImpl<$Res>
-    implements $CustomCustomActionCopyWith<$Res> {
-  _$CustomCustomActionCopyWithImpl(
-      CustomCustomAction _value, $Res Function(CustomCustomAction) _then)
-      : super(_value, (v) => _then(v as CustomCustomAction));
+class __$$CustomCustomActionCopyWithImpl<$Res>
+    extends _$CustomActionCopyWithImpl<$Res, _$CustomCustomAction>
+    implements _$$CustomCustomActionCopyWith<$Res> {
+  __$$CustomCustomActionCopyWithImpl(
+      _$CustomCustomAction _value, $Res Function(_$CustomCustomAction) _then)
+      : super(_value, _then);
 
-  @override
-  CustomCustomAction get _value => super._value as CustomCustomAction;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object date = freezed,
-    Object type = freezed,
-    Object values = freezed,
-    Object comment = freezed,
-    Object metadata = freezed,
+    Object? date = null,
+    Object? type = null,
+    Object? values = null,
+    Object? comment = freezed,
+    Object? metadata = null,
   }) {
-    return _then(CustomCustomAction(
-      date: date == freezed ? _value.date : date as DateTime,
-      type: type == freezed ? _value.type : type as String,
-      values: values == freezed ? _value.values : values as List<dynamic>,
-      comment: comment == freezed ? _value.comment : comment as String,
-      metadata: metadata == freezed
-          ? _value.metadata
-          : metadata as Map<String, MetaValue>,
+    return _then(_$CustomCustomAction(
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      values: null == values
+          ? _value._values
+          : values // ignore: cast_nullable_to_non_nullable
+              as List<dynamic>,
+      comment: freezed == comment
+          ? _value.comment
+          : comment // ignore: cast_nullable_to_non_nullable
+              as String?,
+      metadata: null == metadata
+          ? _value._metadata
+          : metadata // ignore: cast_nullable_to_non_nullable
+              as Map<String, MetaValue>,
     ));
   }
 }
 
 /// @nodoc
-class _$CustomCustomAction implements CustomCustomAction {
+
+class _$CustomCustomAction extends CustomCustomAction {
   _$CustomCustomAction(
-      {@required this.date,
-      @required this.type,
-      this.values = const [],
-      @nullable this.comment,
-      this.metadata = const {}})
-      : assert(date != null),
-        assert(type != null),
-        assert(values != null),
-        assert(metadata != null);
+      {required this.date,
+      required this.type,
+      final List<dynamic> values = const [],
+      this.comment,
+      final Map<String, MetaValue> metadata = const {}})
+      : _values = values,
+        _metadata = metadata,
+        super._();
 
   @override
   final DateTime date;
   @override
   final String type;
-  @JsonKey(defaultValue: const [])
+  final List<dynamic> _values;
   @override
-  final List<dynamic> values;
-  @override
-  @nullable
-  final String comment;
-  @JsonKey(defaultValue: const {})
-  @override
-  final Map<String, MetaValue> metadata;
-
-  bool _didstringify = false;
-  String _stringify;
+  @JsonKey()
+  List<dynamic> get values {
+    if (_values is EqualUnmodifiableListView) return _values;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_values);
+  }
 
   @override
-  String get stringify {
-    if (_didstringify == false) {
-      _didstringify = true;
-      _stringify = (() {
-        final buffer = StringBuffer()
-          ..write('${formatter.format(date)} custom "$type"');
-
-        for (final item in values) {
-          if (item is Account) {
-            buffer.write(' ${item.stringify}');
-          } else if (item is DateTime) {
-            buffer.write(' ${formatter.format(date)}');
-          } else if (item is String) {
-            buffer.write(' "$item"');
-          } else {
-            buffer.write(' $item');
-          }
-        }
-
-        if (comment != null && comment.isNotEmpty) {
-          buffer.write(' ; $comment');
-        }
-
-        for (final meta in metadata.entries) {
-          buffer.write('\n  ${meta.key}: ${meta.value.stringify}');
-        }
-
-        return buffer.toString();
-      })();
-    }
-    return _stringify;
+  final String? comment;
+  final Map<String, MetaValue> _metadata;
+  @override
+  @JsonKey()
+  Map<String, MetaValue> get metadata {
+    if (_metadata is EqualUnmodifiableMapView) return _metadata;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_metadata);
   }
 
   @override
   String toString() {
-    return 'CustomAction.custom(date: $date, type: $type, values: $values, comment: $comment, metadata: $metadata, stringify: $stringify)';
+    return 'CustomAction.custom(date: $date, type: $type, values: $values, comment: $comment, metadata: $metadata)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is CustomCustomAction &&
-            (identical(other.date, date) ||
-                const DeepCollectionEquality().equals(other.date, date)) &&
-            (identical(other.type, type) ||
-                const DeepCollectionEquality().equals(other.type, type)) &&
-            (identical(other.values, values) ||
-                const DeepCollectionEquality().equals(other.values, values)) &&
-            (identical(other.comment, comment) ||
-                const DeepCollectionEquality()
-                    .equals(other.comment, comment)) &&
-            (identical(other.metadata, metadata) ||
-                const DeepCollectionEquality()
-                    .equals(other.metadata, metadata)));
+        (other.runtimeType == runtimeType &&
+            other is _$CustomCustomAction &&
+            (identical(other.date, date) || other.date == date) &&
+            (identical(other.type, type) || other.type == type) &&
+            const DeepCollectionEquality().equals(other._values, _values) &&
+            (identical(other.comment, comment) || other.comment == comment) &&
+            const DeepCollectionEquality().equals(other._metadata, _metadata));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(date) ^
-      const DeepCollectionEquality().hash(type) ^
-      const DeepCollectionEquality().hash(values) ^
-      const DeepCollectionEquality().hash(comment) ^
-      const DeepCollectionEquality().hash(metadata);
+  int get hashCode => Object.hash(
+      runtimeType,
+      date,
+      type,
+      const DeepCollectionEquality().hash(_values),
+      comment,
+      const DeepCollectionEquality().hash(_metadata));
 
+  @JsonKey(ignore: true)
   @override
-  $CustomCustomActionCopyWith<CustomCustomAction> get copyWith =>
-      _$CustomCustomActionCopyWithImpl<CustomCustomAction>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$CustomCustomActionCopyWith<_$CustomCustomAction> get copyWith =>
+      __$$CustomCustomActionCopyWithImpl<_$CustomCustomAction>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required
-        Result custom(DateTime date, String type, List<dynamic> values,
-            @nullable String comment, Map<String, MetaValue> metadata),
-    @required
-        Result budget(DateTime date, String type, List<dynamic> values,
-            @nullable String comment, Map<String, MetaValue> metadata),
+  TResult when<TResult extends Object?>({
+    required TResult Function(DateTime date, String type, List<dynamic> values,
+            String? comment, Map<String, MetaValue> metadata)
+        custom,
+    required TResult Function(DateTime date, String type, List<dynamic> values,
+            String? comment, Map<String, MetaValue> metadata)
+        budget,
   }) {
-    assert(custom != null);
-    assert(budget != null);
     return custom(date, type, values, comment, metadata);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result custom(DateTime date, String type, List<dynamic> values,
-        @nullable String comment, Map<String, MetaValue> metadata),
-    Result budget(DateTime date, String type, List<dynamic> values,
-        @nullable String comment, Map<String, MetaValue> metadata),
-    @required Result orElse(),
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(DateTime date, String type, List<dynamic> values,
+            String? comment, Map<String, MetaValue> metadata)?
+        custom,
+    TResult? Function(DateTime date, String type, List<dynamic> values,
+            String? comment, Map<String, MetaValue> metadata)?
+        budget,
   }) {
-    assert(orElse != null);
+    return custom?.call(date, type, values, comment, metadata);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(DateTime date, String type, List<dynamic> values,
+            String? comment, Map<String, MetaValue> metadata)?
+        custom,
+    TResult Function(DateTime date, String type, List<dynamic> values,
+            String? comment, Map<String, MetaValue> metadata)?
+        budget,
+    required TResult orElse(),
+  }) {
     if (custom != null) {
       return custom(date, type, values, comment, metadata);
     }
@@ -3029,23 +2819,29 @@ class _$CustomCustomAction implements CustomCustomAction {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result custom(CustomCustomAction value),
-    @required Result budget(BudgetAction value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(CustomCustomAction value) custom,
+    required TResult Function(BudgetAction value) budget,
   }) {
-    assert(custom != null);
-    assert(budget != null);
     return custom(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result custom(CustomCustomAction value),
-    Result budget(BudgetAction value),
-    @required Result orElse(),
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CustomCustomAction value)? custom,
+    TResult? Function(BudgetAction value)? budget,
   }) {
-    assert(orElse != null);
+    return custom?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CustomCustomAction value)? custom,
+    TResult Function(BudgetAction value)? budget,
+    required TResult orElse(),
+  }) {
     if (custom != null) {
       return custom(this);
     }
@@ -3053,13 +2849,14 @@ class _$CustomCustomAction implements CustomCustomAction {
   }
 }
 
-abstract class CustomCustomAction implements CustomAction {
+abstract class CustomCustomAction extends CustomAction {
   factory CustomCustomAction(
-      {@required DateTime date,
-      @required String type,
-      List<dynamic> values,
-      @nullable String comment,
-      Map<String, MetaValue> metadata}) = _$CustomCustomAction;
+      {required final DateTime date,
+      required final String type,
+      final List<dynamic> values,
+      final String? comment,
+      final Map<String, MetaValue> metadata}) = _$CustomCustomAction;
+  CustomCustomAction._() : super._();
 
   @override
   DateTime get date;
@@ -3068,185 +2865,180 @@ abstract class CustomCustomAction implements CustomAction {
   @override
   List<dynamic> get values;
   @override
-  @nullable
-  String get comment;
+  String? get comment;
   @override
   Map<String, MetaValue> get metadata;
   @override
-  $CustomCustomActionCopyWith<CustomCustomAction> get copyWith;
+  @JsonKey(ignore: true)
+  _$$CustomCustomActionCopyWith<_$CustomCustomAction> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $BudgetActionCopyWith<$Res>
+abstract class _$$BudgetActionCopyWith<$Res>
     implements $CustomActionCopyWith<$Res> {
-  factory $BudgetActionCopyWith(
-          BudgetAction value, $Res Function(BudgetAction) then) =
-      _$BudgetActionCopyWithImpl<$Res>;
+  factory _$$BudgetActionCopyWith(
+          _$BudgetAction value, $Res Function(_$BudgetAction) then) =
+      __$$BudgetActionCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {DateTime date,
       String type,
       List<dynamic> values,
-      @nullable String comment,
+      String? comment,
       Map<String, MetaValue> metadata});
 }
 
 /// @nodoc
-class _$BudgetActionCopyWithImpl<$Res> extends _$CustomActionCopyWithImpl<$Res>
-    implements $BudgetActionCopyWith<$Res> {
-  _$BudgetActionCopyWithImpl(
-      BudgetAction _value, $Res Function(BudgetAction) _then)
-      : super(_value, (v) => _then(v as BudgetAction));
+class __$$BudgetActionCopyWithImpl<$Res>
+    extends _$CustomActionCopyWithImpl<$Res, _$BudgetAction>
+    implements _$$BudgetActionCopyWith<$Res> {
+  __$$BudgetActionCopyWithImpl(
+      _$BudgetAction _value, $Res Function(_$BudgetAction) _then)
+      : super(_value, _then);
 
-  @override
-  BudgetAction get _value => super._value as BudgetAction;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object date = freezed,
-    Object type = freezed,
-    Object values = freezed,
-    Object comment = freezed,
-    Object metadata = freezed,
+    Object? date = null,
+    Object? type = null,
+    Object? values = null,
+    Object? comment = freezed,
+    Object? metadata = null,
   }) {
-    return _then(BudgetAction(
-      date: date == freezed ? _value.date : date as DateTime,
-      type: type == freezed ? _value.type : type as String,
-      values: values == freezed ? _value.values : values as List<dynamic>,
-      comment: comment == freezed ? _value.comment : comment as String,
-      metadata: metadata == freezed
-          ? _value.metadata
-          : metadata as Map<String, MetaValue>,
+    return _then(_$BudgetAction(
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      values: null == values
+          ? _value._values
+          : values // ignore: cast_nullable_to_non_nullable
+              as List<dynamic>,
+      comment: freezed == comment
+          ? _value.comment
+          : comment // ignore: cast_nullable_to_non_nullable
+              as String?,
+      metadata: null == metadata
+          ? _value._metadata
+          : metadata // ignore: cast_nullable_to_non_nullable
+              as Map<String, MetaValue>,
     ));
   }
 }
 
 /// @nodoc
-class _$BudgetAction implements BudgetAction {
+
+class _$BudgetAction extends BudgetAction {
   _$BudgetAction(
-      {@required this.date,
+      {required this.date,
       this.type = 'budget',
-      this.values = const [],
-      @nullable this.comment,
-      this.metadata = const {}})
-      : assert(date != null),
-        assert(type != null),
-        assert(values != null),
-        assert(metadata != null);
+      final List<dynamic> values = const [],
+      this.comment,
+      final Map<String, MetaValue> metadata = const {}})
+      : _values = values,
+        _metadata = metadata,
+        super._();
 
   @override
   final DateTime date;
-  @JsonKey(defaultValue: 'budget')
   @override
+  @JsonKey()
   final String type;
-  @JsonKey(defaultValue: const [])
+  final List<dynamic> _values;
   @override
-  final List<dynamic> values;
-  @override
-  @nullable
-  final String comment;
-  @JsonKey(defaultValue: const {})
-  @override
-  final Map<String, MetaValue> metadata;
-
-  bool _didstringify = false;
-  String _stringify;
+  @JsonKey()
+  List<dynamic> get values {
+    if (_values is EqualUnmodifiableListView) return _values;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_values);
+  }
 
   @override
-  String get stringify {
-    if (_didstringify == false) {
-      _didstringify = true;
-      _stringify = (() {
-        final buffer = StringBuffer()
-          ..write('${formatter.format(date)} custom "$type"');
-
-        for (final item in values) {
-          if (item is Account) {
-            buffer.write(' ${item.stringify}');
-          } else if (item is DateTime) {
-            buffer.write(' ${formatter.format(date)}');
-          } else if (item is String) {
-            buffer.write(' "$item"');
-          } else {
-            buffer.write(' $item');
-          }
-        }
-
-        if (comment != null && comment.isNotEmpty) {
-          buffer.write(' ; $comment');
-        }
-
-        for (final meta in metadata.entries) {
-          buffer.write('\n  ${meta.key}: ${meta.value.stringify}');
-        }
-
-        return buffer.toString();
-      })();
-    }
-    return _stringify;
+  final String? comment;
+  final Map<String, MetaValue> _metadata;
+  @override
+  @JsonKey()
+  Map<String, MetaValue> get metadata {
+    if (_metadata is EqualUnmodifiableMapView) return _metadata;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_metadata);
   }
 
   @override
   String toString() {
-    return 'CustomAction.budget(date: $date, type: $type, values: $values, comment: $comment, metadata: $metadata, stringify: $stringify)';
+    return 'CustomAction.budget(date: $date, type: $type, values: $values, comment: $comment, metadata: $metadata)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is BudgetAction &&
-            (identical(other.date, date) ||
-                const DeepCollectionEquality().equals(other.date, date)) &&
-            (identical(other.type, type) ||
-                const DeepCollectionEquality().equals(other.type, type)) &&
-            (identical(other.values, values) ||
-                const DeepCollectionEquality().equals(other.values, values)) &&
-            (identical(other.comment, comment) ||
-                const DeepCollectionEquality()
-                    .equals(other.comment, comment)) &&
-            (identical(other.metadata, metadata) ||
-                const DeepCollectionEquality()
-                    .equals(other.metadata, metadata)));
+        (other.runtimeType == runtimeType &&
+            other is _$BudgetAction &&
+            (identical(other.date, date) || other.date == date) &&
+            (identical(other.type, type) || other.type == type) &&
+            const DeepCollectionEquality().equals(other._values, _values) &&
+            (identical(other.comment, comment) || other.comment == comment) &&
+            const DeepCollectionEquality().equals(other._metadata, _metadata));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(date) ^
-      const DeepCollectionEquality().hash(type) ^
-      const DeepCollectionEquality().hash(values) ^
-      const DeepCollectionEquality().hash(comment) ^
-      const DeepCollectionEquality().hash(metadata);
+  int get hashCode => Object.hash(
+      runtimeType,
+      date,
+      type,
+      const DeepCollectionEquality().hash(_values),
+      comment,
+      const DeepCollectionEquality().hash(_metadata));
 
+  @JsonKey(ignore: true)
   @override
-  $BudgetActionCopyWith<BudgetAction> get copyWith =>
-      _$BudgetActionCopyWithImpl<BudgetAction>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$BudgetActionCopyWith<_$BudgetAction> get copyWith =>
+      __$$BudgetActionCopyWithImpl<_$BudgetAction>(this, _$identity);
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required
-        Result custom(DateTime date, String type, List<dynamic> values,
-            @nullable String comment, Map<String, MetaValue> metadata),
-    @required
-        Result budget(DateTime date, String type, List<dynamic> values,
-            @nullable String comment, Map<String, MetaValue> metadata),
+  TResult when<TResult extends Object?>({
+    required TResult Function(DateTime date, String type, List<dynamic> values,
+            String? comment, Map<String, MetaValue> metadata)
+        custom,
+    required TResult Function(DateTime date, String type, List<dynamic> values,
+            String? comment, Map<String, MetaValue> metadata)
+        budget,
   }) {
-    assert(custom != null);
-    assert(budget != null);
     return budget(date, type, values, comment, metadata);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result custom(DateTime date, String type, List<dynamic> values,
-        @nullable String comment, Map<String, MetaValue> metadata),
-    Result budget(DateTime date, String type, List<dynamic> values,
-        @nullable String comment, Map<String, MetaValue> metadata),
-    @required Result orElse(),
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(DateTime date, String type, List<dynamic> values,
+            String? comment, Map<String, MetaValue> metadata)?
+        custom,
+    TResult? Function(DateTime date, String type, List<dynamic> values,
+            String? comment, Map<String, MetaValue> metadata)?
+        budget,
   }) {
-    assert(orElse != null);
+    return budget?.call(date, type, values, comment, metadata);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(DateTime date, String type, List<dynamic> values,
+            String? comment, Map<String, MetaValue> metadata)?
+        custom,
+    TResult Function(DateTime date, String type, List<dynamic> values,
+            String? comment, Map<String, MetaValue> metadata)?
+        budget,
+    required TResult orElse(),
+  }) {
     if (budget != null) {
       return budget(date, type, values, comment, metadata);
     }
@@ -3255,23 +3047,29 @@ class _$BudgetAction implements BudgetAction {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result custom(CustomCustomAction value),
-    @required Result budget(BudgetAction value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(CustomCustomAction value) custom,
+    required TResult Function(BudgetAction value) budget,
   }) {
-    assert(custom != null);
-    assert(budget != null);
     return budget(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result custom(CustomCustomAction value),
-    Result budget(BudgetAction value),
-    @required Result orElse(),
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CustomCustomAction value)? custom,
+    TResult? Function(BudgetAction value)? budget,
   }) {
-    assert(orElse != null);
+    return budget?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CustomCustomAction value)? custom,
+    TResult Function(BudgetAction value)? budget,
+    required TResult orElse(),
+  }) {
     if (budget != null) {
       return budget(this);
     }
@@ -3279,13 +3077,14 @@ class _$BudgetAction implements BudgetAction {
   }
 }
 
-abstract class BudgetAction implements CustomAction {
+abstract class BudgetAction extends CustomAction {
   factory BudgetAction(
-      {@required DateTime date,
-      String type,
-      List<dynamic> values,
-      @nullable String comment,
-      Map<String, MetaValue> metadata}) = _$BudgetAction;
+      {required final DateTime date,
+      final String type,
+      final List<dynamic> values,
+      final String? comment,
+      final Map<String, MetaValue> metadata}) = _$BudgetAction;
+  BudgetAction._() : super._();
 
   @override
   DateTime get date;
@@ -3294,10 +3093,11 @@ abstract class BudgetAction implements CustomAction {
   @override
   List<dynamic> get values;
   @override
-  @nullable
-  String get comment;
+  String? get comment;
   @override
   Map<String, MetaValue> get metadata;
   @override
-  $BudgetActionCopyWith<BudgetAction> get copyWith;
+  @JsonKey(ignore: true)
+  _$$BudgetActionCopyWith<_$BudgetAction> get copyWith =>
+      throw _privateConstructorUsedError;
 }
