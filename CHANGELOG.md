@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.5.1
+- Bugfix to balancing of multiple currencies (FX)
+
 ## 0.5.0
 - Properly convert to nnbd
 

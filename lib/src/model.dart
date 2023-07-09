@@ -111,18 +111,17 @@ abstract class Transaction with _$Transaction {
         if (isBalanced) return this;
         if (!canBeBalanced) return null;
 
-        final calculatedUnit =
-            -sumsMap.values.where((money) => !money.isZero).single;
+        final blankPosting = postings.firstWhere((p) => p.position == null);
 
         return copyWith(
-          postings: postings.map((p) {
-            if (p.position == null) {
-              return p.copyWith(
-                position: Position(unit: calculatedUnit),
-              );
-            }
-            return p;
-          }).toList(),
+          postings: [
+            ...postings.where((p) => p.position != null),
+            ...sumsMap.values.where((money) => !money.isZero).map(
+              (money) => blankPosting.copyWith(
+                position: Position(unit: -money),
+              ),
+            ),
+          ],
         );
       })();
 }

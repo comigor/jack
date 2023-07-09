@@ -42,7 +42,7 @@ void main() {
       expect(transaction.canBeBalanced, isFalse);
     });
 
-    test('postings with multiple ccurrencies', () {
+    test('postings with multiple currencies', () {
       final transaction = Transaction(
         date: DateTime.now(),
         postings: [
@@ -239,6 +239,46 @@ void main() {
           ),
         ),
       );
+    });
+
+    test('with multiple currency for the same posting', () {
+      final beforeBalancing = Transaction(
+        date: DateTime.now(),
+        postings: [
+          Posting(
+            account: Account(name: 'A'),
+            position: Position(unit: Money.fromNumWithCurrency(10, c01)),
+          ),
+          Posting(
+            account: Account(name: 'B'),
+            position: Position(unit: Money.fromNumWithCurrency(10, c02)),
+          ),
+          Posting(
+            account: Account(name: 'Equity:FX'),
+          ),
+        ],
+      );
+
+      final afterBalancing = [
+        Posting(
+          account: Account(name: 'A'),
+          position: Position(unit: Money.fromNumWithCurrency(10, c01)),
+        ),
+        Posting(
+          account: Account(name: 'B'),
+          position: Position(unit: Money.fromNumWithCurrency(10, c02)),
+        ),
+        Posting(
+          account: Account(name: 'Equity:FX'),
+          position: Position(unit: Money.fromNumWithCurrency(-10, c01)),
+        ),
+        Posting(
+          account: Account(name: 'Equity:FX'),
+          position: Position(unit: Money.fromNumWithCurrency(-10, c02)),
+        ),
+      ];
+
+      expect(beforeBalancing.balanced!.postings, equals(afterBalancing));
     });
   });
 }
