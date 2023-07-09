@@ -66,6 +66,23 @@ void main() {
       );
       expect(transaction.canBeBalanced, isFalse);
     });
+
+    test('already balanced', () {
+      final transaction = Transaction(
+        date: DateTime.now(),
+        postings: [
+          Posting(
+            account: Account(name: 'A'),
+            position: Position(unit: Money.fromNumWithCurrency(10, c01)),
+          ),
+          Posting(
+            account: Account(name: 'B'),
+            position: Position(unit: Money.fromNumWithCurrency(-10, c01)),
+          ),
+        ],
+      );
+      expect(transaction.canBeBalanced, isTrue);
+    });
   });
 
   group('on Transaction balancing', () {

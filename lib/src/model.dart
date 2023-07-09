@@ -89,7 +89,7 @@ abstract class Transaction with _$Transaction {
       })();
 
   bool get canBeBalanced =>
-      postings.where((posting) => posting.position == null).length == 1;
+      isBalanced || postings.where((posting) => posting.position == null).length == 1;
 
   Map<Currency, Money> get sumsMap => (() {
         final sums = <Currency, Money>{};

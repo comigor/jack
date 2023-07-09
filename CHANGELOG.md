@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.5.2
+- Bugfix to `canBeBalanced` when already balanced
+
 ## 0.5.1
 - Bugfix to balancing of multiple currencies (FX)
 
