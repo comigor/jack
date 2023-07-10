@@ -43,7 +43,7 @@ class BeancountParserDefinition extends BeancountGrammarDefinition {
   Parser metadataToken() => super.metadataToken().map((each) => {
         for (var e in each as List)
           e.first.toString(): MetaValue(
-            value: e.elementAt(2).toString(),
+            value: e.elementAt(2),
             comment: e.elementAt(3) as String,
           )
       });

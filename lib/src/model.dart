@@ -5,16 +5,24 @@ import 'package:money2/money2.dart';
 part 'model.freezed.dart';
 
 @freezed
-abstract class MetaValue with _$MetaValue {
+abstract class MetaValue<T> with _$MetaValue<T> {
   MetaValue._();
 
   factory MetaValue({
-    required String value,
+    required T value,
      String? comment,
   }) = _MetaValue;
 
   String get stringify => (() {
-        final buffer = StringBuffer()..write('"$value"');
+        final buffer = StringBuffer();
+        switch (value.runtimeType) {
+          case DateTime:
+            buffer.write(formatter.format(value as DateTime));
+            break;
+          default:
+            buffer.write('"$value"');
+            break;
+        }
 
         if (comment != null && comment!.isNotEmpty) {
           buffer.write(' ; $comment');

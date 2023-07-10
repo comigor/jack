@@ -18,6 +18,7 @@ void main() {
   Expenses:A 20.98 USD ; NOT
     meta: "data" ; ignored
     x: "y"
+    z: 2023-01-01
   ! Liabilities:B -330.66 BRL
   Income:C:D -99.00000001 BITCOIN
   Income:E -99.00 USD

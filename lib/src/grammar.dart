@@ -51,7 +51,7 @@ class BeancountGrammarDefinition extends GrammarDefinition {
   Parser singleMetadataToken() =>
       ref(token, lowercaseCharacterPrimitive().plus()) &
       ref(token, char(':')) &
-      stringToken() &
+      (stringToken() | dateToken()) &
       comment();
   Parser metadataToken() => singleMetadataToken().star();
   Parser amountWithCurrencyToken() => numberToken() & currencyToken();

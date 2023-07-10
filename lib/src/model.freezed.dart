@@ -15,26 +15,27 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$MetaValue {
-  String get value => throw _privateConstructorUsedError;
+mixin _$MetaValue<T> {
+  T get value => throw _privateConstructorUsedError;
   String? get comment => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $MetaValueCopyWith<MetaValue> get copyWith =>
+  $MetaValueCopyWith<T, MetaValue<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $MetaValueCopyWith<$Res> {
-  factory $MetaValueCopyWith(MetaValue value, $Res Function(MetaValue) then) =
-      _$MetaValueCopyWithImpl<$Res, MetaValue>;
+abstract class $MetaValueCopyWith<T, $Res> {
+  factory $MetaValueCopyWith(
+          MetaValue<T> value, $Res Function(MetaValue<T>) then) =
+      _$MetaValueCopyWithImpl<T, $Res, MetaValue<T>>;
   @useResult
-  $Res call({String value, String? comment});
+  $Res call({T value, String? comment});
 }
 
 /// @nodoc
-class _$MetaValueCopyWithImpl<$Res, $Val extends MetaValue>
-    implements $MetaValueCopyWith<$Res> {
+class _$MetaValueCopyWithImpl<T, $Res, $Val extends MetaValue<T>>
+    implements $MetaValueCopyWith<T, $Res> {
   _$MetaValueCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -45,14 +46,14 @@ class _$MetaValueCopyWithImpl<$Res, $Val extends MetaValue>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? value = null,
+    Object? value = freezed,
     Object? comment = freezed,
   }) {
     return _then(_value.copyWith(
-      value: null == value
+      value: freezed == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
-              as String,
+              as T,
       comment: freezed == comment
           ? _value.comment
           : comment // ignore: cast_nullable_to_non_nullable
@@ -62,34 +63,35 @@ class _$MetaValueCopyWithImpl<$Res, $Val extends MetaValue>
 }
 
 /// @nodoc
-abstract class _$$_MetaValueCopyWith<$Res> implements $MetaValueCopyWith<$Res> {
+abstract class _$$_MetaValueCopyWith<T, $Res>
+    implements $MetaValueCopyWith<T, $Res> {
   factory _$$_MetaValueCopyWith(
-          _$_MetaValue value, $Res Function(_$_MetaValue) then) =
-      __$$_MetaValueCopyWithImpl<$Res>;
+          _$_MetaValue<T> value, $Res Function(_$_MetaValue<T>) then) =
+      __$$_MetaValueCopyWithImpl<T, $Res>;
   @override
   @useResult
-  $Res call({String value, String? comment});
+  $Res call({T value, String? comment});
 }
 
 /// @nodoc
-class __$$_MetaValueCopyWithImpl<$Res>
-    extends _$MetaValueCopyWithImpl<$Res, _$_MetaValue>
-    implements _$$_MetaValueCopyWith<$Res> {
+class __$$_MetaValueCopyWithImpl<T, $Res>
+    extends _$MetaValueCopyWithImpl<T, $Res, _$_MetaValue<T>>
+    implements _$$_MetaValueCopyWith<T, $Res> {
   __$$_MetaValueCopyWithImpl(
-      _$_MetaValue _value, $Res Function(_$_MetaValue) _then)
+      _$_MetaValue<T> _value, $Res Function(_$_MetaValue<T>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? value = null,
+    Object? value = freezed,
     Object? comment = freezed,
   }) {
-    return _then(_$_MetaValue(
-      value: null == value
+    return _then(_$_MetaValue<T>(
+      value: freezed == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
-              as String,
+              as T,
       comment: freezed == comment
           ? _value.comment
           : comment // ignore: cast_nullable_to_non_nullable
@@ -100,50 +102,51 @@ class __$$_MetaValueCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_MetaValue extends _MetaValue {
+class _$_MetaValue<T> extends _MetaValue<T> {
   _$_MetaValue({required this.value, this.comment}) : super._();
 
   @override
-  final String value;
+  final T value;
   @override
   final String? comment;
 
   @override
   String toString() {
-    return 'MetaValue(value: $value, comment: $comment)';
+    return 'MetaValue<$T>(value: $value, comment: $comment)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MetaValue &&
-            (identical(other.value, value) || other.value == value) &&
+            other is _$_MetaValue<T> &&
+            const DeepCollectionEquality().equals(other.value, value) &&
             (identical(other.comment, comment) || other.comment == comment));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, value, comment);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(value), comment);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MetaValueCopyWith<_$_MetaValue> get copyWith =>
-      __$$_MetaValueCopyWithImpl<_$_MetaValue>(this, _$identity);
+  _$$_MetaValueCopyWith<T, _$_MetaValue<T>> get copyWith =>
+      __$$_MetaValueCopyWithImpl<T, _$_MetaValue<T>>(this, _$identity);
 }
 
-abstract class _MetaValue extends MetaValue {
-  factory _MetaValue({required final String value, final String? comment}) =
-      _$_MetaValue;
+abstract class _MetaValue<T> extends MetaValue<T> {
+  factory _MetaValue({required final T value, final String? comment}) =
+      _$_MetaValue<T>;
   _MetaValue._() : super._();
 
   @override
-  String get value;
+  T get value;
   @override
   String? get comment;
   @override
   @JsonKey(ignore: true)
-  _$$_MetaValueCopyWith<_$_MetaValue> get copyWith =>
+  _$$_MetaValueCopyWith<T, _$_MetaValue<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

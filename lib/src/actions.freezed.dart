@@ -22,7 +22,8 @@ mixin _$AccountAction {
   List<String> get currencies => throw _privateConstructorUsedError;
   String? get bookingMethod => throw _privateConstructorUsedError;
   String? get comment => throw _privateConstructorUsedError;
-  Map<String, MetaValue> get metadata => throw _privateConstructorUsedError;
+  Map<String, MetaValue<dynamic>> get metadata =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
@@ -128,7 +129,7 @@ abstract class $AccountActionCopyWith<$Res> {
       List<String> currencies,
       String? bookingMethod,
       String? comment,
-      Map<String, MetaValue> metadata});
+      Map<String, MetaValue<dynamic>> metadata});
 
   $AccountCopyWith<$Res> get account;
 }
@@ -182,7 +183,7 @@ class _$AccountActionCopyWithImpl<$Res, $Val extends AccountAction>
       metadata: null == metadata
           ? _value.metadata
           : metadata // ignore: cast_nullable_to_non_nullable
-              as Map<String, MetaValue>,
+              as Map<String, MetaValue<dynamic>>,
     ) as $Val);
   }
 
@@ -2531,7 +2532,8 @@ mixin _$CustomAction {
   String get type => throw _privateConstructorUsedError;
   List<dynamic> get values => throw _privateConstructorUsedError;
   String? get comment => throw _privateConstructorUsedError;
-  Map<String, MetaValue> get metadata => throw _privateConstructorUsedError;
+  Map<String, MetaValue<dynamic>> get metadata =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(DateTime date, String type, List<dynamic> values,
@@ -2599,7 +2601,7 @@ abstract class $CustomActionCopyWith<$Res> {
       String type,
       List<dynamic> values,
       String? comment,
-      Map<String, MetaValue> metadata});
+      Map<String, MetaValue<dynamic>> metadata});
 }
 
 /// @nodoc
@@ -2641,7 +2643,7 @@ class _$CustomActionCopyWithImpl<$Res, $Val extends CustomAction>
       metadata: null == metadata
           ? _value.metadata
           : metadata // ignore: cast_nullable_to_non_nullable
-              as Map<String, MetaValue>,
+              as Map<String, MetaValue<dynamic>>,
     ) as $Val);
   }
 }

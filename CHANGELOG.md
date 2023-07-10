@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.5.3
+- Metadata value can have a date value
+
 ## 0.5.2
 - Bugfix to `canBeBalanced` when already balanced
 
