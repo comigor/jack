@@ -45,7 +45,7 @@ class BeancountGrammarDefinition extends GrammarDefinition {
       token,
       accountPreffixPrimitive() &
           (char(':') & tagsCharacterPrimitive().plus()).star());
-  Parser currencyToken() => ref(token, uppercaseCharacterPrimitive().plus());
+  Parser currencyToken() => ref(token, uppercaseCharacterPrimitive() & (uppercaseCharacterPrimitive() | char('.')).star());
   Parser tagToken() => ref(token, char('#') & tagsCharacterPrimitive().plus());
   Parser linkToken() => ref(token, char('^') & tagsCharacterPrimitive().plus());
   Parser singleMetadataToken() =>

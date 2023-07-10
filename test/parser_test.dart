@@ -10,6 +10,8 @@ void main() {
   precision: "8"
 2019-01-21 commodity NFLX
   precision: "0"
+2019-01-21 commodity GOOG.UNVEST
+  precision: "0"
 '''
           .trim();
       final fullTransactionRecord = '''
@@ -23,6 +25,7 @@ void main() {
   Income:C:D -99.00000001 BITCOIN
   Income:E -99.00 USD
   Income:F 1234 NFLX
+  Income:F 1234 GOOG.UNVEST
   Equity:G 1234.56 USD {} ; empty works
   Equity:G 1234.56 USD {10.00 BRL} ; blah
   Equity:H 1234.56 USD {{10.00 BRL, 2020-11-19, "tag"}}

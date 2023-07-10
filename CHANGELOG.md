@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.5.4
+- Accounts can have a dot `.`
+
 ## 0.5.3
 - Metadata value can have a date value
 
