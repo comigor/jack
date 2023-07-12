@@ -39,7 +39,7 @@ void main() {
           ),
         ],
       );
-      expect(transaction.canBeBalanced, isFalse);
+      expect(transaction.canBeBalanced, isTrue);
     });
 
     test('postings with multiple currencies', () {
@@ -64,7 +64,7 @@ void main() {
           ),
         ],
       );
-      expect(transaction.canBeBalanced, isFalse);
+      expect(transaction.canBeBalanced, isTrue);
     });
 
     test('already balanced', () {
@@ -111,7 +111,7 @@ void main() {
         ),
       ];
 
-      expect(beforeBalancing.balanced!.postings, equals(afterBalancing));
+      expect(beforeBalancing.balanced.postings, equals(afterBalancing));
     });
 
     test('with multiple currencies and price', () {
@@ -153,12 +153,13 @@ void main() {
         ),
       ];
 
-      expect(beforeBalancing.balanced!.postings, equals(afterBalancing));
+      expect(beforeBalancing.balanced.postings, equals(afterBalancing));
     });
 
     test('with multiple currencies and cost', () {
+      final date = DateTime(2023, 07, 12);
       final beforeBalancing = Transaction(
-        date: DateTime.now(),
+        date: date,
         postings: [
           Posting(
             account: Account(name: 'A'),
@@ -186,7 +187,7 @@ void main() {
           account: Account(name: 'B'),
           position: Position(
             unit: Money.fromNumWithCurrency(500, c02),
-            cost: Cost(value: Money.fromNumWithCurrency(-5, c01)),
+            cost: Cost(value: Money.fromNumWithCurrency(-5, c01), date: date),
           ),
         ),
         Posting(
@@ -195,12 +196,13 @@ void main() {
         ),
       ];
 
-      expect(beforeBalancing.balanced!.postings, equals(afterBalancing));
+      expect(beforeBalancing.balanced.postings, equals(afterBalancing));
     });
 
     test('with multiple currencies, price and cost (price is ignored)', () {
+      final date = DateTime(2023, 07, 12);
       final beforeBalancing = Transaction(
-        date: DateTime.now(),
+        date: date,
         postings: [
           Posting(
             account: Account(name: 'A'),
@@ -229,7 +231,7 @@ void main() {
           account: Account(name: 'B'),
           position: Position(
             unit: Money.fromNumWithCurrency(500, c02),
-            cost: Cost(value: Money.fromNumWithCurrency(-5, c01)),
+            cost: Cost(value: Money.fromNumWithCurrency(-5, c01), date: date),
             price: Money.fromNumWithCurrency(57827, c01),
           ),
         ),
@@ -239,12 +241,12 @@ void main() {
         ),
       ];
 
-      expect(beforeBalancing.balanced!.postings, equals(afterBalancing));
+      expect(beforeBalancing.balanced.postings, equals(afterBalancing));
     });
 
     test('balancing complex transactions', () {
       expect(
-        stocksBuy.balanced!.postings.last,
+        stocksBuy.balanced.postings.last,
         equals(
           Posting(
             account: Account(name: 'Assets:Clear:Cash'),
@@ -295,7 +297,7 @@ void main() {
         ),
       ];
 
-      expect(beforeBalancing.balanced!.postings, equals(afterBalancing));
+      expect(beforeBalancing.balanced.postings, equals(afterBalancing));
     });
   });
 }

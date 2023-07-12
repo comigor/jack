@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.5.5
+- Make it possible to balance Cost (date and value/perUnitValue)
+
 ## 0.5.4
 - Accounts can have a dot `.`
 

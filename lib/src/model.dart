@@ -115,18 +115,18 @@ abstract class Transaction with _$Transaction {
 
   bool get isBalanced => sumsMap.values.every((money) => money.isZero);
 
-  Transaction? get balanced => (() {
+  Transaction get balanced => (() {
         if (isBalanced) return this;
-        if (!canBeBalanced) return null;
+        if (!canBeBalanced) return this;
 
         final blankPosting = postings.firstWhere((p) => p.position == null);
 
         return copyWith(
           postings: [
-            ...postings.where((p) => p.position != null),
+            ...postings.where((p) => p.position != null).map((p) => p.balance(date)),
             ...sumsMap.values.where((money) => !money.isZero).map(
               (money) => blankPosting.copyWith(
-                position: Position(unit: -money),
+                position: Position(unit: -money).balance(date),
               ),
             ),
           ],
@@ -189,6 +189,12 @@ abstract class Posting with _$Posting {
 
         return positionBang.unit;
       })();
+
+  Posting balance(DateTime tansactionDate) => (() {
+        return copyWith(
+          position: position?.balance(tansactionDate),
+        );
+      })();
 }
 
 @freezed
@@ -216,6 +222,12 @@ abstract class Position with _$Position {
         }
 
         return buffer.toString();
+      })();
+
+  Position balance(DateTime tansactionDate) => (() {
+        return copyWith(
+          cost: cost?.balance(tansactionDate, unit),
+        );
       })();
 }
 
@@ -247,5 +259,15 @@ abstract class Cost with _$Cost {
           ..write(lotData.join(', '))
           ..write(isAbsoluteValue ? '}}' : '}');
         return buffer.toString();
+      })();
+
+  Cost balance(DateTime tansactionDate, Money positionUnit) => (() {
+        final hasValue = value != null;
+        final hasPerUnitValue = value != null;
+        return copyWith(
+          date: positionUnit.isPositive ? (date ?? tansactionDate) : date,
+          value: hasValue ? value : perUnitValue?.multiplyByFixed(positionUnit.amount),
+          perUnitValue: hasPerUnitValue ? perUnitValue : value?.divideByFixed(positionUnit.amount),
+        );
       })();
 }
