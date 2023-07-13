@@ -175,16 +175,15 @@ abstract class Posting with _$Posting {
         final positionBang = position!;
 
         final unit = positionBang.unit;
-        final unitFixed = Fixed.fromBigInt(unit.minorUnits, scale: unit.currency.scale);
 
-        if (positionBang.cost?.value != null) {
+        if (positionBang.cost?.value != null && positionBang.isAbsoluteCost) {
           return positionBang.cost!.value;
-        } else if (positionBang.cost?.perUnitValue != null) {
-          return positionBang.cost!.perUnitValue!.multiplyByFixed(unitFixed);
-        } else if (positionBang.price != null) {
-          return positionBang.price;
-        } else if (positionBang.perUnitPrice != null) {
-          return positionBang.perUnitPrice!.multiplyByFixed(unitFixed);
+        } else if (positionBang.cost?.value != null && !positionBang.isAbsoluteCost) {
+          return positionBang.cost!.value!.multiplyByFixed(unit.amount);
+        } else if (positionBang.price != null && positionBang.isAbsolutePrice) {
+          return positionBang.price!;
+        } else if (positionBang.price != null && !positionBang.isAbsolutePrice) {
+          return positionBang.price!.multiplyByFixed(unit.amount);
         }
 
         return positionBang.unit;
@@ -204,21 +203,20 @@ abstract class Position with _$Position {
   factory Position({
     required Money unit, // amount + currency
      Cost? cost, // {} or {{}}
-     Money? price, // @@ -> used only to balance when no cost is defined
-     Money? perUnitPrice, // @ -> same
+     @Default(false) bool isAbsoluteCost,
+     Money? price, // @@ -> used to balancing only when no cost is defined
+     @Default(false) bool isAbsolutePrice,
   }) = _Position;
 
   String get stringify => (() {
         final buffer = StringBuffer()..write(unit);
 
         if (cost != null) {
-          buffer.write(' ${cost!.stringify}');
+          buffer.write(' ${isAbsoluteCost ? '{{' : '{'}${cost!.stringify}${isAbsoluteCost ? '}}' : '}'}');
         }
 
-        if ((price ?? perUnitPrice) != null) {
-          final isAbsolutePrice = price != null;
-          buffer.write(
-              ' ${isAbsolutePrice ? '@@' : '@'} ${price ?? perUnitPrice}');
+        if (price != null) {
+          buffer.write(' ${isAbsolutePrice ? '@@' : '@'} $price');
         }
 
         return buffer.toString();
@@ -231,43 +229,51 @@ abstract class Position with _$Position {
       })();
 }
 
+/// A variant of Amount that also includes a date and a label.
 @freezed
 abstract class Cost with _$Cost {
   Cost._();
 
-  // Absolute cost: {{[amount],  [date],     [label]}}
-  //                {{10.00 BRL, 2020-11-19, "lot-A"}}
-  // Per unit cost: {[amount],  [date],     [label]}
-  //                {10.00 BRL, 2020-11-19, "lot-A"}
-  factory Cost({
-     Money? value, // amount + currency
-     Money? perUnitValue, // amount + currency
+    factory Cost.def({
+     Money? value,
      DateTime? date,
      String? label,
   }) = _Cost;
 
+  /// Absolute cost: {{[amount],  [date],     [label]}}
+  ///                {{10.00 BRL, 2020-11-19, "lot-A"}}
+  /// Per unit cost: {[amount],  [date],     [label]}
+  ///                {10.00 BRL, 2020-11-19, "lot-A"}
+  /// 
+  /// For this factory, [value] must be per-unit.
+  factory Cost({
+     Money? value,
+     DateTime? date,
+     String? label,
+  }) {
+    return _Cost(
+      value: value,
+      date: date,
+      label: label,
+    );
+  }
+
   String get stringify => (() {
-        final isAbsoluteValue = value != null;
         final lotData = [
-          if ((value ?? perUnitValue) != null) value ?? perUnitValue,
+          if (value != null) value,
           if (date != null) formatter.format(date!),
           if (label != null) '"$label"'
         ];
 
         final buffer = StringBuffer()
-          ..write(isAbsoluteValue ? '{{' : '{')
-          ..write(lotData.join(', '))
-          ..write(isAbsoluteValue ? '}}' : '}');
+          ..write(lotData.join(', '));
         return buffer.toString();
       })();
 
   Cost balance(DateTime tansactionDate, Money positionUnit) => (() {
-        final hasValue = value != null;
-        final hasPerUnitValue = value != null;
         return copyWith(
           date: positionUnit.isPositive ? (date ?? tansactionDate) : date,
-          value: hasValue ? value : perUnitValue?.multiplyByFixed(positionUnit.amount),
-          perUnitValue: hasPerUnitValue ? perUnitValue : value?.divideByFixed(positionUnit.amount),
+          value: value,
         );
       })();
 }

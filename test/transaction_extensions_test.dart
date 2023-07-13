@@ -127,6 +127,7 @@ void main() {
             position: Position(
               unit: Money.fromNumWithCurrency(23472, c02),
               price: Money.fromNumWithCurrency(-5, c01),
+              isAbsolutePrice: true,
             ),
           ),
           Posting(
@@ -145,6 +146,7 @@ void main() {
           position: Position(
             unit: Money.fromNumWithCurrency(23472, c02),
             price: Money.fromNumWithCurrency(-5, c01),
+            isAbsolutePrice: true,
           ),
         ),
         Posting(
@@ -170,6 +172,7 @@ void main() {
             position: Position(
               unit: Money.fromNumWithCurrency(500, c02),
               cost: Cost(value: Money.fromNumWithCurrency(-5, c01)),
+              isAbsoluteCost: true,
             ),
           ),
           Posting(
@@ -188,6 +191,7 @@ void main() {
           position: Position(
             unit: Money.fromNumWithCurrency(500, c02),
             cost: Cost(value: Money.fromNumWithCurrency(-5, c01), date: date),
+            isAbsoluteCost: true,
           ),
         ),
         Posting(
@@ -213,6 +217,7 @@ void main() {
             position: Position(
               unit: Money.fromNumWithCurrency(500, c02),
               cost: Cost(value: Money.fromNumWithCurrency(-5, c01)),
+              isAbsoluteCost: true,
               price: Money.fromNumWithCurrency(57827, c01),
             ),
           ),
@@ -232,6 +237,7 @@ void main() {
           position: Position(
             unit: Money.fromNumWithCurrency(500, c02),
             cost: Cost(value: Money.fromNumWithCurrency(-5, c01), date: date),
+            isAbsoluteCost: true,
             price: Money.fromNumWithCurrency(57827, c01),
           ),
         ),

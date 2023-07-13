@@ -56,11 +56,8 @@ class BeancountGrammarDefinition extends GrammarDefinition {
   Parser metadataToken() => singleMetadataToken().star();
   Parser amountWithCurrencyToken() => numberToken() & currencyToken();
   Parser costToken() =>
-      ref(token, char('{').repeat(1, 2)) &
       (amountWithCurrencyToken() | dateToken() | stringToken())
-          .separatedBy(char(','), includeSeparators: false)
-          .optional() &
-      ref(token, char('}').repeat(1, 2));
+          .separatedBy(char(','), includeSeparators: false);
   Parser priceToken() =>
       ref(token, char('@').repeat(1, 2)) & amountWithCurrencyToken();
 
@@ -68,7 +65,9 @@ class BeancountGrammarDefinition extends GrammarDefinition {
   Parser links() => linkToken().star();
   Parser singlePosition() =>
       amountWithCurrencyToken() &
-      costToken().optional() &
+      (ref(token, char('{').repeat(1, 2)) &
+          costToken().optional() &
+          ref(token, char('}').repeat(1, 2))).optional() &
       priceToken().optional();
   Parser singlePosting() =>
       flagToken().optional() &

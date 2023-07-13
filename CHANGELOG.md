@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.6.0
+- Move price/cost `isAbsolute` def to Position
+
 ## 0.5.5
 - Make it possible to balance Cost (date and value/perUnitValue)
 

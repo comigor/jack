@@ -831,9 +831,10 @@ abstract class _Posting extends Posting {
 mixin _$Position {
   Money get unit => throw _privateConstructorUsedError; // amount + currency
   Cost? get cost => throw _privateConstructorUsedError; // {} or {{}}
+  bool get isAbsoluteCost => throw _privateConstructorUsedError;
   Money? get price =>
-      throw _privateConstructorUsedError; // @@ -> used only to balance when no cost is defined
-  Money? get perUnitPrice => throw _privateConstructorUsedError;
+      throw _privateConstructorUsedError; // @@ -> used to balancing only when no cost is defined
+  bool get isAbsolutePrice => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PositionCopyWith<Position> get copyWith =>
@@ -845,7 +846,12 @@ abstract class $PositionCopyWith<$Res> {
   factory $PositionCopyWith(Position value, $Res Function(Position) then) =
       _$PositionCopyWithImpl<$Res, Position>;
   @useResult
-  $Res call({Money unit, Cost? cost, Money? price, Money? perUnitPrice});
+  $Res call(
+      {Money unit,
+      Cost? cost,
+      bool isAbsoluteCost,
+      Money? price,
+      bool isAbsolutePrice});
 
   $CostCopyWith<$Res>? get cost;
 }
@@ -865,8 +871,9 @@ class _$PositionCopyWithImpl<$Res, $Val extends Position>
   $Res call({
     Object? unit = null,
     Object? cost = freezed,
+    Object? isAbsoluteCost = null,
     Object? price = freezed,
-    Object? perUnitPrice = freezed,
+    Object? isAbsolutePrice = null,
   }) {
     return _then(_value.copyWith(
       unit: null == unit
@@ -877,14 +884,18 @@ class _$PositionCopyWithImpl<$Res, $Val extends Position>
           ? _value.cost
           : cost // ignore: cast_nullable_to_non_nullable
               as Cost?,
+      isAbsoluteCost: null == isAbsoluteCost
+          ? _value.isAbsoluteCost
+          : isAbsoluteCost // ignore: cast_nullable_to_non_nullable
+              as bool,
       price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as Money?,
-      perUnitPrice: freezed == perUnitPrice
-          ? _value.perUnitPrice
-          : perUnitPrice // ignore: cast_nullable_to_non_nullable
-              as Money?,
+      isAbsolutePrice: null == isAbsolutePrice
+          ? _value.isAbsolutePrice
+          : isAbsolutePrice // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
@@ -908,7 +919,12 @@ abstract class _$$_PositionCopyWith<$Res> implements $PositionCopyWith<$Res> {
       __$$_PositionCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Money unit, Cost? cost, Money? price, Money? perUnitPrice});
+  $Res call(
+      {Money unit,
+      Cost? cost,
+      bool isAbsoluteCost,
+      Money? price,
+      bool isAbsolutePrice});
 
   @override
   $CostCopyWith<$Res>? get cost;
@@ -927,8 +943,9 @@ class __$$_PositionCopyWithImpl<$Res>
   $Res call({
     Object? unit = null,
     Object? cost = freezed,
+    Object? isAbsoluteCost = null,
     Object? price = freezed,
-    Object? perUnitPrice = freezed,
+    Object? isAbsolutePrice = null,
   }) {
     return _then(_$_Position(
       unit: null == unit
@@ -939,14 +956,18 @@ class __$$_PositionCopyWithImpl<$Res>
           ? _value.cost
           : cost // ignore: cast_nullable_to_non_nullable
               as Cost?,
+      isAbsoluteCost: null == isAbsoluteCost
+          ? _value.isAbsoluteCost
+          : isAbsoluteCost // ignore: cast_nullable_to_non_nullable
+              as bool,
       price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as Money?,
-      perUnitPrice: freezed == perUnitPrice
-          ? _value.perUnitPrice
-          : perUnitPrice // ignore: cast_nullable_to_non_nullable
-              as Money?,
+      isAbsolutePrice: null == isAbsolutePrice
+          ? _value.isAbsolutePrice
+          : isAbsolutePrice // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -954,7 +975,12 @@ class __$$_PositionCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Position extends _Position {
-  _$_Position({required this.unit, this.cost, this.price, this.perUnitPrice})
+  _$_Position(
+      {required this.unit,
+      this.cost,
+      this.isAbsoluteCost = false,
+      this.price,
+      this.isAbsolutePrice = false})
       : super._();
 
   @override
@@ -964,14 +990,18 @@ class _$_Position extends _Position {
   final Cost? cost;
 // {} or {{}}
   @override
-  final Money? price;
-// @@ -> used only to balance when no cost is defined
+  @JsonKey()
+  final bool isAbsoluteCost;
   @override
-  final Money? perUnitPrice;
+  final Money? price;
+// @@ -> used to balancing only when no cost is defined
+  @override
+  @JsonKey()
+  final bool isAbsolutePrice;
 
   @override
   String toString() {
-    return 'Position(unit: $unit, cost: $cost, price: $price, perUnitPrice: $perUnitPrice)';
+    return 'Position(unit: $unit, cost: $cost, isAbsoluteCost: $isAbsoluteCost, price: $price, isAbsolutePrice: $isAbsolutePrice)';
   }
 
   @override
@@ -981,13 +1011,16 @@ class _$_Position extends _Position {
             other is _$_Position &&
             (identical(other.unit, unit) || other.unit == unit) &&
             (identical(other.cost, cost) || other.cost == cost) &&
+            (identical(other.isAbsoluteCost, isAbsoluteCost) ||
+                other.isAbsoluteCost == isAbsoluteCost) &&
             (identical(other.price, price) || other.price == price) &&
-            (identical(other.perUnitPrice, perUnitPrice) ||
-                other.perUnitPrice == perUnitPrice));
+            (identical(other.isAbsolutePrice, isAbsolutePrice) ||
+                other.isAbsolutePrice == isAbsolutePrice));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, unit, cost, price, perUnitPrice);
+  int get hashCode => Object.hash(
+      runtimeType, unit, cost, isAbsoluteCost, price, isAbsolutePrice);
 
   @JsonKey(ignore: true)
   @override
@@ -1000,8 +1033,9 @@ abstract class _Position extends Position {
   factory _Position(
       {required final Money unit,
       final Cost? cost,
+      final bool isAbsoluteCost,
       final Money? price,
-      final Money? perUnitPrice}) = _$_Position;
+      final bool isAbsolutePrice}) = _$_Position;
   _Position._() : super._();
 
   @override
@@ -1009,9 +1043,11 @@ abstract class _Position extends Position {
   @override // amount + currency
   Cost? get cost;
   @override // {} or {{}}
+  bool get isAbsoluteCost;
+  @override
   Money? get price;
-  @override // @@ -> used only to balance when no cost is defined
-  Money? get perUnitPrice;
+  @override // @@ -> used to balancing only when no cost is defined
+  bool get isAbsolutePrice;
   @override
   @JsonKey(ignore: true)
   _$$_PositionCopyWith<_$_Position> get copyWith =>
@@ -1020,11 +1056,41 @@ abstract class _Position extends Position {
 
 /// @nodoc
 mixin _$Cost {
-  Money? get value => throw _privateConstructorUsedError; // amount + currency
-  Money? get perUnitValue =>
-      throw _privateConstructorUsedError; // amount + currency
+  Money? get value => throw _privateConstructorUsedError;
   DateTime? get date => throw _privateConstructorUsedError;
   String? get label => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Money? value, DateTime? date, String? label) def,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Money? value, DateTime? date, String? label)? def,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Money? value, DateTime? date, String? label)? def,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Cost value) def,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Cost value)? def,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Cost value)? def,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CostCopyWith<Cost> get copyWith => throw _privateConstructorUsedError;
@@ -1035,7 +1101,7 @@ abstract class $CostCopyWith<$Res> {
   factory $CostCopyWith(Cost value, $Res Function(Cost) then) =
       _$CostCopyWithImpl<$Res, Cost>;
   @useResult
-  $Res call({Money? value, Money? perUnitValue, DateTime? date, String? label});
+  $Res call({Money? value, DateTime? date, String? label});
 }
 
 /// @nodoc
@@ -1052,7 +1118,6 @@ class _$CostCopyWithImpl<$Res, $Val extends Cost>
   @override
   $Res call({
     Object? value = freezed,
-    Object? perUnitValue = freezed,
     Object? date = freezed,
     Object? label = freezed,
   }) {
@@ -1060,10 +1125,6 @@ class _$CostCopyWithImpl<$Res, $Val extends Cost>
       value: freezed == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
-              as Money?,
-      perUnitValue: freezed == perUnitValue
-          ? _value.perUnitValue
-          : perUnitValue // ignore: cast_nullable_to_non_nullable
               as Money?,
       date: freezed == date
           ? _value.date
@@ -1083,7 +1144,7 @@ abstract class _$$_CostCopyWith<$Res> implements $CostCopyWith<$Res> {
       __$$_CostCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Money? value, Money? perUnitValue, DateTime? date, String? label});
+  $Res call({Money? value, DateTime? date, String? label});
 }
 
 /// @nodoc
@@ -1096,7 +1157,6 @@ class __$$_CostCopyWithImpl<$Res> extends _$CostCopyWithImpl<$Res, _$_Cost>
   @override
   $Res call({
     Object? value = freezed,
-    Object? perUnitValue = freezed,
     Object? date = freezed,
     Object? label = freezed,
   }) {
@@ -1104,10 +1164,6 @@ class __$$_CostCopyWithImpl<$Res> extends _$CostCopyWithImpl<$Res, _$_Cost>
       value: freezed == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
-              as Money?,
-      perUnitValue: freezed == perUnitValue
-          ? _value.perUnitValue
-          : perUnitValue // ignore: cast_nullable_to_non_nullable
               as Money?,
       date: freezed == date
           ? _value.date
@@ -1124,14 +1180,10 @@ class __$$_CostCopyWithImpl<$Res> extends _$CostCopyWithImpl<$Res, _$_Cost>
 /// @nodoc
 
 class _$_Cost extends _Cost {
-  _$_Cost({this.value, this.perUnitValue, this.date, this.label}) : super._();
+  _$_Cost({this.value, this.date, this.label}) : super._();
 
   @override
   final Money? value;
-// amount + currency
-  @override
-  final Money? perUnitValue;
-// amount + currency
   @override
   final DateTime? date;
   @override
@@ -1139,7 +1191,7 @@ class _$_Cost extends _Cost {
 
   @override
   String toString() {
-    return 'Cost(value: $value, perUnitValue: $perUnitValue, date: $date, label: $label)';
+    return 'Cost.def(value: $value, date: $date, label: $label)';
   }
 
   @override
@@ -1148,36 +1200,86 @@ class _$_Cost extends _Cost {
         (other.runtimeType == runtimeType &&
             other is _$_Cost &&
             (identical(other.value, value) || other.value == value) &&
-            (identical(other.perUnitValue, perUnitValue) ||
-                other.perUnitValue == perUnitValue) &&
             (identical(other.date, date) || other.date == date) &&
             (identical(other.label, label) || other.label == label));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, value, perUnitValue, date, label);
+  int get hashCode => Object.hash(runtimeType, value, date, label);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$_CostCopyWith<_$_Cost> get copyWith =>
       __$$_CostCopyWithImpl<_$_Cost>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Money? value, DateTime? date, String? label) def,
+  }) {
+    return def(value, date, label);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Money? value, DateTime? date, String? label)? def,
+  }) {
+    return def?.call(value, date, label);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Money? value, DateTime? date, String? label)? def,
+    required TResult orElse(),
+  }) {
+    if (def != null) {
+      return def(value, date, label);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Cost value) def,
+  }) {
+    return def(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Cost value)? def,
+  }) {
+    return def?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Cost value)? def,
+    required TResult orElse(),
+  }) {
+    if (def != null) {
+      return def(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class _Cost extends Cost {
   factory _Cost(
       {final Money? value,
-      final Money? perUnitValue,
       final DateTime? date,
       final String? label}) = _$_Cost;
   _Cost._() : super._();
 
   @override
   Money? get value;
-  @override // amount + currency
-  Money? get perUnitValue;
-  @override // amount + currency
+  @override
   DateTime? get date;
   @override
   String? get label;

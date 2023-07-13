@@ -67,19 +67,13 @@ class BeancountParserDefinition extends BeancountGrammarDefinition {
       });
   @override
   Parser costToken() => super.costToken().map((each) {
-        final e = each as List;
-        final type = e.first as String;
-        final items = e.elementAt(1) as List?;
-        final value =
-            items?.singleWhere((e) => e is Money, orElse: () => null) as Money?;
-        final date = items?.singleWhere((e) => e is DateTime, orElse: () => null)
-            as DateTime?;
-        final label =
-            items?.singleWhere((e) => e is String, orElse: () => null) as String?;
+        final items = each as List;
+        final value = items.singleWhere((e) => e is Money, orElse: () => null) as Money?;
+        final date = items.singleWhere((e) => e is DateTime, orElse: () => null) as DateTime?;
+        final label = items.singleWhere((e) => e is String, orElse: () => null) as String?;
 
         return Cost(
-          perUnitValue: type == '{' ? value : null,
-          value: type == '{{' ? value : null,
+          value: value,
           date: date,
           label: label,
         );
@@ -101,15 +95,19 @@ class BeancountParserDefinition extends BeancountGrammarDefinition {
   Parser singlePosition() => super.singlePosition().map((each) {
         final e = each as List;
 
+        final allCost = e.elementAt(1) as List?;
+        final costType = allCost?.elementAt(0) as String?;
+        final cost = allCost?.elementAt(1) as Cost?;
         final price = e.elementAt(2) as List?;
-        final type = price?.first as String?;
-        final unit = price?.last as Money?;
+        final priceType = price?.first as String?;
+        final priceUnit = price?.last as Money?;
 
         return Position(
           unit: e.first as Money,
-          cost: e.elementAt(1) as Cost?,
-          perUnitPrice: type == '@' ? unit! : null,
-          price: type == '@@' ? unit! : null,
+          cost: costType != null ? (cost ?? Cost()) : null,
+          isAbsoluteCost: costType == '{{',
+          price: priceUnit,
+          isAbsolutePrice: priceType == '@@',
         );
       });
 
