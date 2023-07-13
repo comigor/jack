@@ -95,19 +95,32 @@ class BeancountParserDefinition extends BeancountGrammarDefinition {
   Parser singlePosition() => super.singlePosition().map((each) {
         final e = each as List;
 
+        final unit = e.first as Money;
+
         final allCost = e.elementAt(1) as List?;
         final costType = allCost?.elementAt(0) as String?;
-        final cost = allCost?.elementAt(1) as Cost?;
+        final isAbsoluteCost = costType == '{{';
+        var cost = allCost?.elementAt(1) as Cost?;
+        cost = cost?.copyWith(
+          value: costType != null && isAbsoluteCost && cost.value != null ?
+              Money.fromFixedWithCurrency(cost.value!.amount / (unit.amount * Fixed.fromNum(1.0)), cost.value!.currency, scale: 16) :
+              cost.value,
+        );
+
         final price = e.elementAt(2) as List?;
         final priceType = price?.first as String?;
-        final priceUnit = price?.last as Money?;
+        final isAbsolutePrice = priceType == '@@';
+        var priceUnit = price?.last as Money?;
+        priceUnit = priceType != null && isAbsolutePrice && priceUnit != null ?
+            Money.fromFixedWithCurrency(priceUnit.amount / (unit.amount * Fixed.fromNum(1.0)), priceUnit.currency, scale: 16) :
+            priceUnit;
 
         return Position(
-          unit: e.first as Money,
+          unit: unit,
           cost: costType != null ? (cost ?? Cost()) : null,
-          isAbsoluteCost: costType == '{{',
+          isAbsoluteCost: isAbsoluteCost,
           price: priceUnit,
-          isAbsolutePrice: priceType == '@@',
+          isAbsolutePrice: isAbsolutePrice,
         );
       });
 

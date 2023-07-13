@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.6.1
+- Fix Cost/Price scale
+
 ## 0.6.0
 - Move price/cost `isAbsolute` def to Position
 

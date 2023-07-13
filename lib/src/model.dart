@@ -212,11 +212,23 @@ abstract class Position with _$Position {
         final buffer = StringBuffer()..write(unit);
 
         if (cost != null) {
-          buffer.write(' ${isAbsoluteCost ? '{{' : '{'}${cost!.stringify}${isAbsoluteCost ? '}}' : '}'}');
+          if (isAbsoluteCost) {
+            final cost2Print = cost!.copyWith(
+              value: cost!.value?.multiplyByFixed(unit.amount),
+            );
+            buffer.write(' {{${cost2Print.stringify}}}');
+          } else {
+            buffer.write(' {${cost!.stringify}}');
+          }
         }
 
         if (price != null) {
-          buffer.write(' ${isAbsolutePrice ? '@@' : '@'} $price');
+          if (isAbsolutePrice) {
+            final price2Print = price!.multiplyByFixed(unit.amount);
+            buffer.write(' @@ $price2Print');
+          } else {
+            buffer.write(' @ $price');
+          }
         }
 
         return buffer.toString();
