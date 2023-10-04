@@ -36,13 +36,13 @@ void main() {
 '''
           .trim();
 
-      final bg = BeancountParser();
+      final bg = BeancountParser().build();
       final defs = bg.parse(commoditiesDefinition).value as List;
 
       final bg2 = BeancountParser(
         currencyList:
             defs.whereType<CommodityAction>().map((c) => c.currency).toList(),
-      );
+      ).build();
 
       final transaction =
           bg2.parse(fullTransactionRecord).value.first as Transaction;
@@ -50,7 +50,7 @@ void main() {
     });
 
     test('on actions', () {
-      final bg = BeancountParser();
+      final bg = BeancountParser().build();
       final actionsString = '''
 2020-11-20 open Assets:Cash BRL,USD ; comment
   meta: "data" ; comment

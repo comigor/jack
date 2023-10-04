@@ -1,6 +1,6 @@
 import 'package:jack/jack.dart';
 
-final bg = BeancountParser();
+final bg = BeancountParser().build();
 
 final _stocksBeanFile = '''
 2020-09-01 * "Buying stocks"
