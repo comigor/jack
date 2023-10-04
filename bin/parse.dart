@@ -6,13 +6,13 @@ void main() {
   final file = File('${Directory.current.absolute.path}/../beancount/main.bean')
       .readAsStringSync();
 
-  final bg = BeancountParser();
+  final bg = BeancountParser().build();
   final defs = bg.parse(file).value as List;
 
   final bg2 = BeancountParser(
     currencyList:
         defs.whereType<CommodityAction>().map((c) => c.currency).toList(),
-  );
+  ).build();
 
   final result = bg2.parse(file);
   // print(result.message);
