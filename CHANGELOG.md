@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.7.0
+- Update dependencies past some breaking changes
+
 ## 0.6.2
 - Update CI
 
