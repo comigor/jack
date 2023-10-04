@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.6.2
+- Update CI
+
 ## 0.6.1
 - Fix Cost/Price scale
 
